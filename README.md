@@ -27,11 +27,18 @@ This is a production-ready AI trading system for Polymarket that uses:
 
 ## 📊 Live Dashboard
 
-**Frontend**: Hosted on Vercel  
-**Backend**: Docker containers exposed via Cloudflare Tunnel  
+**Frontend**: https://vercel-frontend-g4o1sdx6o-boom-test-c54cde04.vercel.app  
+**Backend**: https://postposted-spent-knife-given.trycloudflare.com  
 **Status**: ✅ Production
 
-View the live dashboard: [Check deployment URL]
+The dashboard shows:
+- Real-time market data streaming
+- Backend connection status (green dot = connected)
+- AI insights and analysis
+- Market quality indicators
+- Trading signals
+- Resolution tracking
+- Model performance comparison
 
 ## 🏗️ Architecture
 
