@@ -1,0 +1,36 @@
+alerts:
+  daily_loss_threshold: 200
+  large_loss_threshold: 100
+data:
+  db_path: data/trades_aggressive.db
+  logs_dir: logs/aggressive
+  recordings_dir: data/recordings_aggressive
+execution:
+  check_interval_seconds: 180
+  max_slippage_pct: 3.0
+  max_spread_pct: 7.0
+logging:
+  level: INFO
+  log_positions: true
+  log_signals: true
+  log_trades: true
+recording:
+  enabled: true
+  record_executions: true
+  record_signals: true
+risk:
+  kelly_fraction: 0.35
+  max_drawdown_pct: 25.0
+  max_position_usd: 800
+  max_positions: 12
+  max_total_exposure_usd: 3000
+signals:
+  mean_reversion:
+    enabled: true
+    favorite_threshold: 0.65
+    longshot_threshold: 0.35
+    min_mispricing_pct: 3.0
+    min_strength: WEAK
+trading:
+  mode: paper
+  model_name: aggressive

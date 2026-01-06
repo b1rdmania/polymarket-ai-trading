@@ -1,0 +1,36 @@
+alerts:
+  daily_loss_threshold: 200
+  large_loss_threshold: 100
+data:
+  db_path: data/trades_conservative.db
+  logs_dir: logs/conservative
+  recordings_dir: data/recordings_conservative
+execution:
+  check_interval_seconds: 600
+  max_slippage_pct: 1.5
+  max_spread_pct: 3.0
+logging:
+  level: INFO
+  log_positions: true
+  log_signals: true
+  log_trades: true
+recording:
+  enabled: true
+  record_executions: true
+  record_signals: true
+risk:
+  kelly_fraction: 0.15
+  max_drawdown_pct: 15.0
+  max_position_usd: 200
+  max_positions: 5
+  max_total_exposure_usd: 1000
+signals:
+  mean_reversion:
+    enabled: true
+    favorite_threshold: 0.75
+    longshot_threshold: 0.25
+    min_mispricing_pct: 8.0
+    min_strength: STRONG
+trading:
+  mode: paper
+  model_name: conservative

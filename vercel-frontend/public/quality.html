@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Scoring | Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>market quality scoring</h1>
+            <p class="subtitle">LIQUIDITY, CLARITY, AND TRADING RELIABILITY</p>
+        </header>
+
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="signals.html">Signals</a>
+            <a href="ai-insights.html">AI Insights</a>
+            <a href="quality.html" class="active">Quality</a>
+            <a href="resolution.html">Resolution</a>
+            <a href="system.html">Trading Models</a>
+            <a href="about.html">Strategy</a>
+            <a href="research.html">Research</a>
+            <a href="theory.html">Theory</a>
+        </nav>
+
+        <div class="content">
+            <div class="highlight-box">
+                <strong>Quality Scoring Algorithm:</strong> Each market is scored 0-100 across four dimensions: <strong>Liquidity</strong> (35% weight), <strong>Spread</strong> (25% weight), <strong>Activity</strong> (15% weight), and <strong>Clarity</strong> (25% weight). Higher scores indicate better trading conditions.
+            </div>
+
+            <h2>Top Quality Markets</h2>
+
+            <div id="markets-list">
+                <p style="text-align: center; color: var(--color-gray-mid);">Loading top quality markets...</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Polymarket API Test Trading Protocol</p>
+            <p><a href="https://github.com/b1rdmania/aztec-auction-analysis">GitHub Repository</a></p>
+        </footer>
+    </div>
+
+    <style>
+        .market-card {
+            background: var(--color-gray-light);
+            border: 1px solid var(--color-black);
+            padding: 24px;
+            margin: 16px 0;
+        }
+        .market-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .market-question {
+            flex: 1;
+            font-weight: 500;
+            color: var(--color-black);
+            margin-right: 20px;
+        }
+        .market-rank {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--color-gray-mid);
+            margin-right: 8px;
+        }
+        .grade-badge {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border: 1px solid var(--color-black);
+            min-width: 60px;
+            text-align: center;
+        }
+        .grade-aplus, .grade-a { background: #E8F5E9; color: #2E7D32; }
+        .grade-b { background: #E3F2FD; color: #1565C0; }
+        .grade-c { background: #FFF3E0; color: #E65100; }
+        .grade-d { background: #FFEBEE; color: #C62828; }
+        .quality-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .quality-metric {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .metric-label {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-gray-mid);
+        }
+        .metric-value {
+            font-weight: 600;
+            color: var(--color-black);
+        }
+        .metric-bar {
+            height: 4px;
+            background: var(--color-white);
+            border: 1px solid var(--color-black);
+            overflow: hidden;
+            margin-top: 4px;
+        }
+        .metric-fill {
+            height: 100%;
+            background: var(--color-accent);
+        }
+        .market-footer {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid var(--color-black);
+            font-size: 0.85rem;
+        }
+        .footer-label {
+            color: var(--color-gray-mid);
+        }
+        .footer-value {
+            font-family: var(--font-mono);
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+    </style>
+
+    <script>
+        const API_BASE = 'https://postposted-spent-knife-given.trycloudflare.com';
+
+        async function fetchQualityMarkets() {
+            try {
+                const response = await fetch(`${API_BASE}/api/quality/top-markets?limit=30`);
+                if (!response.ok) throw new Error('Failed to fetch markets');
+                const data = await response.json();
+                renderMarkets(data.markets || []);
+            } catch (error) {
+                console.error('Error fetching quality markets:', error);
+                document.getElementById('markets-list').innerHTML =
+                    '<p style="text-align: center; color: var(--color-gray-mid);">Failed to load markets. Retrying...</p>';
+            }
+        }
+
+        function renderMarkets(markets) {
+            const list = document.getElementById('markets-list');
+
+            if (markets.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: var(--color-gray-mid);">No markets found</p>';
+                return;
+            }
+
+            list.innerHTML = markets.map((market, index) => {
+                const quality = market.quality;
+                const gradeClass = `grade-${quality.grade.toLowerCase().replace('+', 'plus')}`;
+
+                return `
+                    <div class="market-card">
+                        <div class="market-header">
+                            <div class="market-question">
+                                <span class="market-rank">#${index + 1}</span>
+                                ${market.question}
+                            </div>
+                            <div class="grade-badge ${gradeClass}">${quality.grade}</div>
+                        </div>
+
+                        <div class="quality-breakdown">
+                            <div class="quality-metric">
+                                <div class="metric-label">Total Score</div>
+                                <div class="metric-value">${quality.total_score}/100</div>
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width: ${quality.total_score}%"></div>
+                                </div>
+                            </div>
+                            <div class="quality-metric">
+                                <div class="metric-label">Liquidity</div>
+                                <div class="metric-value">${quality.liquidity_score.toFixed(1)}</div>
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width: ${(quality.liquidity_score / 35) * 100}%"></div>
+                                </div>
+                            </div>
+                            <div class="quality-metric">
+                                <div class="metric-label">Spread</div>
+                                <div class="metric-value">${quality.spread_score.toFixed(1)}</div>
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width: ${(quality.spread_score / 25) * 100}%"></div>
+                                </div>
+                            </div>
+                            <div class="quality-metric">
+                                <div class="metric-label">Activity</div>
+                                <div class="metric-value">${quality.activity_score.toFixed(1)}</div>
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width: ${(quality.activity_score / 15) * 100}%"></div>
+                                </div>
+                            </div>
+                            <div class="quality-metric">
+                                <div class="metric-label">Clarity</div>
+                                <div class="metric-value">${quality.clarity_score.toFixed(1)}</div>
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width: ${(quality.clarity_score / 25) * 100}%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="market-footer">
+                            <span class="footer-label">24h Volume: <span class="footer-value">$${quality.volume_24h.toLocaleString()}</span></span>
+                            <span class="footer-label">Price: <span class="footer-value">${(market.price * 100).toFixed(1)}c</span></span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        fetchQualityMarkets();
+        setInterval(fetchQualityMarkets, 60000);
+    </script>
+</body>
+</html>

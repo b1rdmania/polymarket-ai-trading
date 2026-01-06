@@ -1,0 +1,67 @@
+# Trading Configuration
+# Configuration for the systematic trading agent
+
+trading:
+  mode: paper  # paper | live
+  
+risk:
+  # Position limits
+  max_position_usd: 500           # Max size per trade
+  max_total_exposure_usd: 2000    # Max total exposure across all positions
+  max_positions: 10               # Max number of concurrent positions
+  max_drawdown_pct: 25.0          # Emergency stop if drawdown exceeds this
+  
+  # Position sizing
+  kelly_fraction: 0.25            # Fractional Kelly (0.25 = quarter Kelly, conservative)
+  
+signals:
+  # Mean reversion
+  mean_reversion:
+    enabled: true
+    min_strength: MODERATE        # WEAK | MODERATE | STRONG | VERY_STRONG
+    longshot_threshold: 0.30      # Below this = longshot
+    favorite_threshold: 0.70      # Above this = favorite
+    min_mispricing_pct: 5.0       # Minimum edge to trade
+  
+  # Volatility monitoring
+  volatility:
+    enabled: true
+    threshold_pct: 10.0           # Alert on 10%+ moves
+    volume_threshold: 50000       # Only high-volume markets
+  
+  # Whale tracking
+  whale:
+    enabled: false                # Not yet fully implemented
+    min_trade_size: 1000
+    whale_threshold: 10000
+    
+execution:
+  # Timing
+  check_interval_seconds: 300     # Check for signals every 5 minutes
+  
+  # Execution limits
+  max_slippage_pct: 2.0           # Skip trade if slippage > 2%
+  max_spread_pct: 5.0             # Skip if spread > 5%
+  
+  # Safety
+  dry_run: true                   # Set to false to actually execute trades
+
+# Data Recording (for backtesting)
+recording:
+  enabled: true                   # Record live market data
+  data_dir: data/recordings       # Where to save recordings
+  record_signals: true            # Record when signals fire
+  record_executions: true         # Record execution quality
+
+# Alerts
+alerts:
+  daily_loss_threshold: 200       # Alert if daily loss exceeds $200
+  large_loss_threshold: 100       # Alert on single loss > $100
+  
+# Logging
+logging:
+  level: INFO                     # DEBUG | INFO | WARNING | ERROR
+  log_signals: true               # Log all signals (even rejected)
+  log_trades: true                # Log all trade attempts
+  log_positions: true             # Log position updates
+

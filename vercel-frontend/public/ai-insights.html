@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Insights | Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ai market insights</h1>
+            <p class="subtitle">OPENAI EMBEDDINGS + GPT-4 REASONING</p>
+        </header>
+
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="signals.html">Signals</a>
+            <a href="ai-insights.html" class="active">AI Insights</a>
+            <a href="quality.html">Quality</a>
+            <a href="resolution.html">Resolution</a>
+            <a href="system.html">Trading Models</a>
+            <a href="about.html">Strategy</a>
+            <a href="research.html">Research</a>
+            <a href="theory.html">Theory</a>
+        </nav>
+
+        <div class="content">
+            <div class="highlight-box">
+                <strong>AI Analysis Engine:</strong> Enter any prediction market question to get probability estimates, risk factors, and semantic similarity search across the vector database.
+            </div>
+
+            <h2>Analyze Market Question</h2>
+
+            <div class="card">
+                <h4>Market Question</h4>
+                <textarea
+                    id="market-question"
+                    rows="3"
+                    placeholder="Enter a prediction market question (e.g., 'Will Trump win the 2024 election?')"
+                    style="width: 100%; padding: 12px; font-family: var(--font-body); font-size: 0.9rem; border: 1px solid var(--color-black); background: var(--color-white); resize: vertical;"
+                ></textarea>
+
+                <div style="margin-top: 16px;">
+                    <label style="font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--color-gray-mid);">Current Price (Optional)</label>
+                    <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                        <input
+                            type="number"
+                            id="current-price"
+                            placeholder="e.g., 65"
+                            min="0"
+                            max="100"
+                            step="0.1"
+                            style="width: 120px; padding: 8px 12px; font-family: var(--font-mono); border: 1px solid var(--color-black); background: var(--color-white);"
+                        />
+                        <span style="font-family: var(--font-mono); color: var(--color-gray-mid);">c</span>
+                    </div>
+                </div>
+
+                <button class="btn" id="analyze-btn" onclick="analyzeMarket()" style="margin-top: 20px; cursor: pointer;">
+                    Analyze with AI
+                </button>
+            </div>
+
+            <div id="results-section" style="display: none;">
+                <h2>Analysis Results</h2>
+
+                <div class="example-box" style="border-color: var(--color-accent);">
+                    <h4 style="color: var(--color-accent);">AI Analysis Generated</h4>
+                </div>
+
+                <div class="research-grid">
+                    <div class="stat-box">
+                        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gray-mid); margin-bottom: 4px;">AI Confidence</div>
+                        <strong id="confidence-value" style="font-size: 1.5rem;">-</strong>
+                    </div>
+                    <div class="stat-box">
+                        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gray-mid); margin-bottom: 4px;">Probability</div>
+                        <strong id="probability-value" style="font-size: 1.5rem;">-</strong>
+                    </div>
+                    <div class="stat-box">
+                        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gray-mid); margin-bottom: 4px;">Embedding Dim</div>
+                        <strong id="embedding-dim" style="font-size: 1.5rem;">-</strong>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>AI Reasoning</h4>
+                    <p id="reasoning-content">-</p>
+                </div>
+
+                <div class="card">
+                    <h4>Risk Factors</h4>
+                    <ul id="risk-list">
+                        <li>Loading...</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Vector Embedding Generated:</strong> This market question has been converted into a 1536-dimensional vector embedding using OpenAI's text-embedding-3-small model. This enables semantic search and similarity matching with other markets.
+                </div>
+
+                <h2>Find Similar Markets</h2>
+                <button class="btn" onclick="findSimilar()" id="similar-btn" style="cursor: pointer;">
+                    Search Vector Database
+                </button>
+                <div id="similar-results" style="margin-top: 20px;"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Polymarket API Test Trading Protocol</p>
+            <p><a href="https://github.com/b1rdmania/aztec-auction-analysis">GitHub Repository</a></p>
+        </footer>
+    </div>
+
+    <style>
+        .confidence-high { color: #2E7D32; }
+        .confidence-medium { color: #E65100; }
+        .confidence-low { color: #C62828; }
+        .similar-market-card {
+            background: var(--color-gray-light);
+            border: 1px solid var(--color-black);
+            padding: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .similar-market-question {
+            flex: 1;
+            color: var(--color-black);
+            margin-right: 16px;
+        }
+        .similarity-score {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            background: var(--color-white);
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+        }
+        .loading-spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid var(--color-gray-light);
+            border-top-color: var(--color-black);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+
+    <script>
+        const API_BASE = 'https://postposted-spent-knife-given.trycloudflare.com';
+
+        async function analyzeMarket() {
+            const question = document.getElementById('market-question').value.trim();
+            const price = document.getElementById('current-price').value;
+            const btn = document.getElementById('analyze-btn');
+
+            if (!question) {
+                alert('Please enter a market question');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading-spinner"></span> Analyzing...';
+
+            try {
+                const response = await fetch(`${API_BASE}/api/ai/analyze-market`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        market_question: question,
+                        current_price: price ? parseFloat(price) : null
+                    })
+                });
+
+                if (!response.ok) throw new Error('Analysis failed');
+                const data = await response.json();
+
+                if (data.error) {
+                    alert('Error: ' + data.error);
+                    return;
+                }
+
+                displayResults(data);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to analyze market. Please try again.');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Analyze with AI';
+            }
+        }
+
+        function displayResults(data) {
+            const analysis = data.analysis;
+
+            document.getElementById('results-section').style.display = 'block';
+
+            const confidence = analysis.confidence;
+            const confidenceEl = document.getElementById('confidence-value');
+            confidenceEl.textContent = confidence + '%';
+            confidenceEl.className = confidence >= 70 ? 'confidence-high' : confidence >= 50 ? 'confidence-medium' : 'confidence-low';
+
+            document.getElementById('probability-value').textContent = analysis.probability + '%';
+            document.getElementById('embedding-dim').textContent = data.embedding_dimension || 1536;
+            document.getElementById('reasoning-content').textContent = analysis.reasoning;
+
+            const riskList = document.getElementById('risk-list');
+            riskList.innerHTML = analysis.risk_factors.map(risk =>
+                `<li>${risk}</li>`
+            ).join('');
+
+            document.getElementById('results-section').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        async function findSimilar() {
+            const question = document.getElementById('market-question').value.trim();
+            const btn = document.getElementById('similar-btn');
+            const resultsDiv = document.getElementById('similar-results');
+
+            if (!question) {
+                alert('Please analyze a market first');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading-spinner"></span> Searching...';
+            resultsDiv.innerHTML = '<p style="color: var(--color-gray-mid); text-align: center;">Searching vector space...</p>';
+
+            try {
+                const response = await fetch(`${API_BASE}/api/vector/search`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query: question })
+                });
+
+                if (!response.ok) throw new Error('Search failed');
+                const data = await response.json();
+
+                if (data.error) {
+                    resultsDiv.innerHTML = `<p style="color: #C62828;">Error: ${data.error}</p>`;
+                    return;
+                }
+
+                displaySimilarMarkets(data.results);
+            } catch (error) {
+                console.error('Error:', error);
+                resultsDiv.innerHTML = '<p style="color: #C62828;">Search failed. Please try again.</p>';
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Search Vector Database';
+            }
+        }
+
+        function displaySimilarMarkets(results) {
+            const resultsDiv = document.getElementById('similar-results');
+
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<p style="color: var(--color-gray-mid);">No similar markets found</p>';
+                return;
+            }
+
+            resultsDiv.innerHTML = results.slice(0, 5).map(result => `
+                <div class="similar-market-card">
+                    <div class="similar-market-question">${result.question}</div>
+                    <div class="similarity-score">${(result.similarity * 100).toFixed(1)}% match</div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

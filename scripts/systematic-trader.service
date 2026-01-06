@@ -1,0 +1,26 @@
+[Unit]
+Description=Systematic Trading Agent
+After=network.target
+
+[Service]
+Type=simple
+User=trader
+WorkingDirectory=/opt/aztec-auction-analysis
+Environment="PYTHONPATH=/opt/aztec-auction-analysis/toolkit"
+ExecStart=/usr/bin/python3 /opt/aztec-auction-analysis/agents/systematic_trader.py --config /opt/aztec-auction-analysis/config/trading.yaml
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/var/log/trading-agent/output.log
+StandardError=append:/var/log/trading-agent/error.log
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/aztec-auction-analysis/data /opt/aztec-auction-analysis/logs
+
+[Install]
+WantedBy=multi-user.target
+
+

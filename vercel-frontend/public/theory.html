@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematical Models | Platform</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>mathematical models</h1>
+            <p class="subtitle">QUANTITATIVE FOUNDATIONS</p>
+        </header>
+
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="signals.html">Signals</a>
+            <a href="ai-insights.html">AI Insights</a>
+            <a href="quality.html">Quality</a>
+            <a href="resolution.html">Resolution</a>
+            <a href="system.html">Trading Models</a>
+            <a href="about.html">Strategy</a>
+            <a href="research.html">Research</a>
+            <a href="theory.html" class="active">Theory</a>
+        </nav>
+
+        <div class="content">
+            <div class="highlight-box">
+                <strong>Note:</strong> This page documents the mathematical foundations that underpin our trading models. For a high-level overview, see the <a href="about.html">Strategy</a> page.
+            </div>
+
+            <h2>Mean Reversion Framework</h2>
+
+            <h3>Ornstein-Uhlenbeck Process</h3>
+
+            <p>We model prediction market prices as following a mean-reverting stochastic process:</p>
+
+            <div class="formula-box">
+                <div class="label">Ornstein-Uhlenbeck SDE</div>
+                \[ dX_t = \theta(\mu - X_t)dt + \sigma dW_t \]
+            </div>
+
+            <p><strong>Variables:</strong></p>
+            <ul>
+                <li>\(X_t\) = Current market price</li>
+                <li>\(\mu\) = Long-run equilibrium (mean)</li>
+                <li>\(\theta\) = Speed of mean reversion (higher equals faster reversion)</li>
+                <li>\(\sigma\) = Volatility of the process</li>
+                <li>\(W_t\) = Wiener process (Brownian motion)</li>
+            </ul>
+
+            <p>Interpretation: When price deviates from \(\mu\), there is a force \(\theta(\mu - X_t)\) pulling it back. The further away, the stronger the pull.</p>
+
+            <h3>Z-Score Calculation</h3>
+
+            <p>We measure how far the current price has deviated from its mean in units of standard deviation:</p>
+
+            <div class="formula-box">
+                <div class="label">Z-Score</div>
+                \[ Z = \frac{X_t - \mu}{\sigma} \]
+            </div>
+
+            <p><strong>Trading Logic:</strong></p>
+            <ul>
+                <li>If \(Z > +2\): Price is 2σ above mean → SELL (overbought)</li>
+                <li>If \(Z < -2\): Price is 2σ below mean → BUY (oversold)</li>
+                <li>Higher |Z| equals stronger signal equals higher conviction</li>
+            </ul>
+
+            <div class="example-box">
+                <h4>Example</h4>
+                <p>Trump election odds historically average 52% (μ) with σ = 8%.</p>
+                <p>Current price: 68%</p>
+                \[ Z = \frac{68 - 52}{8} = 2.0 \]
+                <p><strong>Signal:</strong> Price is 2σ too high → SELL</p>
+            </div>
+
+            <h2>Kelly Criterion (Optimal Position Sizing)</h2>
+
+            <p>The Kelly Criterion maximizes long-run growth while avoiding ruin:</p>
+
+            <div class="formula-box">
+                <div class="label">Kelly Formula</div>
+                \[ f^* = \frac{p \cdot b - q}{b} = \frac{\text{edge}}{\text{odds}} \]
+            </div>
+
+            <p><strong>Variables:</strong></p>
+            <ul>
+                <li>\(f^*\) = Fraction of bankroll to bet</li>
+                <li>\(p\) = Probability of winning</li>
+                <li>\(q = 1-p\) = Probability of losing</li>
+                <li>\(b\) = Odds (payout ratio)</li>
+            </ul>
+
+            <h3>Fractional Kelly (Our Implementation)</h3>
+
+            <p>Full Kelly is aggressive and can lead to large drawdowns. We use fractional Kelly:</p>
+
+            <div class="formula-box">
+                <div class="label">Fractional Kelly</div>
+                \[ f_{\text{bet}} = k \cdot f^* \]
+                <p style="margin-top: 10px; font-size: 0.85rem;">Where \(k\) = Kelly fraction (0.15–0.35 in our models)</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Kelly Fraction (k)</th>
+                        <th>Risk Profile</th>
+                        <th>Expected Drawdown</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Conservative</td>
+                        <td>0.15</td>
+                        <td>Very Low</td>
+                        <td>~10%</td>
+                    </tr>
+                    <tr>
+                        <td>Moderate</td>
+                        <td>0.25 (Quarter Kelly)</td>
+                        <td>Balanced</td>
+                        <td>~15%</td>
+                    </tr>
+                    <tr>
+                        <td>Aggressive</td>
+                        <td>0.35</td>
+                        <td>Higher</td>
+                        <td>~20%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="example-box">
+                <h4>Example</h4>
+                <p><strong>Scenario:</strong> Our model estimates 60% win probability, 1:1 odds</p>
+                \[ f^* = \frac{0.6 \times 1 - 0.4}{1} = 0.20 = 20\% \]
+                <p><strong>Conservative (k=0.15):</strong> Bet 0.15 × 20% = 3% of bankroll</p>
+                <p><strong>Moderate (k=0.25):</strong> Bet 0.25 × 20% = 5% of bankroll</p>
+                <p><strong>Aggressive (k=0.35):</strong> Bet 0.35 × 20% = 7% of bankroll</p>
+            </div>
+
+            <h2>Signal Strength Quantification</h2>
+
+            <p>We classify signals into three strength levels based on multiple factors:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Strength</th>
+                        <th>Z-Score</th>
+                        <th>Volatility</th>
+                        <th>Expected Edge</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>STRONG</strong></td>
+                        <td>|Z| > 2.5</td>
+                        <td>Spike > 15%</td>
+                        <td>5-10%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MODERATE</strong></td>
+                        <td>1.5 < |Z| < 2.5</td>
+                        <td>Spike > 10%</td>
+                        <td>3-5%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WEAK</strong></td>
+                        <td>1.0 < |Z| < 1.5</td>
+                        <td>Spike > 5%</td>
+                        <td>1-3%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Mean Reversion Horizon</h2>
+
+            <p>Based on Berg and Rietz (2018), mean reversion strength varies with time horizon:</p>
+
+            <div class="formula-box">
+                <div class="label">Half-Life of Mean Reversion</div>
+                \[ t_{1/2} = \frac{\ln(2)}{\theta} \]
+                <p style="margin-top: 10px; font-size: 0.85rem;">Typical \(\theta\) for political markets: 0.05-0.15 day⁻¹</p>
+                <p style="margin-top: 5px; font-size: 0.85rem;">Implies half-life: 5-14 days</p>
+            </div>
+
+            <p><strong>Our target holding period:</strong> 7-21 days (optimal mean reversion window)</p>
+
+            <ul>
+                <li>Under 3 days: Too noisy, hard to profit after fees</li>
+                <li>7-21 days: Strong mean reversion, emotional correction completes</li>
+                <li>Over 30 days: New information dominates, reversion weakens</li>
+            </ul>
+
+            <h2>Expected Return Calculation</h2>
+
+            <p>For a mean-reverting trade, expected profit depends on the current deviation and reversion speed:</p>
+
+            <div class="formula-box">
+                <div class="label">Expected Return</div>
+                \[ E[R] = (X_t - \mu) \cdot e^{-\theta t} \cdot (1 - \text{fees}) - \text{slippage} \]
+            </div>
+
+            <p><strong>Components:</strong></p>
+            <ul>
+                <li>\((X_t - \mu)\) = Current mispricing</li>
+                <li>\(e^{-\theta t}\) = Fraction of mispricing that closes in time \(t\)</li>
+                <li>Fees: Typically 2% on Polymarket (1% each side)</li>
+                <li>Slippage: 0.2-0.5% on average</li>
+            </ul>
+
+            <h2>Risk Metrics</h2>
+
+            <h3>Sharpe Ratio</h3>
+
+            <div class="formula-box">
+                <div class="label">Sharpe Ratio</div>
+                \[ \text{Sharpe} = \frac{E[R] - R_f}{\sigma_R} \]
+            </div>
+
+            <p><strong>Target:</strong> Sharpe greater than 1.0 (excess return greater than volatility)</p>
+
+            <h3>Maximum Drawdown</h3>
+
+            <div class="formula-box">
+                <div class="label">Max Drawdown</div>
+                \[ \text{MDD} = \max_{t} \left( \frac{\text{Peak}_t - \text{Value}_t}{\text{Peak}_t} \right) \]
+            </div>
+
+            <p><strong>Emergency stop:</strong> If MDD exceeds 25%, halt trading and reassess</p>
+
+            <h3>Value at Risk</h3>
+
+            <div class="formula-box">
+                <div class="label">95% VaR</div>
+                \[ \text{VaR}_{95\%} = \mu_R - 1.645 \times \sigma_R \]
+            </div>
+
+            <p>This tells us: "We expect to lose no more than VaR in 95% of cases."</p>
+
+            <h2>Win Rate vs Payoff Tradeoff</h2>
+
+            <p>Profitable trading requires:</p>
+
+            <div class="formula-box">
+                <div class="label">Profit Condition</div>
+                \[ p \cdot W - (1-p) \cdot L > 0 \]
+                <p style="margin-top: 10px; font-size: 0.85rem;">Where \(p\) = win rate, \(W\) = avg win, \(L\) = avg loss</p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Win Rate</th>
+                        <th>Required Win/Loss Ratio</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>50%</td>
+                        <td>1.0 (equal wins/losses)</td>
+                        <td>Win $100, Lose $100</td>
+                    </tr>
+                    <tr>
+                        <td>55%</td>
+                        <td>0.82</td>
+                        <td>Win $82, Lose $100</td>
+                    </tr>
+                    <tr>
+                        <td>60%</td>
+                        <td>0.67</td>
+                        <td>Win $67, Lose $100</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Our target:</strong> 55-60% win rate with 1.5:1 reward/risk ratio</p>
+
+            <h2>Model Parameters Summary</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Symbol</th>
+                        <th>Conservative</th>
+                        <th>Moderate</th>
+                        <th>Aggressive</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Min Z-Score</td>
+                        <td>\(|Z|_{\min}\)</td>
+                        <td>2.5</td>
+                        <td>1.5</td>
+                        <td>1.0</td>
+                    </tr>
+                    <tr>
+                        <td>Kelly Fraction</td>
+                        <td>\(k\)</td>
+                        <td>0.15</td>
+                        <td>0.25</td>
+                        <td>0.35</td>
+                    </tr>
+                    <tr>
+                        <td>Max Position</td>
+                        <td>\(P_{\max}\)</td>
+                        <td>$200</td>
+                        <td>$500</td>
+                        <td>$800</td>
+                    </tr>
+                    <tr>
+                        <td>Holding Period</td>
+                        <td>\(t_h\)</td>
+                        <td>14-21 days</td>
+                        <td>7-14 days</td>
+                        <td>7-10 days</td>
+                    </tr>
+                    <tr>
+                        <td>Check Interval</td>
+                        <td>\(\Delta t\)</td>
+                        <td>10 min</td>
+                        <td>5 min</td>
+                        <td>3 min</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Limitations</h2>
+
+            <div class="highlight-box">
+                <strong>Critical Assumptions:</strong>
+                <ul style="margin-top: 12px;">
+                    <li>Stationarity: We assume μ and σ are constant over our trading horizon (not always true)</li>
+                    <li>Normal distribution: Market returns may have fat tails (more extreme events than normal)</li>
+                    <li>No regime changes: Major news can break mean reversion temporarily</li>
+                    <li>Liquidity: We assume we can always execute at quoted prices (not guaranteed)</li>
+                    <li>Historical patterns persist: Past mean reversion does not guarantee future performance</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>Further Reading:</strong></p>
+                <ul>
+                    <li><a href="research.html">Academic Papers</a> - Full research database</li>
+                    <li><a href="https://github.com/b1rdmania/aztec-auction-analysis/blob/master/research/quant_mean_reversion_guide.md" target="_blank">718-Line Quant Guide</a> - Complete mathematical treatment</li>
+                    <li><a href="system.html">System Architecture</a> - How theory becomes code</li>
+                    <li><a href="index.html">Live Dashboard</a> - See the math in action</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>Polymarket API Test Trading Protocol</p>
+            <p><a href="https://github.com/b1rdmania/aztec-auction-analysis">GitHub Repository</a></p>
+        </footer>
+    </div>
+</body>
+</html>

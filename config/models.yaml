@@ -1,0 +1,99 @@
+# Model Configurations for Paper Trading
+# Testing 3 different approaches simultaneously
+
+models:
+  # Model 1: Conservative (High conviction only)
+  conservative:
+    name: "Conservative High-Conviction"
+    description: "Only trade strongest signals, small positions"
+    
+    risk:
+      max_position_usd: 200
+      max_total_exposure_usd: 1000
+      max_positions: 5
+      kelly_fraction: 0.15          # Very conservative Kelly
+      max_drawdown_pct: 15.0
+    
+    signals:
+      mean_reversion:
+        enabled: true
+        min_strength: STRONG        # Only strong signals
+        longshot_threshold: 0.25    # Extreme longshots only (< 25%)
+        favorite_threshold: 0.75    # Extreme favorites only (> 75%)
+        min_mispricing_pct: 8.0     # Need big edge
+    
+    execution:
+      check_interval_seconds: 600   # Check every 10 min
+      max_slippage_pct: 1.5         # Strict slippage limit
+      max_spread_pct: 3.0           # Avoid wide spreads
+  
+  # Model 2: Moderate (Balanced)
+  moderate:
+    name: "Moderate Balanced"
+    description: "Medium conviction, standard position sizing"
+    
+    risk:
+      max_position_usd: 500
+      max_total_exposure_usd: 2000
+      max_positions: 8
+      kelly_fraction: 0.25          # Standard Kelly
+      max_drawdown_pct: 20.0
+    
+    signals:
+      mean_reversion:
+        enabled: true
+        min_strength: MODERATE      # Moderate+ signals
+        longshot_threshold: 0.30    # Standard longshots
+        favorite_threshold: 0.70    # Standard favorites
+        min_mispricing_pct: 5.0     # Reasonable edge
+    
+    execution:
+      check_interval_seconds: 300   # Check every 5 min
+      max_slippage_pct: 2.0         # Standard slippage
+      max_spread_pct: 5.0           # Standard spread
+  
+  # Model 3: Aggressive (High frequency)
+  aggressive:
+    name: "Aggressive High-Frequency"
+    description: "Trade more signals, larger positions, faster"
+    
+    risk:
+      max_position_usd: 800
+      max_total_exposure_usd: 3000
+      max_positions: 12
+      kelly_fraction: 0.35          # Aggressive Kelly
+      max_drawdown_pct: 25.0
+    
+    signals:
+      mean_reversion:
+        enabled: true
+        min_strength: WEAK          # Trade even weak signals
+        longshot_threshold: 0.35    # More opportunities
+        favorite_threshold: 0.65    # More opportunities
+        min_mispricing_pct: 3.0     # Smaller edge OK
+    
+    execution:
+      check_interval_seconds: 180   # Check every 3 min (faster)
+      max_slippage_pct: 3.0         # Accept more slippage
+      max_spread_pct: 7.0           # Accept wider spreads
+
+# Shared settings (same for all models)
+shared:
+  mode: paper
+  
+  logging:
+    level: INFO
+    log_signals: true
+    log_trades: true
+    log_positions: true
+  
+  recording:
+    enabled: true
+    record_signals: true
+    record_executions: true
+  
+  alerts:
+    daily_loss_threshold: 200
+    large_loss_threshold: 100
+
+

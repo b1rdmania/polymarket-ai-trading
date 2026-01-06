@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolution Tracker | Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>resolution tracker</h1>
+            <p class="subtitle">AUTOMATED MARKET RESOLUTION + ACCURACY TRACKING</p>
+        </header>
+
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="signals.html">Signals</a>
+            <a href="ai-insights.html">AI Insights</a>
+            <a href="quality.html">Quality</a>
+            <a href="resolution.html" class="active">Resolution</a>
+            <a href="system.html">Trading Models</a>
+            <a href="about.html">Strategy</a>
+            <a href="research.html">Research</a>
+            <a href="theory.html">Theory</a>
+        </nav>
+
+        <div class="content">
+            <div class="formula-box" style="background: var(--color-gray-light);">
+                <div class="label">Overall AI Prediction Accuracy</div>
+                <div id="accuracy-value" style="font-size: 3rem; font-weight: 700; color: var(--color-black);">-</div>
+                <p id="accuracy-subtitle" style="color: var(--color-gray-mid); margin-top: 8px;">Loading accuracy data...</p>
+            </div>
+
+            <div class="research-grid">
+                <div class="stat-box">
+                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gray-mid); margin-bottom: 4px;">Total Resolved</div>
+                    <strong id="total-resolved" style="font-size: 1.5rem;">-</strong>
+                </div>
+                <div class="stat-box">
+                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gray-mid); margin-bottom: 4px;">Correct Predictions</div>
+                    <strong id="correct-predictions" style="font-size: 1.5rem; color: #2E7D32;">-</strong>
+                </div>
+                <div class="stat-box">
+                    <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-gray-mid); margin-bottom: 4px;">Recent Resolutions</div>
+                    <strong id="recent-count" style="font-size: 1.5rem;">-</strong>
+                </div>
+            </div>
+
+            <h2>Recently Resolved Markets</h2>
+
+            <div class="highlight-box">
+                <strong>Automated Resolution via Smart Contracts</strong> — Markets are resolved automatically when outcome conditions are met
+            </div>
+
+            <div id="resolutions-list">
+                <p style="text-align: center; color: var(--color-gray-mid);">Loading resolved markets...</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Polymarket API Test Trading Protocol</p>
+            <p><a href="https://github.com/b1rdmania/aztec-auction-analysis">GitHub Repository</a></p>
+        </footer>
+    </div>
+
+    <style>
+        .resolution-card {
+            background: var(--color-gray-light);
+            border: 1px solid var(--color-black);
+            padding: 24px;
+            margin: 16px 0;
+        }
+        .resolution-question {
+            font-weight: 500;
+            color: var(--color-black);
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        .prediction-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            border: 1px solid var(--color-black);
+            margin-bottom: 16px;
+        }
+        .prediction-correct {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border-color: #2E7D32;
+        }
+        .prediction-incorrect {
+            background: #FFEBEE;
+            color: #C62828;
+            border-color: #C62828;
+        }
+        .prediction-pending {
+            background: #FFF3E0;
+            color: #E65100;
+            border-color: #E65100;
+        }
+        .no-prediction {
+            background: var(--color-white);
+            color: var(--color-gray-mid);
+        }
+        .resolution-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--color-black);
+        }
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .detail-label {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-gray-mid);
+        }
+        .detail-value {
+            font-weight: 500;
+            color: var(--color-black);
+        }
+        .pnl-positive { color: #2E7D32; }
+        .pnl-negative { color: #C62828; }
+    </style>
+
+    <script>
+        const API_BASE = 'https://postposted-spent-knife-given.trycloudflare.com';
+
+        async function fetchAccuracy() {
+            try {
+                const response = await fetch(`${API_BASE}/api/resolution/accuracy`);
+                if (!response.ok) throw new Error('Failed to fetch accuracy');
+                const data = await response.json();
+
+                document.getElementById('accuracy-value').textContent = data.accuracy.toFixed(1) + '%';
+                document.getElementById('accuracy-subtitle').textContent =
+                    `${data.correct_predictions} correct out of ${data.total_resolved} resolved predictions`;
+                document.getElementById('total-resolved').textContent = data.total_resolved;
+                document.getElementById('correct-predictions').textContent = data.correct_predictions;
+            } catch (error) {
+                console.error('Error fetching accuracy:', error);
+            }
+        }
+
+        async function fetchResolutions() {
+            try {
+                const response = await fetch(`${API_BASE}/api/resolution/recent?limit=30`);
+                if (!response.ok) throw new Error('Failed to fetch resolutions');
+                const data = await response.json();
+
+                document.getElementById('recent-count').textContent = data.resolutions.length;
+                renderResolutions(data.resolutions || []);
+            } catch (error) {
+                console.error('Error fetching resolutions:', error);
+                document.getElementById('resolutions-list').innerHTML =
+                    '<p style="text-align: center; color: var(--color-gray-mid);">Failed to load resolutions</p>';
+            }
+        }
+
+        function renderResolutions(resolutions) {
+            const list = document.getElementById('resolutions-list');
+
+            if (resolutions.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: var(--color-gray-mid);">No resolved markets found</p>';
+                return;
+            }
+
+            list.innerHTML = resolutions.map(res => {
+                const prediction = res.our_prediction;
+                let predictionBadge = '';
+                let predictionDetails = '';
+
+                if (prediction) {
+                    const pnlClass = prediction.pnl > 0 ? 'pnl-positive' : 'pnl-negative';
+                    const status = prediction.status === 'CLOSED'
+                        ? (prediction.pnl > 0 ? 'prediction-correct' : 'prediction-incorrect')
+                        : 'prediction-pending';
+                    const statusText = prediction.status === 'CLOSED'
+                        ? (prediction.pnl > 0 ? 'Correct Prediction' : 'Incorrect Prediction')
+                        : 'Pending Resolution';
+
+                    predictionBadge = `<div class="prediction-badge ${status}">${statusText}</div>`;
+                    predictionDetails = `
+                        <div class="detail-item">
+                            <div class="detail-label">AI Model</div>
+                            <div class="detail-value">${prediction.model}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Our Position</div>
+                            <div class="detail-value">${prediction.side}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Entry Price</div>
+                            <div class="detail-value">${(prediction.price * 100).toFixed(1)}c</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">P&L</div>
+                            <div class="detail-value ${pnlClass}">$${prediction.pnl.toFixed(2)}</div>
+                        </div>
+                    `;
+                } else {
+                    predictionBadge = '<div class="prediction-badge no-prediction">No Position Taken</div>';
+                    predictionDetails = `
+                        <div class="detail-item">
+                            <div class="detail-label">Status</div>
+                            <div class="detail-value" style="color: var(--color-gray-mid);">Not Traded</div>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="resolution-card">
+                        <div class="resolution-question">${res.question}</div>
+                        ${predictionBadge}
+                        <div class="resolution-details">
+                            ${predictionDetails}
+                            <div class="detail-item">
+                                <div class="detail-label">Total Volume</div>
+                                <div class="detail-value">$${res.volume.toLocaleString()}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Resolution</div>
+                                <div class="detail-value" style="color: var(--color-accent);">Automated</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        fetchAccuracy();
+        fetchResolutions();
+
+        setInterval(() => {
+            fetchAccuracy();
+            fetchResolutions();
+        }, 60000);
+    </script>
+</body>
+</html>

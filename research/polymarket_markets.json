@@ -1,0 +1,8002 @@
+[
+  {
+    "question": "Will the Miami Dolphins win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0005,
+    "volume": 63300206.170181,
+    "liquidity": 2501770.33019,
+    "slug": "will-the-miami-dolphins-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will the New York Jets win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0005,
+    "volume": 57229812.063335,
+    "liquidity": 2706657.09902,
+    "slug": "will-the-new-york-jets-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will the Cleveland Browns win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0005,
+    "volume": 51351049.10358,
+    "liquidity": 2729527.85693,
+    "slug": "will-the-cleveland-browns-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Russia x Ukraine ceasefire in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.045,
+    "volume": 50016886.727334,
+    "liquidity": 899616.1459,
+    "slug": "russia-x-ukraine-ceasefire-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.045,
+      0.955
+    ]
+  },
+  {
+    "question": "Will the Carolina Panthers win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0065,
+    "volume": 49839771.870224,
+    "liquidity": 368039.84763,
+    "slug": "will-the-carolina-panthers-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0065,
+      0.9935
+    ]
+  },
+  {
+    "question": "Will the Cincinnati Bengals win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0055,
+    "volume": 37182061.415675,
+    "liquidity": 435427.81092,
+    "slug": "will-the-cincinnati-bengals-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "Will Saudi Aramco be the largest company in the world by market cap on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 24671281.475934,
+    "liquidity": 384381.09611,
+    "slug": "will-saudi-aramco-be-the-largest-company-in-the-world-by-market-cap-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Maduro out in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.135,
+    "volume": 14767834.730268,
+    "liquidity": 251699.5461,
+    "slug": "maduro-out-in-2025-411",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.135,
+      0.865
+    ]
+  },
+  {
+    "question": "Will Captain America: Brave New World be the top grossing movie of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 14663612.440922,
+    "liquidity": 939849.6896,
+    "slug": "will-captain-america-new-world-order-be-the-top-grossing-movie-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Thunderbolts be the top grossing movie of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 14073436.114287,
+    "liquidity": 812687.19745,
+    "slug": "will-thunderbolts-be-the-top-grossing-movie-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will How to Train Your Dragon be the top grossing movie of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 13877940.139758,
+    "liquidity": 896617.92559,
+    "slug": "will-how-to-train-your-dragon-be-the-top-grossing-movie-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will The Fantastic Four: First Steps be the top grossing movie of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 13480875.004383,
+    "liquidity": 911251.93872,
+    "slug": "will-the-fantastic-four-first-steps-be-the-top-grossing-movie-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will the Dallas Cowboys win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0035,
+    "volume": 13192776.157325,
+    "liquidity": 637773.81304,
+    "slug": "will-the-dallas-cowboys-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Will Ethereum hit $5,000 by December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.019,
+    "volume": 12288235.090933,
+    "liquidity": 389439.27001,
+    "slug": "will-ethereum-hit-5000-by-december-31-796-376",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.019,
+      0.981
+    ]
+  },
+  {
+    "question": "Will Bitcoin reach $150,000 by December 31, 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0095,
+    "volume": 12262890.420597,
+    "liquidity": 294458.95253,
+    "slug": "will-bitcoin-reach-150000-by-december-31-2025-188",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0095,
+      0.9905
+    ]
+  },
+  {
+    "question": "Jerome Powell out as Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.016,
+    "volume": 11402263.627759,
+    "liquidity": 153513.8069,
+    "slug": "will-trump-remove-jerome-powell",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.016,
+      0.984
+    ]
+  },
+  {
+    "question": "Will the Minnesota Vikings win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0005,
+    "volume": 11302484.391443,
+    "liquidity": 2106512.98799,
+    "slug": "will-the-minnesota-vikings-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Tesla be the largest company in the world by market cap on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 11058014.057878,
+    "liquidity": 572953.14867,
+    "slug": "will-tesla-be-the-largest-company-in-the-world-by-market-cap-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "US recession in 2025?",
+    "end_date": "2026-02-28",
+    "yes_price": 0.02,
+    "volume": 10563547.936204,
+    "liquidity": 91594.4688,
+    "slug": "us-recession-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.02,
+      0.98
+    ]
+  },
+  {
+    "question": "Will Bitcoin reach $200,000 by December 31, 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 10257893.963601,
+    "liquidity": 455752.84648,
+    "slug": "will-bitcoin-reach-200000-by-december-31-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Will Jurassic World: Rebirth be the top grossing movie of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 10037807.453951,
+    "liquidity": 783672.23784,
+    "slug": "will-jurassic-world-rebirth-be-the-top-grossing-movie-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Khamenei out as Supreme Leader of Iran in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.028,
+    "volume": 9876945.812261,
+    "liquidity": 62132.41283,
+    "slug": "khamenei-out-as-supreme-leader-of-iran-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.028,
+      0.972
+    ]
+  },
+  {
+    "question": "Will Bitcoin reach $130,000 by December 31, 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0165,
+    "volume": 9549814.352907,
+    "liquidity": 411671.6075,
+    "slug": "will-bitcoin-reach-130000-by-december-31-2025-911-832",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0165,
+      0.9835
+    ]
+  },
+  {
+    "question": "Will the Atlanta Falcons win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0005,
+    "volume": 9502145.321718,
+    "liquidity": 2330938.92229,
+    "slug": "will-the-atlanta-falcons-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Max Verstappen be the 2025 Drivers Champion?",
+    "end_date": "2025-12-07",
+    "yes_price": 0.2105,
+    "volume": 9295721.928593,
+    "liquidity": 43611.19757,
+    "slug": "will-max-verstappen-be-the-2025-drivers-champion",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.2105,
+      0.7895
+    ]
+  },
+  {
+    "question": "Will China invade Taiwan in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.007,
+    "volume": 9028465.589037,
+    "liquidity": 193938.05185,
+    "slug": "will-china-invade-taiwan-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.007,
+      0.993
+    ]
+  },
+  {
+    "question": "Will UCR hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+    "end_date": "2025-10-26",
+    "yes_price": 0.0005,
+    "volume": 8543184.888228,
+    "liquidity": 50824.2496,
+    "slug": "will-ucr-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Superman be the top grossing movie of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 8381867.810634,
+    "liquidity": 836094.54762,
+    "slug": "will-superman-be-the-top-grossing-movie-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will the Washington Commanders win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0005,
+    "volume": 7961283.598741,
+    "liquidity": 2411240.65011,
+    "slug": "will-the-washington-commanders-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Bitcoin reach $1,000,000 by December 31, 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0025,
+    "volume": 7930045.488011,
+    "liquidity": 294026.00912,
+    "slug": "will-bitcoin-reach-1000000-by-december-31-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0025,
+      0.9975
+    ]
+  },
+  {
+    "question": "Will Ethereum hit $6,000 by December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0105,
+    "volume": 7635786.527654,
+    "liquidity": 370028.49612,
+    "slug": "will-ethereum-hit-6000-by-december-31-843-315",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0105,
+      0.9895
+    ]
+  },
+  {
+    "question": "Will the New England Patriots win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0855,
+    "volume": 7375609.452572,
+    "liquidity": 271385.15046,
+    "slug": "will-the-new-england-patriots-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0855,
+      0.9145
+    ]
+  },
+  {
+    "question": "Will Oscar Piastri be the 2025 Drivers Champion?",
+    "end_date": "2025-12-07",
+    "yes_price": 0.0385,
+    "volume": 6640595.804484,
+    "liquidity": 75304.1038,
+    "slug": "will-oscar-piastri-be-the-2025-drivers-champion",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0385,
+      0.9615
+    ]
+  },
+  {
+    "question": "Will the Chicago Bears win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0265,
+    "volume": 6541355.60186,
+    "liquidity": 397874.04591,
+    "slug": "will-the-chicago-bears-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0265,
+      0.9735
+    ]
+  },
+  {
+    "question": "Will the US confirm that aliens exist in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.012,
+    "volume": 6084172.055673,
+    "liquidity": 95321.40894,
+    "slug": "will-the-us-confirm-that-aliens-exist-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.012,
+      0.988
+    ]
+  },
+  {
+    "question": "Will Ethereum hit $7,000 by December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0075,
+    "volume": 6047264.791917,
+    "liquidity": 211712.93785,
+    "slug": "will-ethereum-hit-7000-by-december-31-733-852",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0075,
+      0.9925
+    ]
+  },
+  {
+    "question": "Will Bitcoin reach $250,000 by December 31, 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0025,
+    "volume": 5897634.501575,
+    "liquidity": 214936.05191,
+    "slug": "will-bitcoin-reach-250000-by-december-31-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0025,
+      0.9975
+    ]
+  },
+  {
+    "question": "Will Bitcoin dip to $70,000 by December 31, 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.095,
+    "volume": 5681417.942798,
+    "liquidity": 196483.5,
+    "slug": "will-bitcoin-dip-to-70000-by-december-31-2025-193-726-878-775-359-968-264-727-793-714-257-318-569-865-147",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.095,
+      0.905
+    ]
+  },
+  {
+    "question": "Will Ethereum hit $10,000 by December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.004,
+    "volume": 5570421.109268,
+    "liquidity": 208141.72731,
+    "slug": "will-ethereum-hit-10000-by-december-31-218-525",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.004,
+      0.996
+    ]
+  },
+  {
+    "question": "Will Lando Norris be the 2025 Drivers Champion?",
+    "end_date": "2025-12-07",
+    "yes_price": 0.755,
+    "volume": 5331626.554948,
+    "liquidity": 47421.1194,
+    "slug": "will-lando-norris-be-the-2025-drivers-champion",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.755,
+      0.245
+    ]
+  },
+  {
+    "question": "Will the Jacksonville Jaguars win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0185,
+    "volume": 5322380.226386,
+    "liquidity": 403518.09806,
+    "slug": "will-the-jacksonville-jaguars-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0185,
+      0.9815
+    ]
+  },
+  {
+    "question": "US national Bitcoin reserve in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0125,
+    "volume": 5120192.120523,
+    "liquidity": 80358.70719,
+    "slug": "us-national-bitcoin-reserve-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0125,
+      0.9875
+    ]
+  },
+  {
+    "question": "Will the Houston Texans win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0295,
+    "volume": 5079837.967923,
+    "liquidity": 345876.35365,
+    "slug": "will-the-houston-texans-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0295,
+      0.9705
+    ]
+  },
+  {
+    "question": "Will Trump acquire Greenland in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0055,
+    "volume": 5021900.508088,
+    "liquidity": 111002.94857,
+    "slug": "will-trump-acquire-greenland-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "Will the Indianapolis Colts win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0385,
+    "volume": 4926623.207555,
+    "liquidity": 242305.3445,
+    "slug": "will-the-indianapolis-colts-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0385,
+      0.9615
+    ]
+  },
+  {
+    "question": "Will Ethereum hit $8,000 by December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.005,
+    "volume": 4678524.751823,
+    "liquidity": 153029.57119,
+    "slug": "will-ethereum-hit-8000-by-december-31-124-489",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.005,
+      0.995
+    ]
+  },
+  {
+    "question": "Will Zootopia 2 be the top grossing movie of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.012,
+    "volume": 4663782.910256,
+    "liquidity": 50018.41613,
+    "slug": "will-zootopia-2-be-the-top-grossing-movie-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.012,
+      0.988
+    ]
+  },
+  {
+    "question": "Will Amazon be the largest company in the world by market cap on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 4474601.961195,
+    "liquidity": 696797.62633,
+    "slug": "will-amazon-be-the-largest-company-in-the-world-by-market-cap-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Lilo & Stitch be the top grossing movie of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0075,
+    "volume": 4344828.875063,
+    "liquidity": 104164.17338,
+    "slug": "will-movie-a-be-the-top-grossing-movie-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0075,
+      0.9925
+    ]
+  },
+  {
+    "question": "Will Microsoft have the top AI model on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 4142946.478111,
+    "liquidity": 141402.59196,
+    "slug": "will-microsoft-have-the-top-ai-model-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Avatar 3 be the top grossing movie of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0445,
+    "volume": 3995325.494623,
+    "liquidity": 203004.84425,
+    "slug": "will-avatar-3-be-the-top-grossing-movie-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0445,
+      0.9555
+    ]
+  },
+  {
+    "question": "Will Wicked: For Good be the top grossing movie of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 3899217.52305,
+    "liquidity": 128143.26608,
+    "slug": "will-wicked-for-good-be-the-top-grossing-movie-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Will Bitcoin dip to $50,000 by December 31, 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.013,
+    "volume": 3522772.908624,
+    "liquidity": 201075.89457,
+    "slug": "will-bitcoin-dip-to-50000-by-december-31-2025-391-715-682-587-692-994-786-318-267-857-157-791-189-328-186",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.013,
+      0.987
+    ]
+  },
+  {
+    "question": "Israel and Saudi Arabia normalize relations in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0165,
+    "volume": 3495494.265967,
+    "liquidity": 323574.5749,
+    "slug": "israel-and-saudi-arabia-normalize-relations-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0165,
+      0.9835
+    ]
+  },
+  {
+    "question": "Will Tencent have the top AI model on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 3456845.259492,
+    "liquidity": 109272.90244,
+    "slug": "will-tencent-have-the-top-ai-model-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will the Pittsburgh Steelers win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0055,
+    "volume": 3420096.658496,
+    "liquidity": 225187.45119,
+    "slug": "will-the-pittsburgh-steelers-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "Will NVIDIA be the largest company in the world by market cap on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.865,
+    "volume": 3400038.095662,
+    "liquidity": 73801.9427,
+    "slug": "will-nvidia-be-the-largest-company-in-the-world-by-market-cap-on-december-31-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.865,
+      0.135
+    ]
+  },
+  {
+    "question": "Will 2 Fed rate cuts happen in 2025?",
+    "end_date": "2025-12-10",
+    "yes_price": 0.055,
+    "volume": 3371366.621195,
+    "liquidity": 103523.2765,
+    "slug": "will-2-fed-rate-cuts-happen-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.055,
+      0.945
+    ]
+  },
+  {
+    "question": "Will A Minecraft Movie be the top grossing movie of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.9315,
+    "volume": 3328350.384771,
+    "liquidity": 46043.51238,
+    "slug": "will-a-minecraft-movie-be-the-top-grossing-movie-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.9315,
+      0.0685
+    ]
+  },
+  {
+    "question": "Will 7 Fed rate cuts happen in 2025?",
+    "end_date": "2025-12-10",
+    "yes_price": 0.0005,
+    "volume": 3327564.51764,
+    "liquidity": 250925.99247,
+    "slug": "will-7-fed-rate-cuts-happen-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Iran close the Strait of Hormuz in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0185,
+    "volume": 3220387.792095,
+    "liquidity": 116479.52843,
+    "slug": "will-iran-close-the-strait-of-hormuz-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0185,
+      0.9815
+    ]
+  },
+  {
+    "question": "Will 3 Fed rate cuts happen in 2025?",
+    "end_date": "2025-12-10",
+    "yes_price": 0.925,
+    "volume": 3219714.558814,
+    "liquidity": 66639.2897,
+    "slug": "will-3-fed-rate-cuts-happen-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.925,
+      0.075
+    ]
+  },
+  {
+    "question": "Will the Seattle Seahawks win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0845,
+    "volume": 3193668.295371,
+    "liquidity": 203968.06019,
+    "slug": "will-the-seattle-seahawks-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0845,
+      0.9155
+    ]
+  },
+  {
+    "question": "Will Trump be impeached in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0075,
+    "volume": 3088323.43081,
+    "liquidity": 92134.06929,
+    "slug": "will-trump-be-impeached-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0075,
+      0.9925
+    ]
+  },
+  {
+    "question": "Will the Tampa Bay Buccaneers win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.02,
+    "volume": 3018607.069351,
+    "liquidity": 281652.0631,
+    "slug": "will-the-tampa-bay-buccaneers-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.02,
+      0.98
+    ]
+  },
+  {
+    "question": "Will the Kansas City Chiefs win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.045,
+    "volume": 2982454.07467,
+    "liquidity": 561828.0054,
+    "slug": "will-the-kansas-city-chiefs-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.045,
+      0.955
+    ]
+  },
+  {
+    "question": "Will 4 Fed rate cuts happen in 2025?",
+    "end_date": "2025-12-10",
+    "yes_price": 0.004,
+    "volume": 2975321.231029,
+    "liquidity": 152772.39928,
+    "slug": "will-4-fed-rate-cuts-happen-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.004,
+      0.996
+    ]
+  },
+  {
+    "question": "Will FIT-U hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+    "end_date": "2025-10-26",
+    "yes_price": 0.0005,
+    "volume": 2873317.946741,
+    "liquidity": 8556.33209,
+    "slug": "will-fit-u-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Bitcoin dip to $20,000 by December 31, 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.004,
+    "volume": 2764620.612714,
+    "liquidity": 101049.73642,
+    "slug": "will-bitcoin-dip-to-20000-by-december-31-2025-942-621-278-695-321-896-769-417-957-733-354-361-233-126-159",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.004,
+      0.996
+    ]
+  },
+  {
+    "question": "US-Iran nuclear deal in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.011,
+    "volume": 2726091.206065,
+    "liquidity": 21251.31472,
+    "slug": "us-x-iran-nuclear-deal-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.011,
+      0.989
+    ]
+  },
+  {
+    "question": "Will 6 Fed rate cuts happen in 2025?",
+    "end_date": "2025-12-10",
+    "yes_price": 0.0005,
+    "volume": 2615832.127032,
+    "liquidity": 368267.72065,
+    "slug": "will-6-fed-rate-cuts-happen-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will UP hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+    "end_date": "2025-10-26",
+    "yes_price": 0.012,
+    "volume": 2516796.965415,
+    "liquidity": 8643.43994,
+    "slug": "will-up-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.012,
+      0.988
+    ]
+  },
+  {
+    "question": "MicroStrategy sells any Bitcoin in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.028,
+    "volume": 2496312.29776,
+    "liquidity": 111184.26614,
+    "slug": "microstrategy-sell-any-bitcoin-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.028,
+      0.972
+    ]
+  },
+  {
+    "question": "Will Alphabet be the largest company in the world by market cap on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0225,
+    "volume": 2470299.568558,
+    "liquidity": 98331.77008,
+    "slug": "will-alphabet-be-the-largest-company-in-the-world-by-market-cap-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0225,
+      0.9775
+    ]
+  },
+  {
+    "question": "Will the Los Angeles Rams win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.148,
+    "volume": 2434458.673096,
+    "liquidity": 321597.07575,
+    "slug": "will-the-los-angeles-rams-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.148,
+      0.852
+    ]
+  },
+  {
+    "question": "Will 8+ Fed rate cuts happen in 2025?",
+    "end_date": "2025-12-10",
+    "yes_price": 0.0005,
+    "volume": 2425746.855117,
+    "liquidity": 192315.77034,
+    "slug": "will-8plus-fed-rate-cuts-happen-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will the Denver Broncos win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0665,
+    "volume": 2418255.801038,
+    "liquidity": 191468.58965,
+    "slug": "will-the-denver-broncos-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0665,
+      0.9335
+    ]
+  },
+  {
+    "question": "Will LLA hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+    "end_date": "2025-10-26",
+    "yes_price": 0.986,
+    "volume": 2398895.591154,
+    "liquidity": 11829.78809,
+    "slug": "will-lla-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.986,
+      0.014
+    ]
+  },
+  {
+    "question": "Will Jesus Christ return in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0045,
+    "volume": 2395109.734153,
+    "liquidity": 421796.82451,
+    "slug": "will-jesus-christ-return-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0045,
+      0.9955
+    ]
+  },
+  {
+    "question": "Nuclear weapon detonation in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0215,
+    "volume": 2384772.306175,
+    "liquidity": 52011.92371,
+    "slug": "nuclear-weapon-detonation-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0215,
+      0.9785
+    ]
+  },
+  {
+    "question": "Will Trump refrain from announcing a next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.875,
+    "volume": 2368867.60665,
+    "liquidity": 15770.5567,
+    "slug": "will-trump-refrain-from-announcing-a-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.875,
+      0.125
+    ]
+  },
+  {
+    "question": "Solana all time high before 2026?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0145,
+    "volume": 2355656.74964,
+    "liquidity": 142864.66332,
+    "slug": "solana-all-time-high-before-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0145,
+      0.9855
+    ]
+  },
+  {
+    "question": "Will the Green Bay Packers win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.083,
+    "volume": 2320315.498256,
+    "liquidity": 387618.62451,
+    "slug": "will-the-green-bay-packers-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.083,
+      0.917
+    ]
+  },
+  {
+    "question": "Will the San Francisco 49ers win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.035,
+    "volume": 2279117.423934,
+    "liquidity": 225954.32092,
+    "slug": "will-the-san-francisco-49ers-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.035,
+      0.965
+    ]
+  },
+  {
+    "question": "Will 5 Fed rate cuts happen in 2025?",
+    "end_date": "2025-12-10",
+    "yes_price": 0.001,
+    "volume": 2252214.922375,
+    "liquidity": 280577.85194,
+    "slug": "will-5-fed-rate-cuts-happen-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.001,
+      0.999
+    ]
+  },
+  {
+    "question": "Will Apple be the largest company in the world by market cap on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0935,
+    "volume": 2240998.629713,
+    "liquidity": 42767.29832,
+    "slug": "will-apple-be-the-largest-company-in-the-world-by-market-cap-on-december-31-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0935,
+      0.9065
+    ]
+  },
+  {
+    "question": "Will the Detroit Lions win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0415,
+    "volume": 2158166.276902,
+    "liquidity": 201073.27165,
+    "slug": "will-the-detroit-lions-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0415,
+      0.9585
+    ]
+  },
+  {
+    "question": "Will the Los Angeles Chargers win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0185,
+    "volume": 2155925.325166,
+    "liquidity": 386177.85438,
+    "slug": "will-the-los-angeles-chargers-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0185,
+      0.9815
+    ]
+  },
+  {
+    "question": "Israel withdraws from Gaza in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.021,
+    "volume": 2146318.839772,
+    "liquidity": 20658.60797,
+    "slug": "israel-withdraws-from-gaza-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.021,
+      0.979
+    ]
+  },
+  {
+    "question": "Will the Baltimore Ravens win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.0615,
+    "volume": 2136408.214491,
+    "liquidity": 224073.93494,
+    "slug": "will-the-baltimore-ravens-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0615,
+      0.9385
+    ]
+  },
+  {
+    "question": "Will the Philadelphia Eagles win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.095,
+    "volume": 2102709.752466,
+    "liquidity": 431311.6773,
+    "slug": "will-the-philadelphia-eagles-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.095,
+      0.905
+    ]
+  },
+  {
+    "question": "Will the Buffalo Bills win Super Bowl 2026?",
+    "end_date": "2026-02-08",
+    "yes_price": 0.095,
+    "volume": 2089475.414574,
+    "liquidity": 418906.9384,
+    "slug": "will-the-buffalo-bills-win-super-bowl-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.095,
+      0.905
+    ]
+  },
+  {
+    "question": "Will PRO hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+    "end_date": "2025-10-26",
+    "yes_price": 0.0005,
+    "volume": 2040623.041361,
+    "liquidity": 23718.22189,
+    "slug": "will-pro-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Ukraine recognizes Russian sovereignty over its territory by December 31, 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.014,
+    "volume": 2038242.833496,
+    "liquidity": 32696.74146,
+    "slug": "ukraine-recognizes-russian-sovereignty-over-ukrainian-territory-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.014,
+      0.986
+    ]
+  },
+  {
+    "question": "Will Microsoft be the largest company in the world by market cap on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0025,
+    "volume": 1980244.043872,
+    "liquidity": 124987.84748,
+    "slug": "will-microsoft-be-the-largest-company-in-the-world-by-market-cap-on-december-31-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0025,
+      0.9975
+    ]
+  },
+  {
+    "question": "Will HNP hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+    "end_date": "2025-10-26",
+    "yes_price": 0.0005,
+    "volume": 1969722.083361,
+    "liquidity": 22425.23546,
+    "slug": "will-hnp-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Google have the top AI model on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.745,
+    "volume": 1951444.586479,
+    "liquidity": 38815.5064,
+    "slug": "which-company-has-best-ai-model-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.745,
+      0.255
+    ]
+  },
+  {
+    "question": "Will 2025 be the hottest year on record?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0125,
+    "volume": 1901738.743286,
+    "liquidity": 36869.93524,
+    "slug": "will-2025-be-the-hottest-year-on-record",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0125,
+      0.9875
+    ]
+  },
+  {
+    "question": "Putin out as President of Russia in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0115,
+    "volume": 1876228.771583,
+    "liquidity": 40564.88557,
+    "slug": "putin-out-as-president-of-russia-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0115,
+      0.9885
+    ]
+  },
+  {
+    "question": "Taylor Swift pregnant in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.023,
+    "volume": 1849965.56611,
+    "liquidity": 50983.19558,
+    "slug": "taylor-swift-pregnant-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.023,
+      0.977
+    ]
+  },
+  {
+    "question": "Will Donald Trump visit China in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0095,
+    "volume": 1692004.831529,
+    "liquidity": 31526.40014,
+    "slug": "will-donald-trump-visit-china-in-2025-1",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0095,
+      0.9905
+    ]
+  },
+  {
+    "question": "TikTok sale announced in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.055,
+    "volume": 1625362.936137,
+    "liquidity": 13138.8824,
+    "slug": "tiktok-sale-announced-in-2025-386-821-248",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.055,
+      0.945
+    ]
+  },
+  {
+    "question": "Will Anthropic have the top AI model on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0055,
+    "volume": 1610516.990707,
+    "liquidity": 171007.91091,
+    "slug": "will-anthropic-have-the-top-ai-model-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "Will Yoon be sentenced to prison in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0155,
+    "volume": 1596610.69501,
+    "liquidity": 13851.91739,
+    "slug": "will-yoon-be-sentenced-to-prison-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0155,
+      0.9845
+    ]
+  },
+  {
+    "question": "Will Trump pardon Sam Bankman-Fried in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.019,
+    "volume": 1556333.693551,
+    "liquidity": 55527.62097,
+    "slug": "will-trump-pardon-sam-bankman-fried-in-2025-345-559",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.019,
+      0.981
+    ]
+  },
+  {
+    "question": "Ukraine election held by December 31, 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.006,
+    "volume": 1547551.013256,
+    "liquidity": 40615.46917,
+    "slug": "ukraine-election-held-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.006,
+      0.994
+    ]
+  },
+  {
+    "question": "Will Alibaba have the top AI model on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 1501018.783614,
+    "liquidity": 206750.59978,
+    "slug": "will-alibaba-have-the-top-ai-model-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will DeepSeek have the top AI model on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 1499080.667081,
+    "liquidity": 28021.91192,
+    "slug": "will-deepseek-have-the-top-ai-model-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Iran Nuke in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.011,
+    "volume": 1473399.216125,
+    "liquidity": 48038.15605,
+    "slug": "iran-nuke-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.011,
+      0.989
+    ]
+  },
+  {
+    "question": "USDT depeg in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0095,
+    "volume": 1470150.414696,
+    "liquidity": 115518.9405,
+    "slug": "usdt-depeg-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0095,
+      0.9905
+    ]
+  },
+  {
+    "question": "Will Trump sell 0 Gold Cards in 2025?",
+    "end_date": "TBD",
+    "yes_price": 0.9,
+    "volume": 1469568.411722,
+    "liquidity": 18288.9884,
+    "slug": "will-trump-sell-0-gold-cards-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.9,
+      0.1
+    ]
+  },
+  {
+    "question": "Will Meta have the top AI model on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 1427503.110022,
+    "liquidity": 275521.21505,
+    "slug": "will-meta-have-the-top-ai-model-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will Ukraine agree to cede territory to Russia in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.021,
+    "volume": 1418415.739966,
+    "liquidity": 41785.13529,
+    "slug": "will-ukraine-agree-to-cede-territory-to-russia",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.021,
+      0.979
+    ]
+  },
+  {
+    "question": "Will 'Avatar: Fire and Ash' have the best domestic opening weekend in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.049,
+    "volume": 1402551.672757,
+    "liquidity": 110639.70543,
+    "slug": "will-avatar-fire-and-ash-have-the-best-domestic-opening-weekend-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.049,
+      0.951
+    ]
+  },
+  {
+    "question": "Will 'A Minecraft Movie' have the best domestic opening weekend in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.9495,
+    "volume": 1378711.587385,
+    "liquidity": 20971.48668,
+    "slug": "will-a-minecraft-movie-have-the-best-domestic-opening-weekend-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.9495,
+      0.0505
+    ]
+  },
+  {
+    "question": "Will OpenAI have the top AI model on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.21,
+    "volume": 1319700.075701,
+    "liquidity": 21467.84531,
+    "slug": "will-openai-have-the-top-ai-model-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.21,
+      0.79
+    ]
+  },
+  {
+    "question": "Will SER hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+    "end_date": "2025-10-26",
+    "yes_price": 0.0005,
+    "volume": 1307033.84348,
+    "liquidity": 24716.23656,
+    "slug": "will-ser-hold-the-most-seats-in-the-chamber-of-deputies-following-the-2025-argentina-election",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Fed emergency rate cut in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.012,
+    "volume": 1295195.876392,
+    "liquidity": 30755.62078,
+    "slug": "fed-emergency-rate-cut-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.012,
+      0.988
+    ]
+  },
+  {
+    "question": "Will xAI have the top AI model on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.032,
+    "volume": 1253772.479759,
+    "liquidity": 42048.4415,
+    "slug": "will-xai-have-the-top-ai-model-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.032,
+      0.968
+    ]
+  },
+  {
+    "question": "Will Gold close at $3,100-3,200 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 1245265.217358,
+    "liquidity": 94636.5955,
+    "slug": "will-gold-close-at-3100-3200-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Ukraine agrees not to join NATO in 2025? ",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0205,
+    "volume": 1218743.388313,
+    "liquidity": 34565.95729,
+    "slug": "ukraine-agrees-not-to-join-nato-before-july",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0205,
+      0.9795
+    ]
+  },
+  {
+    "question": "Macron out in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.014,
+    "volume": 1214792.164317,
+    "liquidity": 18601.93152,
+    "slug": "macron-out-in-2025-834",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.014,
+      0.986
+    ]
+  },
+  {
+    "question": "China x Taiwan military clash by December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.013,
+    "volume": 1210522.904485,
+    "liquidity": 38905.0869,
+    "slug": "china-x-taiwan-military-clash-by-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.013,
+      0.987
+    ]
+  },
+  {
+    "question": "US recognizes Russian sovereignty over Ukraine?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.034,
+    "volume": 1203349.516753,
+    "liquidity": 10679.21465,
+    "slug": "us-recognizes-russian-sovereignty-over-ukraine",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.034,
+      0.966
+    ]
+  },
+  {
+    "question": "GTA VI released in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.004,
+    "volume": 1166862.124341,
+    "liquidity": 21427.4626,
+    "slug": "gta-vi-released-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.004,
+      0.996
+    ]
+  },
+  {
+    "question": "Starmer out in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0255,
+    "volume": 1117248.301571,
+    "liquidity": 13928.83822,
+    "slug": "starmer-out-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0255,
+      0.9745
+    ]
+  },
+  {
+    "question": "Will Gold close at $3,000-3,100 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0045,
+    "volume": 1110333.02986,
+    "liquidity": 133394.75054,
+    "slug": "will-gold-close-at-3000-3100-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0045,
+      0.9955
+    ]
+  },
+  {
+    "question": "Will the 10-year Treasury yield hit 4.6% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0235,
+    "volume": 1106870.392575,
+    "liquidity": 25069.22776,
+    "slug": "will-the-10-year-treasury-yield-hit-4pt6-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0235,
+      0.9765
+    ]
+  },
+  {
+    "question": "Will Moonshot have the top AI model on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 1085945.550603,
+    "liquidity": 236400.25223,
+    "slug": "will-moonshot-have-the-top-ai-model-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Dogecoin all time high before 2026?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0115,
+    "volume": 1078799.54255,
+    "liquidity": 156860.56656,
+    "slug": "dogecoin-all-time-high-before-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0115,
+      0.9885
+    ]
+  },
+  {
+    "question": "Will Ethereum dip to $1,000 by December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0055,
+    "volume": 1043783.003924,
+    "liquidity": 66306.09242,
+    "slug": "will-ethereum-dip-to-1000-by-december-31-498-391-185-526-541-347-589",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "Will Tesla launch robotaxis in California in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.025,
+    "volume": 1043275.36091,
+    "liquidity": 9271.78219,
+    "slug": "will-tesla-launch-robotaxis-in-california-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.025,
+      0.975
+    ]
+  },
+  {
+    "question": "Will Z.ai have the top AI model on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 1034457.702734,
+    "liquidity": 279681.37338,
+    "slug": "will-zai-have-the-top-ai-model-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will Alberta vote for independence in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0095,
+    "volume": 1018780.523712,
+    "liquidity": 12259.22845,
+    "slug": "will-alberta-vote-for-independence-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0095,
+      0.9905
+    ]
+  },
+  {
+    "question": "Will the 10-year Treasury yield hit 5.2% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0165,
+    "volume": 1018627.76219,
+    "liquidity": 31580.77518,
+    "slug": "will-the-10-year-treasury-yield-hit-5pt2-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0165,
+      0.9835
+    ]
+  },
+  {
+    "question": "Trump takes Panama Canal in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0055,
+    "volume": 986330.327336,
+    "liquidity": 24498.07803,
+    "slug": "trump-takes-panama-canal-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "Fed rate hike in 2025?",
+    "end_date": "2025-12-10",
+    "yes_price": 0.006,
+    "volume": 977996.576045,
+    "liquidity": 57557.31359,
+    "slug": "fed-rate-hike-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.006,
+      0.994
+    ]
+  },
+  {
+    "question": "Will Gold close at $2,900-3,000 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.002,
+    "volume": 976076.766371,
+    "liquidity": 144953.91335,
+    "slug": "will-gold-close-at-2900-3000-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.002,
+      0.998
+    ]
+  },
+  {
+    "question": "Will tariffs generate >$250b in 2025?",
+    "end_date": "2026-02-28",
+    "yes_price": 0.0315,
+    "volume": 970890.185055,
+    "liquidity": 14224.76641,
+    "slug": "will-tariffs-generate-250b-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0315,
+      0.9685
+    ]
+  },
+  {
+    "question": "Poilievre out as leader of Conservatives in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.021,
+    "volume": 956658.507668,
+    "liquidity": 8259.74771,
+    "slug": "pierre-poilievre-out-as-leader-of-conservatives-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.021,
+      0.979
+    ]
+  },
+  {
+    "question": "Will Trump deport 250,000-500,000 people?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.465,
+    "volume": 945461.788811,
+    "liquidity": 903.5006,
+    "slug": "will-trump-deport-250000-500000-people",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.465,
+      0.535
+    ]
+  },
+  {
+    "question": "AI wins IMO gold medal in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.042,
+    "volume": 943634.424684,
+    "liquidity": 10647.09113,
+    "slug": "ai-wins-math-olympiad-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.042,
+      0.958
+    ]
+  },
+  {
+    "question": "US national Dogecoin reserve in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0125,
+    "volume": 926048.797378,
+    "liquidity": 8034.27993,
+    "slug": "us-national-dogecoin-reserve-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0125,
+      0.9875
+    ]
+  },
+  {
+    "question": "Gaza mass population relocation in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0095,
+    "volume": 910094.926427,
+    "liquidity": 17572.70295,
+    "slug": "gaza-mass-population-relocation-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0095,
+      0.9905
+    ]
+  },
+  {
+    "question": "Will Gold close above $4000 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.925,
+    "volume": 908347.455483,
+    "liquidity": 26480.1511,
+    "slug": "will-gold-close-above-4000-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.925,
+      0.075
+    ]
+  },
+  {
+    "question": "Will Gold close at $3,200 or more at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.989,
+    "volume": 906440.503698,
+    "liquidity": 111053.46802,
+    "slug": "will-gold-close-at-3200-or-more-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.989,
+      0.011
+    ]
+  },
+  {
+    "question": "Will Gold close at $2,500-2,600 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.001,
+    "volume": 894218.019896,
+    "liquidity": 90681.69268,
+    "slug": "will-gold-close-at-2500-2600-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.001,
+      0.999
+    ]
+  },
+  {
+    "question": "Will Trump deport less than 250,000?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.041,
+    "volume": 881312.546875,
+    "liquidity": 4274.44976,
+    "slug": "will-trump-deport-less-than-250000",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.041,
+      0.959
+    ]
+  },
+  {
+    "question": "Will Trump end Department of Education in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0245,
+    "volume": 866461.101086,
+    "liquidity": 12995.94448,
+    "slug": "will-trump-end-department-of-education-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0245,
+      0.9755
+    ]
+  },
+  {
+    "question": "NYSE marketwide circuit breaker in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.016,
+    "volume": 857773.926,
+    "liquidity": 32109.6497,
+    "slug": "nyse-marketwide-circuit-breaker-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.016,
+      0.984
+    ]
+  },
+  {
+    "question": "Will Donald Trump visit Russia in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.027,
+    "volume": 845262.45646,
+    "liquidity": 25853.99506,
+    "slug": "will-donald-trump-visit-russia-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.027,
+      0.973
+    ]
+  },
+  {
+    "question": "US national XRP reserve in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0215,
+    "volume": 835135.275617,
+    "liquidity": 16504.40394,
+    "slug": "us-national-xrp-reserve-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0215,
+      0.9785
+    ]
+  },
+  {
+    "question": "Netanyahu out by 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0155,
+    "volume": 827476.844075,
+    "liquidity": 37191.72963,
+    "slug": "netanyahu-out-in-2025-492",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0155,
+      0.9845
+    ]
+  },
+  {
+    "question": "Obama divorce in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0135,
+    "volume": 826371.479987,
+    "liquidity": 18212.04257,
+    "slug": "obama-divorce-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0135,
+      0.9865
+    ]
+  },
+  {
+    "question": "Lee Jae-myung arrested in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.007,
+    "volume": 823858.33939,
+    "liquidity": 14263.84176,
+    "slug": "lee-jae-myung-arrested-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.007,
+      0.993
+    ]
+  },
+  {
+    "question": "Ukraine election called in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.03,
+    "volume": 820654.529386,
+    "liquidity": 18460.62204,
+    "slug": "ukraine-election-called-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.03,
+      0.97
+    ]
+  },
+  {
+    "question": "Trump removes income tax on individuals making <$150k?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.01,
+    "volume": 818324.523481,
+    "liquidity": 16609.41704,
+    "slug": "will-trump-remove-taxes-on-income-150k",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.01,
+      0.99
+    ]
+  },
+  {
+    "question": "Musk out as Tesla CEO in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0095,
+    "volume": 812459.455678,
+    "liquidity": 19904.61367,
+    "slug": "musk-out-as-tesla-ceo-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0095,
+      0.9905
+    ]
+  },
+  {
+    "question": "Will inflation reach more than 3% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.515,
+    "volume": 799270.520378,
+    "liquidity": 4441.1323,
+    "slug": "will-inflation-reach-more-than-3-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.515,
+      0.485
+    ]
+  },
+  {
+    "question": "Will Trump's approval rating hit 40% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.185,
+    "volume": 799031.465686,
+    "liquidity": 26904.1503,
+    "slug": "will-trumps-approval-rating-hit-40-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.185,
+      0.815
+    ]
+  },
+  {
+    "question": "US national Ethereum reserve in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.014,
+    "volume": 788605.557294,
+    "liquidity": 25579.18281,
+    "slug": "us-national-ethereum-reserve-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.014,
+      0.986
+    ]
+  },
+  {
+    "question": "U.S. recognizes Russian sovereignty over Crimea in 2025? ",
+    "end_date": "2025-12-31",
+    "yes_price": 0.043,
+    "volume": 778709.914103,
+    "liquidity": 17038.98003,
+    "slug": "will-the-us-recognize-russian-sovereignty-over-crimea-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.043,
+      0.957
+    ]
+  },
+  {
+    "question": "Will Kim Jong Un visit US in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0065,
+    "volume": 758837.838776,
+    "liquidity": 8785.9179,
+    "slug": "will-kim-jong-un-visit-us-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0065,
+      0.9935
+    ]
+  },
+  {
+    "question": "Will Gold close under $2,500 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 754510.233848,
+    "liquidity": 42080.85303,
+    "slug": "will-gold-close-under-2500-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will Trump pardon Roger Ver in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0295,
+    "volume": 744153.088628,
+    "liquidity": 12252.72217,
+    "slug": "will-trump-pardon-roger-ver-in-2025-383-789-193-341",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0295,
+      0.9705
+    ]
+  },
+  {
+    "question": "Will the 10-year Treasury yield hit 4.8% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0185,
+    "volume": 704394.614,
+    "liquidity": 32232.00548,
+    "slug": "will-the-10-year-treasury-yield-hit-4pt8-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0185,
+      0.9815
+    ]
+  },
+  {
+    "question": "Will the 10-year Treasury yield hit 5.0% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.017,
+    "volume": 696388.251978,
+    "liquidity": 31016.50255,
+    "slug": "will-the-10-year-treasury-yield-hit-5pt0-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.017,
+      0.983
+    ]
+  },
+  {
+    "question": "Negative GDP growth in Q3 2025?",
+    "end_date": "2025-10-30",
+    "yes_price": 0.0105,
+    "volume": 673164.590781,
+    "liquidity": 14808.84375,
+    "slug": "negative-gdp-growth-in-q3-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0105,
+      0.9895
+    ]
+  },
+  {
+    "question": "Will Trump pardon Diddy in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0235,
+    "volume": 668106.325098,
+    "liquidity": 21523.05416,
+    "slug": "will-trump-pardon-diddy-in-2025-669-223-424",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0235,
+      0.9765
+    ]
+  },
+  {
+    "question": "Will Elon and DOGE cut more than $250b in federal spending in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.007,
+    "volume": 654400.249556,
+    "liquidity": 18411.6574,
+    "slug": "will-elon-and-doge-cut-more-than-250b-in-federal-spending-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.007,
+      0.993
+    ]
+  },
+  {
+    "question": "Will the U.S. take over Gaza in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0135,
+    "volume": 653565.984641,
+    "liquidity": 40363.4227,
+    "slug": "will-the-us-take-over-gaza-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0135,
+      0.9865
+    ]
+  },
+  {
+    "question": "US national Solana reserve in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0095,
+    "volume": 631527.916105,
+    "liquidity": 16114.3989,
+    "slug": "us-national-solana-reserve-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0095,
+      0.9905
+    ]
+  },
+  {
+    "question": "Will Trump resign in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0085,
+    "volume": 621029.278055,
+    "liquidity": 48652.48381,
+    "slug": "will-trump-resign-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0085,
+      0.9915
+    ]
+  },
+  {
+    "question": "Will Trump announce Roger W. Ferguson Jr. as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 617320.0475,
+    "liquidity": 16818.83447,
+    "slug": "will-trump-announce-roger-w-ferguson-jr-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Mistral AI have the top AI model on December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 600777.609492,
+    "liquidity": 103525.53517,
+    "slug": "will-mistral-ai-have-the-top-ai-model-on-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Trump announce Kevin Hassett as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0775,
+    "volume": 599235.117534,
+    "liquidity": 14237.96755,
+    "slug": "will-trump-announce-kevin-hassett-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0775,
+      0.9225
+    ]
+  },
+  {
+    "question": "Will Trump sell 1-100 Gold Cards in 2025?",
+    "end_date": "TBD",
+    "yes_price": 0.035,
+    "volume": 599017.266088,
+    "liquidity": 18802.00748,
+    "slug": "will-trump-sell-1-100-gold-cards-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.035,
+      0.965
+    ]
+  },
+  {
+    "question": "Karen Bass out as Mayor of LA in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.008,
+    "volume": 595979.269561,
+    "liquidity": 7679.9056,
+    "slug": "karen-bass-out-as-mayor-of-la-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.008,
+      0.992
+    ]
+  },
+  {
+    "question": "Will Gold close at $2,600-2,700 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.001,
+    "volume": 580508.950691,
+    "liquidity": 102130.81536,
+    "slug": "will-gold-close-at-2600-2700-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.001,
+      0.999
+    ]
+  },
+  {
+    "question": "Cardano ETF in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.036,
+    "volume": 573794.56153,
+    "liquidity": 8398.71655,
+    "slug": "cardano-etf-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.036,
+      0.964
+    ]
+  },
+  {
+    "question": "Will RFK end COVID-19 vaccine recommendation in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.029,
+    "volume": 562570.000399,
+    "liquidity": 9908.4474,
+    "slug": "will-rfk-end-covid-19-vaccine-recommendation-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.029,
+      0.971
+    ]
+  },
+  {
+    "question": "Will Oscar Piastri finish second in the 2025 Drivers Championship?",
+    "end_date": "2025-12-07",
+    "yes_price": 0.125,
+    "volume": 560907.919964,
+    "liquidity": 11615.5323,
+    "slug": "will-oscar-piastri-finish-second-in-the-2025-drivers-championship",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.125,
+      0.875
+    ]
+  },
+  {
+    "question": "Will Pam Bondi leave the Trump administration in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0245,
+    "volume": 557624.09227,
+    "liquidity": 20915.91821,
+    "slug": "will-pam-bondi-leave-the-trump-administration-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0245,
+      0.9755
+    ]
+  },
+  {
+    "question": "Will Ukraine agree to give up the rest of Donbas in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0275,
+    "volume": 542343.27081,
+    "liquidity": 24780.55576,
+    "slug": "will-ukraine-agree-to-give-up-the-rest-of-donbas",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0275,
+      0.9725
+    ]
+  },
+  {
+    "question": "Will Trump meet with Kim Jong Un in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0095,
+    "volume": 540384.576568,
+    "liquidity": 28569.65369,
+    "slug": "will-trump-meet-with-kim-jong-un-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0095,
+      0.9905
+    ]
+  },
+  {
+    "question": "Will Gold close at $2,800-2,900 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 536026.040968,
+    "liquidity": 109413.89823,
+    "slug": "will-gold-close-at-2800-2900-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will Trump sell 101-1k Gold Cards in 2025?",
+    "end_date": "TBD",
+    "yes_price": 0.0225,
+    "volume": 534964.357651,
+    "liquidity": 13546.47994,
+    "slug": "will-trump-sell-101-1k-gold-cards-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0225,
+      0.9775
+    ]
+  },
+  {
+    "question": "BOA launches a USD stablecoin in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0255,
+    "volume": 526264.703778,
+    "liquidity": 3087.21015,
+    "slug": "boa-launches-a-usd-stablecoin-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0255,
+      0.9745
+    ]
+  },
+  {
+    "question": "Will Anthropic have a #1 AI model this year?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.032,
+    "volume": 524890.689194,
+    "liquidity": 11550.60583,
+    "slug": "will-anthropic-have-a-1-ai-model-this-year",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.032,
+      0.968
+    ]
+  },
+  {
+    "question": "Will Trump sell 25k-100k Gold Cards in 2025?",
+    "end_date": "TBD",
+    "yes_price": 0.0025,
+    "volume": 521758.257856,
+    "liquidity": 24233.92183,
+    "slug": "will-trump-sell-25k-100k-gold-cards-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0025,
+      0.9975
+    ]
+  },
+  {
+    "question": "Will the 10-year Treasury yield hit 5.7% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0085,
+    "volume": 518590.891083,
+    "liquidity": 9666.04045,
+    "slug": "will-the-10-year-treasury-yield-hit-5pt7-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0085,
+      0.9915
+    ]
+  },
+  {
+    "question": "Will Trump announce Kevin Warsh as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0095,
+    "volume": 518152.83843,
+    "liquidity": 9292.0535,
+    "slug": "will-trump-announce-kevin-warsh-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0095,
+      0.9905
+    ]
+  },
+  {
+    "question": "Will Trump sell over 100k Gold Cards in 2025?",
+    "end_date": "TBD",
+    "yes_price": 0.004,
+    "volume": 514796.074177,
+    "liquidity": 21016.05871,
+    "slug": "will-trump-sell-over100k-gold-cards-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.004,
+      0.996
+    ]
+  },
+  {
+    "question": "Will GTA 6 cost $100+?",
+    "end_date": "2026-02-28",
+    "yes_price": 0.0255,
+    "volume": 512725.945022,
+    "liquidity": 66457.8395,
+    "slug": "will-gta-6-cost-100",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0255,
+      0.9745
+    ]
+  },
+  {
+    "question": "Will Donald Trump visit France in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.014,
+    "volume": 511407.93293,
+    "liquidity": 4618.05069,
+    "slug": "which-countries-will-donald-trump-visit-in-2025-will-donald-trump-visit-france-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.014,
+      0.986
+    ]
+  },
+  {
+    "question": "Will Trump announce Chris Waller as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0085,
+    "volume": 487026.533365,
+    "liquidity": 13026.25996,
+    "slug": "will-trump-announce-chris-waller-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0085,
+      0.9915
+    ]
+  },
+  {
+    "question": "Will Trump meet with Yoon Suk Yeol in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0065,
+    "volume": 482420.929127,
+    "liquidity": 7191.37377,
+    "slug": "will-trump-meet-with-yoon-suk-yeol-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0065,
+      0.9935
+    ]
+  },
+  {
+    "question": "Another Canada election called in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.028,
+    "volume": 467661.554169,
+    "liquidity": 14387.9673,
+    "slug": "another-canada-election-called-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.028,
+      0.972
+    ]
+  },
+  {
+    "question": "Will Ukraine agree to give up Russian territory in Kursk?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0175,
+    "volume": 462962.974446,
+    "liquidity": 14918.33054,
+    "slug": "will-ukraine-agree-to-give-up-russian-territory-in-kursk",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0175,
+      0.9825
+    ]
+  },
+  {
+    "question": "Will Trump cut corporate taxes in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0085,
+    "volume": 453971.063863,
+    "liquidity": 26006.10266,
+    "slug": "will-trump-cut-corporate-taxes-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0085,
+      0.9915
+    ]
+  },
+  {
+    "question": "Will the U.S. collect between $100b and $200b in revenue in 2025?",
+    "end_date": "2026-02-28",
+    "yes_price": 0.295,
+    "volume": 453282.867821,
+    "liquidity": 6679.4364,
+    "slug": "will-the-us-collect-between-100b-and-200b-in-revenue-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.295,
+      0.705
+    ]
+  },
+  {
+    "question": "Tether insolvent in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0075,
+    "volume": 444018.542013,
+    "liquidity": 33463.18881,
+    "slug": "tether-insolvent-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0075,
+      0.9925
+    ]
+  },
+  {
+    "question": "Milei out as President of Argentina in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0065,
+    "volume": 441794.271079,
+    "liquidity": 12858.03682,
+    "slug": "milei-out-as-president-of-argentina-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0065,
+      0.9935
+    ]
+  },
+  {
+    "question": "Will the 10-year Treasury yield hit 6.0% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.005,
+    "volume": 434711.725591,
+    "liquidity": 9371.58818,
+    "slug": "will-the-10-year-treasury-yield-hit-6pt0-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.005,
+      0.995
+    ]
+  },
+  {
+    "question": "Will Apple release a new product line in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.035,
+    "volume": 432694.268614,
+    "liquidity": 4591.87966,
+    "slug": "will-apple-release-a-new-product-line-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.035,
+      0.965
+    ]
+  },
+  {
+    "question": "Will Trump sell 5k-10k Gold Cards in 2025?",
+    "end_date": "TBD",
+    "yes_price": 0.004,
+    "volume": 419544.262825,
+    "liquidity": 26414.02013,
+    "slug": "will-trump-sell-5k-10k-gold-cards-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.004,
+      0.996
+    ]
+  },
+  {
+    "question": "Will Canada join US as 51st state in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0045,
+    "volume": 417253.379204,
+    "liquidity": 85494.20376,
+    "slug": "will-canada-join-us-as-51st-state-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0045,
+      0.9955
+    ]
+  },
+  {
+    "question": "Will Pete Hegseth leave the Trump administration in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.046,
+    "volume": 412792.02603,
+    "liquidity": 16196.8943,
+    "slug": "will-pete-hegseth-leave-the-trump-administration-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.046,
+      0.954
+    ]
+  },
+  {
+    "question": "Will Elon and DOGE cut between $200-250b in federal spending in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.002,
+    "volume": 411699.997641,
+    "liquidity": 9229.27191,
+    "slug": "will-elon-and-doge-cut-between-200-250b-in-federal-spending-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.002,
+      0.998
+    ]
+  },
+  {
+    "question": "Will Trump pardon Hunter Biden in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0085,
+    "volume": 408266.672135,
+    "liquidity": 26094.81394,
+    "slug": "will-trump-pardon-hunter-biden-in-2025-336-867-874",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0085,
+      0.9915
+    ]
+  },
+  {
+    "question": "New Coronavirus Pandemic in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0065,
+    "volume": 406669.291166,
+    "liquidity": 17081.00831,
+    "slug": "new-coronavirus-pandemic-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0065,
+      0.9935
+    ]
+  },
+  {
+    "question": "Fed abolished in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0055,
+    "volume": 406164.167159,
+    "liquidity": 9541.80067,
+    "slug": "fed-abolished-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "Will Lando Norris finish second in the 2025 Drivers Championship?",
+    "end_date": "2025-12-07",
+    "yes_price": 0.1335,
+    "volume": 405145.816535,
+    "liquidity": 12216.1195,
+    "slug": "will-lando-norris-finish-second-in-the-2025-drivers-championship",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.1335,
+      0.8665
+    ]
+  },
+  {
+    "question": "Will Trump sell 10k-25k Gold Cards in 2025?",
+    "end_date": "TBD",
+    "yes_price": 0.004,
+    "volume": 401465.304001,
+    "liquidity": 19663.1152,
+    "slug": "will-trump-sell-10k-25k-gold-cards-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.004,
+      0.996
+    ]
+  },
+  {
+    "question": "Will Trump announce Scott Bessent as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0115,
+    "volume": 397790.037228,
+    "liquidity": 22392.41559,
+    "slug": "will-trump-announce-scott-bessent-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0115,
+      0.9885
+    ]
+  },
+  {
+    "question": "Will MicroStrategy be forced to liquidate Bitcoin holdings in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.016,
+    "volume": 392273.294803,
+    "liquidity": 33366.05516,
+    "slug": "will-microstrategy-be-forced-to-liquidate-bitcoin-holdings-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.016,
+      0.984
+    ]
+  },
+  {
+    "question": "Will Trump announce Michelle Bowman as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 391587.547654,
+    "liquidity": 10684.82232,
+    "slug": "will-trump-announce-michelle-bowman-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Will Gold close at $2,700-2,800 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 390773.510379,
+    "liquidity": 130433.44116,
+    "slug": "will-gold-close-at-2700-2800-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will Marco Rubio leave the Trump administration in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0185,
+    "volume": 386041.484898,
+    "liquidity": 9117.24268,
+    "slug": "will-marco-rubio-leave-the-trump-administration-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0185,
+      0.9815
+    ]
+  },
+  {
+    "question": "Will DOGE confirm Gold missing from Fort Knox?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.012,
+    "volume": 385891.606698,
+    "liquidity": 10840.32327,
+    "slug": "will-doge-confirm-gold-missing-from-fort-knox",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.012,
+      0.988
+    ]
+  },
+  {
+    "question": "Kraken IPO in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0205,
+    "volume": 385664.81905,
+    "liquidity": 24133.76641,
+    "slug": "kraken-ipo-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0205,
+      0.9795
+    ]
+  },
+  {
+    "question": "Zelensky resigns in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0275,
+    "volume": 385455.6034,
+    "liquidity": 11378.04791,
+    "slug": "zelensky-resigns-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0275,
+      0.9725
+    ]
+  },
+  {
+    "question": "Trump removed via 25th Amendment in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0075,
+    "volume": 384580.283264,
+    "liquidity": 30842.29261,
+    "slug": "trump-removed-via-25th-amendment-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0075,
+      0.9925
+    ]
+  },
+  {
+    "question": "Kim Jong Un out as Supreme Leader of North Korea in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0145,
+    "volume": 375247.494354,
+    "liquidity": 5970.29762,
+    "slug": "kim-jong-un-out-as-supreme-leader-of-north-korea-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0145,
+      0.9855
+    ]
+  },
+  {
+    "question": "Will the Panthers win the NFC Championship?",
+    "end_date": "2026-01-26",
+    "yes_price": 0.0145,
+    "volume": 368125.544547,
+    "liquidity": 76827.30466,
+    "slug": "will-the-panthers-win-the-nfc-championship-1",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0145,
+      0.9855
+    ]
+  },
+  {
+    "question": "Will Trump deport 500,000-750,000- people?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.544,
+    "volume": 357077.333903,
+    "liquidity": 2516.47581,
+    "slug": "will-trump-deport-500000-750000-people",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.544,
+      0.456
+    ]
+  },
+  {
+    "question": "Will Trump deport 750,000 or more people in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.038,
+    "volume": 356960.156291,
+    "liquidity": 3371.2725,
+    "slug": "will-trump-deport-750000-or-more-people-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.038,
+      0.962
+    ]
+  },
+  {
+    "question": "Will the next James Bond be British?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.07,
+    "volume": 351312.358671,
+    "liquidity": 2952.9663,
+    "slug": "will-the-next-james-bond-be-british",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.07,
+      0.93
+    ]
+  },
+  {
+    "question": "5% GDP contraction in Q3 2025?  ",
+    "end_date": "2025-10-30",
+    "yes_price": 0.012,
+    "volume": 350974.437891,
+    "liquidity": 7673.67296,
+    "slug": "5-gdp-contraction-in-q3-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.012,
+      0.988
+    ]
+  },
+  {
+    "question": "Will Trump announce Judy Shelton as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 345986.0726,
+    "liquidity": 13629.24291,
+    "slug": "will-trump-announce-judy-shelton-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Elon and DOGE cut between $50-100b in federal spending in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0125,
+    "volume": 344093.177274,
+    "liquidity": 10236.16152,
+    "slug": "will-elon-and-doge-cut-between-50-100b-in-federal-spending-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0125,
+      0.9875
+    ]
+  },
+  {
+    "question": "Will North Korea invade South Korea in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0165,
+    "volume": 341360.592141,
+    "liquidity": 12585.57939,
+    "slug": "will-north-korea-invade-south-korea-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0165,
+      0.9835
+    ]
+  },
+  {
+    "question": "Will Trump deport 750,000-1,000,000 people?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.004,
+    "volume": 330818.186626,
+    "liquidity": 5982.51927,
+    "slug": "will-trump-deport-750000-1000000-people",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.004,
+      0.996
+    ]
+  },
+  {
+    "question": "Odell Beckham Jr. in jail in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.1415,
+    "volume": 330401.947233,
+    "liquidity": 864.15698,
+    "slug": "odell-beckham-jr-in-jail-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.1415,
+      0.8585
+    ]
+  },
+  {
+    "question": "Will Sam Altman get OpenAI equity in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0225,
+    "volume": 327906.912124,
+    "liquidity": 23552.43975,
+    "slug": "will-sam-altman-get-openai-equity-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0225,
+      0.9775
+    ]
+  },
+  {
+    "question": "Will Trump deport 1,000,000-1,250,000 people?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0045,
+    "volume": 327768.103964,
+    "liquidity": 8820.84146,
+    "slug": "will-trump-deport-1000000-1250000-people",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0045,
+      0.9955
+    ]
+  },
+  {
+    "question": "Will Trump announce Howard Lutnick as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 324731.57297,
+    "liquidity": 18189.65826,
+    "slug": "will-trump-announce-howard-lutnick-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Max Verstappen finish second in the 2025 Drivers Championship?",
+    "end_date": "2025-12-07",
+    "yes_price": 0.7165,
+    "volume": 321038.009824,
+    "liquidity": 4949.71083,
+    "slug": "will-max-verstappen-finish-second-in-the-2025-drivers-championship",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.7165,
+      0.2835
+    ]
+  },
+  {
+    "question": "Will Trump's approval rating hit 35% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0205,
+    "volume": 320162.371984,
+    "liquidity": 33895.50975,
+    "slug": "will-trumps-approval-rating-hit-35-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0205,
+      0.9795
+    ]
+  },
+  {
+    "question": "Will Trump sell 2.5k-5k Gold Cards in 2025?",
+    "end_date": "TBD",
+    "yes_price": 0.0035,
+    "volume": 318944.965279,
+    "liquidity": 13448.26951,
+    "slug": "will-trump-sell-2pt5k-5k-gold-cards-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Will the 10-year Treasury yield dip below 3.5% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.025,
+    "volume": 317562.333281,
+    "liquidity": 25347.96235,
+    "slug": "will-the-10-year-treasury-yield-dip-below-3pt5-in-2025-662-366-362-827",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.025,
+      0.975
+    ]
+  },
+  {
+    "question": "OpenAI announces it has achieved AGI in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0195,
+    "volume": 307777.144494,
+    "liquidity": 16054.6552,
+    "slug": "openai-announces-it-has-achieved-agi-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0195,
+      0.9805
+    ]
+  },
+  {
+    "question": "Will RFK end HPV vaccine recommendation in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0315,
+    "volume": 306206.429381,
+    "liquidity": 7296.73945,
+    "slug": "will-rfk-end-hpv-vaccine-recommendation-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0315,
+      0.9685
+    ]
+  },
+  {
+    "question": "ETH flipped in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0065,
+    "volume": 300035.106731,
+    "liquidity": 11263.48764,
+    "slug": "eth-flipped-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0065,
+      0.9935
+    ]
+  },
+  {
+    "question": "SpaceX Starship fully reusable in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0235,
+    "volume": 296373.024924,
+    "liquidity": 5286.2584,
+    "slug": "spacex-starship-fully-reusable-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0235,
+      0.9765
+    ]
+  },
+  {
+    "question": "Will Elon and DOGE cut between $150-200b in federal spending in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.003,
+    "volume": 292525.880403,
+    "liquidity": 11093.45796,
+    "slug": "will-elon-and-doge-cut-between-150-200b-in-federal-spending-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.003,
+      0.997
+    ]
+  },
+  {
+    "question": "Is Earth flat?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0025,
+    "volume": 292442.721553,
+    "liquidity": 80258.14634,
+    "slug": "is-earth-flat-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0025,
+      0.9975
+    ]
+  },
+  {
+    "question": "Will the U.S. collect less than $100b in revenue in 2025?",
+    "end_date": "2026-02-28",
+    "yes_price": 0.3065,
+    "volume": 292383.066881,
+    "liquidity": 14086.52355,
+    "slug": "will-the-us-collect-less-than-100b-in-revenue-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.3065,
+      0.6935
+    ]
+  },
+  {
+    "question": "Will Gold close between $3200 and $3300 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 286607.156294,
+    "liquidity": 57426.04657,
+    "slug": "will-gold-close-between-3200-and-3300-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Will Elon and DOGE cut less than 50k employees in 2025?",
+    "end_date": "2026-01-06",
+    "yes_price": 0.0025,
+    "volume": 286434.033927,
+    "liquidity": 3909.37093,
+    "slug": "will-elon-and-doge-cut-less-than-50k-employees-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0025,
+      0.9975
+    ]
+  },
+  {
+    "question": "Zuckerberg divorce in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0055,
+    "volume": 285118.952898,
+    "liquidity": 8131.18097,
+    "slug": "zuckerberg-divorce-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "North Korea x South Korea military clash by December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0155,
+    "volume": 283779.172937,
+    "liquidity": 9893.37887,
+    "slug": "north-korea-x-south-korea-military-clash-by-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0155,
+      0.9845
+    ]
+  },
+  {
+    "question": "Ryan Reynolds & Blake Lively divorce in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.015,
+    "volume": 281830.428236,
+    "liquidity": 5004.38111,
+    "slug": "ryan-reynolds-blake-lively-divorce-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.015,
+      0.985
+    ]
+  },
+  {
+    "question": "Will Trump deport 1,500,000-1,750,000 people?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0025,
+    "volume": 281532.56347,
+    "liquidity": 5567.21605,
+    "slug": "will-trump-deport-1500000-1750000-people",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0025,
+      0.9975
+    ]
+  },
+  {
+    "question": "Pepe ETF in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.008,
+    "volume": 279322.364892,
+    "liquidity": 27531.63918,
+    "slug": "pepe-etf-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.008,
+      0.992
+    ]
+  },
+  {
+    "question": "Will Trump deport 1,250,000-1,500,000 people?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.005,
+    "volume": 279018.020801,
+    "liquidity": 6864.61672,
+    "slug": "will-trump-deport-1250000-1500000-people",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.005,
+      0.995
+    ]
+  },
+  {
+    "question": "Will Trump pardon Elon Musk in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0135,
+    "volume": 276784.257359,
+    "liquidity": 10438.04293,
+    "slug": "will-trump-pardon-elon-musk-in-2025-917-361-919",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0135,
+      0.9865
+    ]
+  },
+  {
+    "question": "Will Trump pardon Edward Snowden in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.016,
+    "volume": 270268.889918,
+    "liquidity": 7893.39483,
+    "slug": "will-trump-pardon-edward-snowden-in-2025-774-116-455",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.016,
+      0.984
+    ]
+  },
+  {
+    "question": "Will Elon and DOGE cut between $100-150b in federal spending in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 265041.87943,
+    "liquidity": 10904.6969,
+    "slug": "will-elon-and-doge-cut-between-100-150b-in-federal-spending-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Will inflation reach more than 4% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0185,
+    "volume": 264834.59732,
+    "liquidity": 33506.76512,
+    "slug": "will-inflation-reach-more-than-4-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0185,
+      0.9815
+    ]
+  },
+  {
+    "question": "Will ChatGPT reach 1b monthly active users in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.23,
+    "volume": 264023.453412,
+    "liquidity": 4941.8669,
+    "slug": "will-chatgpt-reach-1b-monthly-active-users-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.23,
+      0.77
+    ]
+  },
+  {
+    "question": "Will any country leave NATO in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0105,
+    "volume": 263079.443842,
+    "liquidity": 15537.47393,
+    "slug": "will-any-country-leave-nato-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0105,
+      0.9895
+    ]
+  },
+  {
+    "question": "Israel x Turkey military clash in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0125,
+    "volume": 262887.779822,
+    "liquidity": 35426.40492,
+    "slug": "israel-x-turkey-military-clash-by",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0125,
+      0.9875
+    ]
+  },
+  {
+    "question": "Will the U.S. acquire Canadian territory in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.003,
+    "volume": 262639.292465,
+    "liquidity": 20821.77383,
+    "slug": "will-the-us-acquire-canadian-territory-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.003,
+      0.997
+    ]
+  },
+  {
+    "question": "Will Trump sell 1k-2.5k Gold Cards in 2025?",
+    "end_date": "TBD",
+    "yes_price": 0.0065,
+    "volume": 262498.820572,
+    "liquidity": 17811.86393,
+    "slug": "will-trump-sell-1k-2pt5k-gold-cards-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0065,
+      0.9935
+    ]
+  },
+  {
+    "question": "Elon Musk trillionaire in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 262182.872414,
+    "liquidity": 54543.66475,
+    "slug": "elon-musk-trillionaire-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Will DeepSeek have a #1 AI model this year?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0235,
+    "volume": 260300.737572,
+    "liquidity": 12818.28634,
+    "slug": "will-deepseek-have-a-1-ai-model-this-year",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0235,
+      0.9765
+    ]
+  },
+  {
+    "question": "Will Trump deport 2,000,000 or more people?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0285,
+    "volume": 260289.431013,
+    "liquidity": 5379.07897,
+    "slug": "will-trump-deport-2000000-or-more-people",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0285,
+      0.9715
+    ]
+  },
+  {
+    "question": "Will RFK end Measles Mumps and Rubella vaccine recommendation in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0495,
+    "volume": 257993.216346,
+    "liquidity": 6831.52031,
+    "slug": "will-rfk-end-measles-mumps-and-rubella-vaccine-recommendation-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0495,
+      0.9505
+    ]
+  },
+  {
+    "question": "Will Elon and DOGE cut less than $50b in federal spending in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.972,
+    "volume": 253655.889786,
+    "liquidity": 24866.51704,
+    "slug": "will-elon-and-doge-cut-less-than-50b-in-federal-spending-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.972,
+      0.028
+    ]
+  },
+  {
+    "question": "Bird flu vaccine in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.018,
+    "volume": 252812.368251,
+    "liquidity": 22593.25147,
+    "slug": "bird-flu-vaccine-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.018,
+      0.982
+    ]
+  },
+  {
+    "question": "Will Gold close below $3200 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.005,
+    "volume": 251796.041863,
+    "liquidity": 74455.67239,
+    "slug": "will-gold-close-below-3200-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.005,
+      0.995
+    ]
+  },
+  {
+    "question": "New Air Force One in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.046,
+    "volume": 250751.949614,
+    "liquidity": 4062.41854,
+    "slug": "new-air-force-one-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.046,
+      0.954
+    ]
+  },
+  {
+    "question": "Will Robert F. Kennedy Jr. leave the Trump administration in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0325,
+    "volume": 248574.977743,
+    "liquidity": 10284.06539,
+    "slug": "will-robert-f-kennedy-jr-leave-the-trump-administration-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0325,
+      0.9675
+    ]
+  },
+  {
+    "question": "New pandemic in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0125,
+    "volume": 247072.396073,
+    "liquidity": 19597.80285,
+    "slug": "new-pandemic-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0125,
+      0.9875
+    ]
+  },
+  {
+    "question": "China x Philippines military clash by December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.017,
+    "volume": 243186.322122,
+    "liquidity": 15141.68967,
+    "slug": "china-x-philippines-military-clash-by-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.017,
+      0.983
+    ]
+  },
+  {
+    "question": "Will Trump deport 1,750,000-2,000,000 people?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 241946.215778,
+    "liquidity": 11799.6781,
+    "slug": "will-trump-deport-1750000-2000000-people",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Will Trump pardon Derek Chauvin in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.034,
+    "volume": 240313.437286,
+    "liquidity": 2891.18346,
+    "slug": "will-trump-pardon-derek-chauvin-in-2025-853-548-631",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.034,
+      0.966
+    ]
+  },
+  {
+    "question": "Magnificent 7 shrinks below 25% of S&P 500 in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.023,
+    "volume": 240054.012109,
+    "liquidity": 14018.73009,
+    "slug": "magnificent-7-less-than-25-of-sp-500-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.023,
+      0.977
+    ]
+  },
+  {
+    "question": "Will Howard Lutnick leave the Trump administration in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0195,
+    "volume": 237953.329354,
+    "liquidity": 8959.81911,
+    "slug": "will-howard-lutnick-leave-the-trump-administration-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0195,
+      0.9805
+    ]
+  },
+  {
+    "question": "Will Trump create a DOGE dividend in 2025? ",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0125,
+    "volume": 232020.854602,
+    "liquidity": 3801.39983,
+    "slug": "will-trump-create-a-doge-dividend-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0125,
+      0.9875
+    ]
+  },
+  {
+    "question": "Will Gold close between $3600 and $3700 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.005,
+    "volume": 231824.913466,
+    "liquidity": 49354.79711,
+    "slug": "will-gold-close-between-3600-and-3700-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.005,
+      0.995
+    ]
+  },
+  {
+    "question": "Will Gold close between $3300 and $3400 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.004,
+    "volume": 226713.461807,
+    "liquidity": 60905.13933,
+    "slug": "will-gold-close-between-3300-and-3400-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.004,
+      0.996
+    ]
+  },
+  {
+    "question": "Will Trump withdraw the U.S. from NATO in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0085,
+    "volume": 225619.538447,
+    "liquidity": 10939.81213,
+    "slug": "will-trump-withdraw-the-us-from-nato-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0085,
+      0.9915
+    ]
+  },
+  {
+    "question": "Will the 10-year Treasury yield dip below 3.0% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0085,
+    "volume": 222804.175754,
+    "liquidity": 16975.61113,
+    "slug": "will-the-10-year-treasury-yield-dip-below-3pt0-in-2025-722-497-742-146",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0085,
+      0.9915
+    ]
+  },
+  {
+    "question": "US Treasury transactions on blockchain in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.035,
+    "volume": 221074.862894,
+    "liquidity": 8220.24083,
+    "slug": "us-treasury-transactions-on-blockchain-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.035,
+      0.965
+    ]
+  },
+  {
+    "question": "Will inflation reach more than 10% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.008,
+    "volume": 215338.465996,
+    "liquidity": 8504.01919,
+    "slug": "will-inflation-reach-more-than-10-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.008,
+      0.992
+    ]
+  },
+  {
+    "question": "Will the 10-year Treasury yield hit 5.5% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0105,
+    "volume": 214779.785464,
+    "liquidity": 16217.58612,
+    "slug": "will-the-10-year-treasury-yield-hit-5pt5-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0105,
+      0.9895
+    ]
+  },
+  {
+    "question": "Will Trump cut long term capital gains tax in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.011,
+    "volume": 211657.149002,
+    "liquidity": 3450.81299,
+    "slug": "will-trump-cut-long-term-capital-gains-tax-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.011,
+      0.989
+    ]
+  },
+  {
+    "question": "Ukraine joins NATO in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0055,
+    "volume": 210633.517167,
+    "liquidity": 26345.61165,
+    "slug": "ukraine-joins-nato-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "Will Russia rejoin the G7 in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0085,
+    "volume": 203700.804736,
+    "liquidity": 9793.7963,
+    "slug": "will-russia-rejoin-the-g7-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0085,
+      0.9915
+    ]
+  },
+  {
+    "question": "Texas Strategic Bitcoin Reserve Act (H.B. 1598) signed in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0135,
+    "volume": 203097.374975,
+    "liquidity": 4738.36774,
+    "slug": "texas-strategic-bitcoin-reserve-act-signed-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0135,
+      0.9865
+    ]
+  },
+  {
+    "question": "Will the U.S. collect between $200b and $500b in revenue in 2025?",
+    "end_date": "2026-02-28",
+    "yes_price": 0.325,
+    "volume": 201771.659389,
+    "liquidity": 10064.3552,
+    "slug": "will-the-us-collect-between-200b-and-500b-in-revenue-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.325,
+      0.675
+    ]
+  },
+  {
+    "question": "Will Meta be forced to sell Instagram or WhatsApp in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.009,
+    "volume": 201262.856187,
+    "liquidity": 3862.12575,
+    "slug": "will-meta-be-forced-to-sell-instagram-or-whatsapp-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.009,
+      0.991
+    ]
+  },
+  {
+    "question": "Dan Clancy out as Twitch CEO in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0375,
+    "volume": 198151.207035,
+    "liquidity": 4255.07862,
+    "slug": "dan-clancy-out-as-twitch-ceo-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0375,
+      0.9625
+    ]
+  },
+  {
+    "question": "Will MicroStrategy announce bankruptcy in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0075,
+    "volume": 196791.230023,
+    "liquidity": 38303.29305,
+    "slug": "will-microstrategy-announce-bankruptcy-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0075,
+      0.9925
+    ]
+  },
+  {
+    "question": "Will Trump meet with Jair Bolsonaro in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0085,
+    "volume": 194368.526929,
+    "liquidity": 7149.6194,
+    "slug": "will-trump-meet-with-jair-bolsonaro-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0085,
+      0.9915
+    ]
+  },
+  {
+    "question": "Trump abolishes the Federal Income Tax in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.008,
+    "volume": 194313.522769,
+    "liquidity": 4524.73982,
+    "slug": "trump-abolishes-the-federal-income-tax-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.008,
+      0.992
+    ]
+  },
+  {
+    "question": "Will the U.S. collect between $500b and $1t in revenue in 2025?",
+    "end_date": "2026-02-28",
+    "yes_price": 0.0015,
+    "volume": 192996.926521,
+    "liquidity": 25116.09889,
+    "slug": "will-the-us-collect-between-500b-and-1t-in-revenue-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will Gold close between $3900 and $4000 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.036,
+    "volume": 192790.133504,
+    "liquidity": 22718.47606,
+    "slug": "will-gold-close-between-3900-and-4000-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.036,
+      0.964
+    ]
+  },
+  {
+    "question": "Will Red Bull Racing finish second in the 2025 Constructors' Championship?",
+    "end_date": "2025-12-07",
+    "yes_price": 0.007,
+    "volume": 192640.354287,
+    "liquidity": 20999.87951,
+    "slug": "will-red-bull-racing-finish-second-in-the-2025-constructors-championship",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.007,
+      0.993
+    ]
+  },
+  {
+    "question": "Will 7-9 SpaceX Starship launches successfully reach Space in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.003,
+    "volume": 185851.200239,
+    "liquidity": 4429.34448,
+    "slug": "will-7-9-spacex-starship-launches-successfully-reach-space-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.003,
+      0.997
+    ]
+  },
+  {
+    "question": "Will Trump announce Elon Musk as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 181901.413043,
+    "liquidity": 17439.14059,
+    "slug": "will-trump-announce-elon-musk-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Gold close between $3800 and $3900 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0155,
+    "volume": 181063.631754,
+    "liquidity": 35602.17215,
+    "slug": "will-gold-close-between-3800-and-3900-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0155,
+      0.9845
+    ]
+  },
+  {
+    "question": "Will Gold close between $3500 and $3600 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0055,
+    "volume": 178310.393608,
+    "liquidity": 55144.07175,
+    "slug": "will-gold-close-between-3500-and-3600-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "Will Trump meet with iShowSpeed in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0175,
+    "volume": 177867.718151,
+    "liquidity": 3808.13608,
+    "slug": "will-trump-meet-with-ishowspeed-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0175,
+      0.9825
+    ]
+  },
+  {
+    "question": "Will Gold close between $3400 and $3500 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 177650.035236,
+    "liquidity": 59553.58116,
+    "slug": "will-gold-close-between-3400-and-3500-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Will inflation reach more than 8% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0065,
+    "volume": 177268.160221,
+    "liquidity": 7283.15465,
+    "slug": "will-inflation-reach-more-than-8-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0065,
+      0.9935
+    ]
+  },
+  {
+    "question": "Will Rihanna release an album in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0245,
+    "volume": 175627.160006,
+    "liquidity": 540.85314,
+    "slug": "will-rihanna-release-an-album-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0245,
+      0.9755
+    ]
+  },
+  {
+    "question": "Will a province schedule a referendum to leave Canada in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0195,
+    "volume": 175072.722694,
+    "liquidity": 4043.36132,
+    "slug": "will-a-province-schedule-a-referendum-to-leave-canada-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0195,
+      0.9805
+    ]
+  },
+  {
+    "question": "Brian Armstrong out as Coinbase CEO in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.013,
+    "volume": 173953.577825,
+    "liquidity": 2401.58094,
+    "slug": "brian-armstrong-out-as-coinbase-ceo-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.013,
+      0.987
+    ]
+  },
+  {
+    "question": "Erdo\u011fan out in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.012,
+    "volume": 173006.848133,
+    "liquidity": 10428.66459,
+    "slug": "erdoan-out-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.012,
+      0.988
+    ]
+  },
+  {
+    "question": "Nord Stream pipeline turned on in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 172958.448864,
+    "liquidity": 10925.23867,
+    "slug": "nord-stream-pipeline-turned-on-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Will Gold close between $3700 and $3800 at the end of 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0065,
+    "volume": 169728.233084,
+    "liquidity": 52428.81061,
+    "slug": "will-gold-close-between-3700-and-3800-at-the-end-of-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0065,
+      0.9935
+    ]
+  },
+  {
+    "question": "Trump announce run for 3rd term?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0115,
+    "volume": 169592.726213,
+    "liquidity": 23371.25995,
+    "slug": "trump-announce-run-for-3rd-term",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0115,
+      0.9885
+    ]
+  },
+  {
+    "question": "Will another driver finish second in the 2025 Drivers Championship?",
+    "end_date": "2025-12-07",
+    "yes_price": 0.0005,
+    "volume": 164435.733409,
+    "liquidity": 11182.4738,
+    "slug": "will-another-driver-finish-second-in-the-2025-drivers-championship",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Trump pardon Himself in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0105,
+    "volume": 160681.976047,
+    "liquidity": 6407.7844,
+    "slug": "will-trump-pardon-himself-in-2025-587-181-567",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0105,
+      0.9895
+    ]
+  },
+  {
+    "question": "NATO/EU troops fighting in Ukraine in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0145,
+    "volume": 159118.140785,
+    "liquidity": 7620.01073,
+    "slug": "natoeu-troops-fighting-in-ukraine-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0145,
+      0.9855
+    ]
+  },
+  {
+    "question": "Will SpaceX have 200 or more launches in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 158040.004892,
+    "liquidity": 10293.58958,
+    "slug": "will-spacex-have-200-or-more-launches-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will Israel annex West Bank territory in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.005,
+    "volume": 157819.722177,
+    "liquidity": 7627.45349,
+    "slug": "will-israel-annex-west-bank-territory-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.005,
+      0.995
+    ]
+  },
+  {
+    "question": "US forces in Yemen in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0115,
+    "volume": 157686.666298,
+    "liquidity": 10667.58077,
+    "slug": "us-forces-in-yemen-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0115,
+      0.9885
+    ]
+  },
+  {
+    "question": "Will Alibaba have a #1 AI model this year?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.02,
+    "volume": 157060.572856,
+    "liquidity": 4921.12199,
+    "slug": "will-alibaba-have-a-1-ai-model-this-year",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.02,
+      0.98
+    ]
+  },
+  {
+    "question": "Will inflation reach more than 5% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0155,
+    "volume": 155083.209797,
+    "liquidity": 10363.99073,
+    "slug": "will-inflation-reach-more-than-5-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0155,
+      0.9845
+    ]
+  },
+  {
+    "question": "Will Trump & Elon reduce the deficit in 2025? ",
+    "end_date": "2026-02-28",
+    "yes_price": 0.137,
+    "volume": 151428.445958,
+    "liquidity": 8115.09603,
+    "slug": "will-trump-elon-reduce-the-deficit-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.137,
+      0.863
+    ]
+  },
+  {
+    "question": "Andrew Tate guilty of human trafficking in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.018,
+    "volume": 150966.982216,
+    "liquidity": 12075.23364,
+    "slug": "andrew-tate-guilty-of-human-trafficking-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.018,
+      0.982
+    ]
+  },
+  {
+    "question": "Brazil\u2019s 12-month inflation below 5.50% for December 2025?",
+    "end_date": "2026-01-31",
+    "yes_price": 0.971,
+    "volume": 150204.689083,
+    "liquidity": 1429.71595,
+    "slug": "brazils-12-month-inflation-below-5pt50-for-december-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.971,
+      0.029
+    ]
+  },
+  {
+    "question": "Trump declassifies UFO files in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.045,
+    "volume": 147371.063427,
+    "liquidity": 4327.1972,
+    "slug": "trump-declassifies-ufo-files-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.045,
+      0.955
+    ]
+  },
+  {
+    "question": "Will only OP_CTV be activated in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0055,
+    "volume": 146035.557985,
+    "liquidity": 4948.50908,
+    "slug": "will-only-op-ctv-be-activated-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "Will Mercedes finish second in the 2025 Constructors' Championship?",
+    "end_date": "2025-12-07",
+    "yes_price": 0.9865,
+    "volume": 145422.906515,
+    "liquidity": 3994.06645,
+    "slug": "will-mercedes-finish-second-in-the-2025-constructors-championship",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.9865,
+      0.0135
+    ]
+  },
+  {
+    "question": "Will SOL flip ETH in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0045,
+    "volume": 144846.680004,
+    "liquidity": 78818.34537,
+    "slug": "will-sol-flip-eth-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0045,
+      0.9955
+    ]
+  },
+  {
+    "question": "Will Trump announce Larry Kudlow as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 144424.369901,
+    "liquidity": 17317.84746,
+    "slug": "will-trump-announce-larry-kudlow-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will MicroStrategy be margin called in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0185,
+    "volume": 144349.580759,
+    "liquidity": 32598.04385,
+    "slug": "will-microstrategy-be-margin-called-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0185,
+      0.9815
+    ]
+  },
+  {
+    "question": "Will RFK end Hepatitis B vaccine recommendation in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.036,
+    "volume": 140480.324293,
+    "liquidity": 3395.97501,
+    "slug": "will-rfk-end-hepatitis-b-vaccine-recommendation-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.036,
+      0.964
+    ]
+  },
+  {
+    "question": "Will Scott Bessent leave the Trump administration in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0145,
+    "volume": 139501.153759,
+    "liquidity": 10132.02035,
+    "slug": "will-scott-bessent-leave-the-trump-administration-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0145,
+      0.9855
+    ]
+  },
+  {
+    "question": "Will Trump spend >25% of 2025 presidency golfing?",
+    "end_date": "2026-01-02",
+    "yes_price": 0.125,
+    "volume": 134940.146004,
+    "liquidity": 5072.4498,
+    "slug": "will-trump-spend-25-of-2025-presidency-golfing",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.125,
+      0.875
+    ]
+  },
+  {
+    "question": "US defaults on debt in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0055,
+    "volume": 131375.182617,
+    "liquidity": 11721.59709,
+    "slug": "us-defaults-on-debt-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "Will Meta have a #1 AI model this year?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0205,
+    "volume": 125844.555151,
+    "liquidity": 8889.4007,
+    "slug": "will-meta-have-a-1-ai-model-this-year",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0205,
+      0.9795
+    ]
+  },
+  {
+    "question": "Harry & Meghan divorce in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0175,
+    "volume": 125216.539715,
+    "liquidity": 15515.11264,
+    "slug": "harry-meghan-divorce-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0175,
+      0.9825
+    ]
+  },
+  {
+    "question": "Trump abolishes IRS in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.004,
+    "volume": 123827.046789,
+    "liquidity": 4507.93743,
+    "slug": "trump-abolishes-irs-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.004,
+      0.996
+    ]
+  },
+  {
+    "question": "Will Trump pardon Bob Menendez in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.053,
+    "volume": 121592.121634,
+    "liquidity": 3298.94955,
+    "slug": "will-trump-pardon-bob-menendez-in-2025-383-275-551",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.053,
+      0.947
+    ]
+  },
+  {
+    "question": "AI model scores \u2265 90% on FrontierMath Benchmark in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.01,
+    "volume": 121406.094649,
+    "liquidity": 4724.28673,
+    "slug": "ai-model-scores-90-on-frontiermath-benchmark-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.01,
+      0.99
+    ]
+  },
+  {
+    "question": "Will Zhipu AI have a #1 AI model this year?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.018,
+    "volume": 118066.45614,
+    "liquidity": 16395.05167,
+    "slug": "will-zhipu-ai-have-a-1-ai-model-this-year",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.018,
+      0.982
+    ]
+  },
+  {
+    "question": "Is John McAfee alive?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0045,
+    "volume": 117928.241058,
+    "liquidity": 25353.4799,
+    "slug": "is-john-mcafee-alive-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0045,
+      0.9955
+    ]
+  },
+  {
+    "question": "Will GELO drop another Billboard top 100 hit in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0225,
+    "volume": 112654.349785,
+    "liquidity": 584.03687,
+    "slug": "will-gelo-drop-another-billboard-top-100-hit-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0225,
+      0.9775
+    ]
+  },
+  {
+    "question": "EU/NATO country announces peacekeeping force in Ukraine?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0195,
+    "volume": 111001.647398,
+    "liquidity": 10255.23486,
+    "slug": "eunato-country-announces-peacekeeping-force-in-ukraine",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0195,
+      0.9805
+    ]
+  },
+  {
+    "question": "Will Tulsi Gabbard leave the Trump administration in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0345,
+    "volume": 110978.360322,
+    "liquidity": 17493.22925,
+    "slug": "will-tulsi-gabbard-leave-the-trump-administration-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0345,
+      0.9655
+    ]
+  },
+  {
+    "question": "Bybit insolvent in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.01,
+    "volume": 107983.168368,
+    "liquidity": 8087.93659,
+    "slug": "bybit-insolvent-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.01,
+      0.99
+    ]
+  },
+  {
+    "question": "Will Trump announce Ron Paul as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 107882.293786,
+    "liquidity": 24882.26339,
+    "slug": "will-trump-announce-ron-paul-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Mistral have a #1 AI model this year?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 106508.760839,
+    "liquidity": 4920.90345,
+    "slug": "will-mistral-have-a-1-ai-model-this-year",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Will the U.S. collect between $1t and $2t in revenue in 2025?",
+    "end_date": "2026-02-28",
+    "yes_price": 0.0015,
+    "volume": 105959.815433,
+    "liquidity": 13872.41775,
+    "slug": "will-the-us-collect-between-1t-and-2t-in-revenue-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will Trump pardon Daniel Penny in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0185,
+    "volume": 105088.300454,
+    "liquidity": 58724.71894,
+    "slug": "will-trump-pardon-daniel-penny-in-2025-693-458-198",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0185,
+      0.9815
+    ]
+  },
+  {
+    "question": "Will 4-6 SpaceX Starship launches successfully reach Space in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.9835,
+    "volume": 104006.167509,
+    "liquidity": 13394.48565,
+    "slug": "will-4-6-spacex-starship-launches-successfully-reach-space-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.9835,
+      0.0165
+    ]
+  },
+  {
+    "question": "Will Trump meet with Ali Khamenei in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0065,
+    "volume": 103807.214183,
+    "liquidity": 6961.45643,
+    "slug": "will-trump-meet-with-ali-khamenei-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0065,
+      0.9935
+    ]
+  },
+  {
+    "question": "Will Elon cut the budget by at least 10% in 2025?",
+    "end_date": "2026-02-28",
+    "yes_price": 0.017,
+    "volume": 103498.984264,
+    "liquidity": 6788.58139,
+    "slug": "will-elon-cut-the-budget-by-at-least-10-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.017,
+      0.983
+    ]
+  },
+  {
+    "question": "Kamala Harris divorce in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0105,
+    "volume": 101560.839081,
+    "liquidity": 9406.37248,
+    "slug": "kamala-harris-divorce-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0105,
+      0.9895
+    ]
+  },
+  {
+    "question": "Will Trump announce Arthur Laffer as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 96706.466777,
+    "liquidity": 12493.92109,
+    "slug": "will-trump-announce-arthur-laffer-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Trump pardon Steve Bannon in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0625,
+    "volume": 96696.868637,
+    "liquidity": 7293.97198,
+    "slug": "will-trump-pardon-steve-bannon-in-2025-167-339-146-536",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0625,
+      0.9375
+    ]
+  },
+  {
+    "question": "Will only OP_CAT be activated in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.005,
+    "volume": 96355.192303,
+    "liquidity": 3957.92155,
+    "slug": "will-only-op-cat-be-activated-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.005,
+      0.995
+    ]
+  },
+  {
+    "question": "Will Elon cut the budget by at least 5% in 2025?",
+    "end_date": "2026-02-28",
+    "yes_price": 0.016,
+    "volume": 96263.748975,
+    "liquidity": 5080.34249,
+    "slug": "will-elon-cut-the-budget-by-at-least-5-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.016,
+      0.984
+    ]
+  },
+  {
+    "question": "Weed rescheduled in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0505,
+    "volume": 95893.200433,
+    "liquidity": 10362.18232,
+    "slug": "weed-rescheduled-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0505,
+      0.9495
+    ]
+  },
+  {
+    "question": "US congress stock trading ban in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.015,
+    "volume": 94770.784224,
+    "liquidity": 11686.78652,
+    "slug": "us-congress-stock-trading-ban-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.015,
+      0.985
+    ]
+  },
+  {
+    "question": "Sam Altman out as OpenAI CEO in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.011,
+    "volume": 93280.070498,
+    "liquidity": 5297.46973,
+    "slug": "sam-altman-out-as-openai-ceo-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.011,
+      0.989
+    ]
+  },
+  {
+    "question": "Will Trump announce Rick Rieder as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0145,
+    "volume": 92528.739144,
+    "liquidity": 9522.50145,
+    "slug": "will-trump-announce-rick-rieder-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0145,
+      0.9855
+    ]
+  },
+  {
+    "question": "U.S. enacts AI safety bill in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.038,
+    "volume": 91627.859228,
+    "liquidity": 5768.74733,
+    "slug": "us-enacts-ai-safety-bill-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.038,
+      0.962
+    ]
+  },
+  {
+    "question": "Will the U.S. collect more than $2t in revenue in 2025?",
+    "end_date": "2026-02-28",
+    "yes_price": 0.0005,
+    "volume": 91499.87339,
+    "liquidity": 11669.11055,
+    "slug": "will-the-us-collect-more-than-2t-in-revenue-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Trump cut taxes on high earners in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0155,
+    "volume": 90797.930238,
+    "liquidity": 27608.08273,
+    "slug": "will-trump-extend-tax-cut-on-high-earners",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0155,
+      0.9845
+    ]
+  },
+  {
+    "question": "Negative GDP growth in 2025?",
+    "end_date": "2026-01-30",
+    "yes_price": 0.0165,
+    "volume": 90555.561678,
+    "liquidity": 8242.93417,
+    "slug": "negative-gdp-growth-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0165,
+      0.9835
+    ]
+  },
+  {
+    "question": "Will Elon and DOGE cut more than 200k employees in 2025?",
+    "end_date": "2026-01-06",
+    "yes_price": 0.265,
+    "volume": 89748.973867,
+    "liquidity": 594.9499,
+    "slug": "will-elon-and-doge-cut-more-than-200k-employees-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.265,
+      0.735
+    ]
+  },
+  {
+    "question": "Will the Falcons win the NFC Championship?",
+    "end_date": "2026-01-26",
+    "yes_price": 0.0005,
+    "volume": 88527.633436,
+    "liquidity": 76855.32284,
+    "slug": "will-the-falcons-win-the-nfc-championship-1",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Donald Trump visit Taiwan in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0115,
+    "volume": 88132.61431,
+    "liquidity": 5833.65456,
+    "slug": "will-donald-trump-visit-taiwan-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0115,
+      0.9885
+    ]
+  },
+  {
+    "question": "Will a US ally get a nuke in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.018,
+    "volume": 86620.729614,
+    "liquidity": 5635.82125,
+    "slug": "will-a-us-ally-get-a-nuke-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.018,
+      0.982
+    ]
+  },
+  {
+    "question": "Will SpaceX have between 180-199 launches in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.014,
+    "volume": 85875.961957,
+    "liquidity": 2981.62016,
+    "slug": "will-spacex-have-between-180-199-launches-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.014,
+      0.986
+    ]
+  },
+  {
+    "question": "Trump agrees to send U.S. peacekeeping force to Ukraine?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.012,
+    "volume": 79956.577602,
+    "liquidity": 5119.83833,
+    "slug": "trump-agrees-to-send-us-peacekeeping-force-to-ukraine",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.012,
+      0.988
+    ]
+  },
+  {
+    "question": "Will the next UK election be called by December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0185,
+    "volume": 78197.454775,
+    "liquidity": 6792.99959,
+    "slug": "will-the-next-uk-election-is-called-by-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0185,
+      0.9815
+    ]
+  },
+  {
+    "question": "Hayden Davis in jail in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0145,
+    "volume": 77079.77777,
+    "liquidity": 2931.57017,
+    "slug": "hayden-davis-in-jail-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0145,
+      0.9855
+    ]
+  },
+  {
+    "question": "Trump cabinet member out in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.095,
+    "volume": 74619.977677,
+    "liquidity": 3191.3314,
+    "slug": "trump-cabinet-member-out-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.095,
+      0.905
+    ]
+  },
+  {
+    "question": "Will Elon Musk buy OpenAI in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.005,
+    "volume": 74436.070321,
+    "liquidity": 9976.07083,
+    "slug": "will-elon-musk-buy-openai-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.005,
+      0.995
+    ]
+  },
+  {
+    "question": "Meloni out as Prime Minister of Italy in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0165,
+    "volume": 71666.127828,
+    "liquidity": 9420.20147,
+    "slug": "meloni-out-as-prime-minister-of-italy-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0165,
+      0.9835
+    ]
+  },
+  {
+    "question": "Mark Carney out as leader of Liberals in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 70903.094337,
+    "liquidity": 3743.80404,
+    "slug": "mark-carney-out-as-leader-of-liberals-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will Trump pardon Joe Exotic \"The Tiger King\" in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.014,
+    "volume": 70249.144017,
+    "liquidity": 4778.15178,
+    "slug": "will-trump-pardon-joe-exotic-the-tiger-king-in-2025-784-928-365",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.014,
+      0.986
+    ]
+  },
+  {
+    "question": "Trump divorce in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.009,
+    "volume": 68061.743366,
+    "liquidity": 18199.09856,
+    "slug": "trump-divorce-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.009,
+      0.991
+    ]
+  },
+  {
+    "question": "Will Venezuela invade Guyana in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0125,
+    "volume": 67820.050975,
+    "liquidity": 10450.78983,
+    "slug": "will-venezuela-invade-guyana-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0125,
+      0.9875
+    ]
+  },
+  {
+    "question": "China x India military clash by December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0195,
+    "volume": 67593.633057,
+    "liquidity": 7064.85967,
+    "slug": "china-x-india-military-clash-by-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0195,
+      0.9805
+    ]
+  },
+  {
+    "question": "dogwifhat on the sphere in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0495,
+    "volume": 66581.23653,
+    "liquidity": 7639.53544,
+    "slug": "dogwifhat-on-the-sphere-in-2025-10m",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0495,
+      0.9505
+    ]
+  },
+  {
+    "question": "Will Trump announce Chamath Palihapitiya as next Fed Chair in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 65056.52883,
+    "liquidity": 14929.95153,
+    "slug": "will-trump-announce-chamath-palihapitiya-as-next-fed-chair-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will inflation reach more than 6% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0125,
+    "volume": 61851.823117,
+    "liquidity": 5809.94999,
+    "slug": "will-inflation-reach-more-than-6-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0125,
+      0.9875
+    ]
+  },
+  {
+    "question": "Will DOGE balance the budget in 2025?",
+    "end_date": "2026-01-31",
+    "yes_price": 0.027,
+    "volume": 60496.42843,
+    "liquidity": 18312.85687,
+    "slug": "will-doge-balance-the-budget-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.027,
+      0.973
+    ]
+  },
+  {
+    "question": "Romanian politician Georgescu guilty in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0135,
+    "volume": 60253.378807,
+    "liquidity": 4656.91631,
+    "slug": "georgescu-guilty-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0135,
+      0.9865
+    ]
+  },
+  {
+    "question": "OpenAI acquired in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0175,
+    "volume": 59034.7708,
+    "liquidity": 8392.48711,
+    "slug": "openai-acquired-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0175,
+      0.9825
+    ]
+  },
+  {
+    "question": "Will Drake release an album in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.2165,
+    "volume": 59016.837066,
+    "liquidity": 608.7226,
+    "slug": "will-drake-release-an-album-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.2165,
+      0.7835
+    ]
+  },
+  {
+    "question": "Senate passes bill to purchase 1m Bitcoin in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.015,
+    "volume": 58933.402859,
+    "liquidity": 8969.82239,
+    "slug": "senate-passes-bill-to-purchase-1m-bitcoin-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.015,
+      0.985
+    ]
+  },
+  {
+    "question": "Assad leaves Russia before 2026?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.015,
+    "volume": 58714.536566,
+    "liquidity": 1404.76996,
+    "slug": "assad-leaves-russia-before-2026",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.015,
+      0.985
+    ]
+  },
+  {
+    "question": "Will Karoline Leavitt leave the Trump administration in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0295,
+    "volume": 58399.615862,
+    "liquidity": 7667.39566,
+    "slug": "will-karoline-leavitt-leave-the-trump-administration-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0295,
+      0.9705
+    ]
+  },
+  {
+    "question": "Will Trump pardon Eric Adams in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.028,
+    "volume": 58031.13057,
+    "liquidity": 7300.56833,
+    "slug": "will-trump-pardon-eric-adams-in-2025-887-232-838",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.028,
+      0.972
+    ]
+  },
+  {
+    "question": "Will JD Vance announce Presidential run in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0245,
+    "volume": 57184.509794,
+    "liquidity": 10541.41624,
+    "slug": "will-jd-vance-announce-presidential-run-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0245,
+      0.9755
+    ]
+  },
+  {
+    "question": "Jay-Z & Beyonc\u00e9 divorce in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0155,
+    "volume": 55317.945247,
+    "liquidity": 4829.86657,
+    "slug": "jay-z-beyonc-divorce-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0155,
+      0.9845
+    ]
+  },
+  {
+    "question": "Will Donald Trump visit Ukraine in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0265,
+    "volume": 54893.859285,
+    "liquidity": 3865.76834,
+    "slug": "will-donald-trump-visit-ukraine-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0265,
+      0.9735
+    ]
+  },
+  {
+    "question": "US stagflation in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0095,
+    "volume": 54682.030761,
+    "liquidity": 8289.98952,
+    "slug": "us-stagflation-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0095,
+      0.9905
+    ]
+  },
+  {
+    "question": "Will 10-12 SpaceX Starship launches successfully reach Space in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.002,
+    "volume": 53569.019921,
+    "liquidity": 9934.21753,
+    "slug": "will-10-12-spacex-starship-launches-successfully-reach-space-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.002,
+      0.998
+    ]
+  },
+  {
+    "question": "Gavin Newsom out as California Governor in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.009,
+    "volume": 51856.073593,
+    "liquidity": 17411.84444,
+    "slug": "gavin-newsom-out-as-california-governor-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.009,
+      0.991
+    ]
+  },
+  {
+    "question": "Tim Cook out as Apple CEO in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0235,
+    "volume": 51766.754013,
+    "liquidity": 17314.37776,
+    "slug": "tim-cook-out-as-apple-ceo-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0235,
+      0.9765
+    ]
+  },
+  {
+    "question": "Will SpaceX have between 160-179 launches in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.971,
+    "volume": 51627.972867,
+    "liquidity": 3395.03696,
+    "slug": "will-spacex-have-between-160-179-launches-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.971,
+      0.029
+    ]
+  },
+  {
+    "question": "Will Trump lower tariffs on Canada by December 31?",
+    "end_date": "2025-07-31",
+    "yes_price": 0.409,
+    "volume": 51181.202529,
+    "liquidity": 295.53531,
+    "slug": "will-trump-lower-tariffs-on-canada-by-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.409,
+      0.591
+    ]
+  },
+  {
+    "question": "F1 season canceled or other team wins?",
+    "end_date": "2025-12-07",
+    "yes_price": 0.0005,
+    "volume": 50709.109332,
+    "liquidity": 6537.35506,
+    "slug": "f1-season-canceled-or-other-team-wins-724",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Eric Adams finish his term as NYC mayor?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.9775,
+    "volume": 50289.309654,
+    "liquidity": 7544.73332,
+    "slug": "will-eric-adams-finish-his-term-as-nyc-mayor",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.9775,
+      0.0225
+    ]
+  },
+  {
+    "question": "White girlfriend who shot Black bf guilty? ",
+    "end_date": "2025-12-31",
+    "yes_price": 0.111,
+    "volume": 50042.305348,
+    "liquidity": 587.27958,
+    "slug": "white-girlfriend-who-shot-black-bf-guilty",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.111,
+      0.889
+    ]
+  },
+  {
+    "question": "Giza Pyramid underground structures confirmed generators?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 49894.60405,
+    "liquidity": 6892.58252,
+    "slug": "giza-pyramid-underground-structures-confirmed-generators",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "X Money launch in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.14,
+    "volume": 49358.111095,
+    "liquidity": 2887.1163,
+    "slug": "x-money-launch-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.14,
+      0.86
+    ]
+  },
+  {
+    "question": "Will SpaceX have between 140-159 launches in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 45865.120869,
+    "liquidity": 6294.77117,
+    "slug": "will-spacex-have-between-140-159-launches-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Sundar Pichai out as Google CEO in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.017,
+    "volume": 44953.805657,
+    "liquidity": 5084.72422,
+    "slug": "sundar-pichai-out-as-google-ceo-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.017,
+      0.983
+    ]
+  },
+  {
+    "question": "Supreme Court vacancy in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0165,
+    "volume": 43573.134204,
+    "liquidity": 9796.59097,
+    "slug": "supreme-court-vacancy-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0165,
+      0.9835
+    ]
+  },
+  {
+    "question": "Will 13-15 SpaceX Starship launches successfully reach Space in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 42070.350575,
+    "liquidity": 12384.19447,
+    "slug": "will-13-15-spacex-starship-launches-successfully-reach-space-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will Donald Trump visit Mexico in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0275,
+    "volume": 41546.944214,
+    "liquidity": 4049.30703,
+    "slug": "which-countries-will-donald-trump-visit-in-2025-will-donald-trump-visit-mexico-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0275,
+      0.9725
+    ]
+  },
+  {
+    "question": "Will the 10-year Treasury yield dip below 1.0% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0075,
+    "volume": 41378.889537,
+    "liquidity": 5042.0416,
+    "slug": "will-the-10-year-treasury-yield-dip-below-1pt0-in-2025-359-426-414-394",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0075,
+      0.9925
+    ]
+  },
+  {
+    "question": "Brazil unemployment below 6.3% for Q4 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.9675,
+    "volume": 40778.25563,
+    "liquidity": 1285.0802,
+    "slug": "brazil-unemployment-below-6pt3-for-q4-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.9675,
+      0.0325
+    ]
+  },
+  {
+    "question": "Will Trump remove municipal bond tax exemption in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0145,
+    "volume": 40307.386504,
+    "liquidity": 2892.24592,
+    "slug": "will-trump-remove-municipal-bond-tax-exemption-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0145,
+      0.9855
+    ]
+  },
+  {
+    "question": "Anthropic acquired in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0145,
+    "volume": 39791.960751,
+    "liquidity": 5238.96935,
+    "slug": "anthropic-acquired-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0145,
+      0.9855
+    ]
+  },
+  {
+    "question": "Brazilian Supreme Court Minister Alexandre de Moraes be impeached 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0135,
+    "volume": 39124.978105,
+    "liquidity": 3053.33819,
+    "slug": "brazilian-supreme-court-minister-alexandre-de-moraes-be-impeached-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0135,
+      0.9865
+    ]
+  },
+  {
+    "question": "Trump says Moon Landing faked in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.003,
+    "volume": 38891.115902,
+    "liquidity": 7003.68373,
+    "slug": "trump-says-moon-landing-faked-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.003,
+      0.997
+    ]
+  },
+  {
+    "question": "Will Meta announce Instagram sale in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.01,
+    "volume": 36586.906214,
+    "liquidity": 8775.20271,
+    "slug": "will-meta-announce-instagram-sale-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.01,
+      0.99
+    ]
+  },
+  {
+    "question": "Will Elon and DOGE cut 150-200k employees in 2025?",
+    "end_date": "2026-01-06",
+    "yes_price": 0.245,
+    "volume": 35236.454605,
+    "liquidity": 1147.0523,
+    "slug": "will-elon-and-doge-cut-150-200k-employees-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.245,
+      0.755
+    ]
+  },
+  {
+    "question": "Will Trump pardon Julian Assange in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0215,
+    "volume": 35169.486787,
+    "liquidity": 5293.17238,
+    "slug": "will-trump-pardon-julian-assange-in-2025-985-859-724",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0215,
+      0.9785
+    ]
+  },
+  {
+    "question": "Will Nvidia have a #1 AI model this year?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.017,
+    "volume": 33724.188243,
+    "liquidity": 12008.90079,
+    "slug": "will-nvidia-have-a-1-ai-model-this-year",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.017,
+      0.983
+    ]
+  },
+  {
+    "question": "Mike Johnson out as Speaker by December 31?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.028,
+    "volume": 32518.523348,
+    "liquidity": 6961.85467,
+    "slug": "mike-johnson-out-as-speaker-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.028,
+      0.972
+    ]
+  },
+  {
+    "question": "U.S. withdraws from Syria in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0035,
+    "volume": 32159.460846,
+    "liquidity": 2699.00715,
+    "slug": "us-withdraws-from-syria-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0035,
+      0.9965
+    ]
+  },
+  {
+    "question": "Major U.S. bank bailout in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0175,
+    "volume": 32019.931472,
+    "liquidity": 4073.10582,
+    "slug": "major-us-bank-bailout-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0175,
+      0.9825
+    ]
+  },
+  {
+    "question": "Will neither OP_CTV nor OP_CAT be activated in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.9905,
+    "volume": 31260.697403,
+    "liquidity": 4263.39623,
+    "slug": "will-neither-op-ctv-nor-op-cat-be-activated-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.9905,
+      0.0095
+    ]
+  },
+  {
+    "question": "Will 25 or more SpaceX Starship launches successfully reach Space in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 30784.65769,
+    "liquidity": 9852.10597,
+    "slug": "will-25-or-more-spacex-starship-launches-successfully-reach-space-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Timoth\u00e9e Chalamet and Kylie Jenner engaged in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.07,
+    "volume": 28880.475715,
+    "liquidity": 898.7843,
+    "slug": "timothe-chalame-and-kylie-jenner-engaged-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.07,
+      0.93
+    ]
+  },
+  {
+    "question": "Will Trump pardon Young Thug in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.021,
+    "volume": 28769.881622,
+    "liquidity": 1958.9703,
+    "slug": "will-trump-pardon-young-thug-in-2025-241-242-639",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.021,
+      0.979
+    ]
+  },
+  {
+    "question": "Will Elon and DOGE cut 100-150k employees in 2025?",
+    "end_date": "2026-01-06",
+    "yes_price": 0.335,
+    "volume": 27995.302965,
+    "liquidity": 1390.5397,
+    "slug": "will-elon-and-doge-cut-100-150k-employees-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.335,
+      0.665
+    ]
+  },
+  {
+    "question": "Will Trump's approval rating hit 30% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.015,
+    "volume": 27716.75539,
+    "liquidity": 11922.08695,
+    "slug": "will-trumps-approval-rating-hit-30-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.015,
+      0.985
+    ]
+  },
+  {
+    "question": "Will 22-24 SpaceX Starship launches successfully reach Space in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 27066.709765,
+    "liquidity": 14793.44728,
+    "slug": "will-22-24-spacex-starship-launches-successfully-reach-space-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Trump meet with Lai Ching-te in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.014,
+    "volume": 26801.088304,
+    "liquidity": 8740.17003,
+    "slug": "will-trump-meet-with-lai-ching-te-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.014,
+      0.986
+    ]
+  },
+  {
+    "question": "Le Pen sentence reduced in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.016,
+    "volume": 26669.925265,
+    "liquidity": 5419.53723,
+    "slug": "le-pen-sentence-reduced-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.016,
+      0.984
+    ]
+  },
+  {
+    "question": "Will 16-18 SpaceX Starship launches successfully reach Space in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 26411.498404,
+    "liquidity": 12236.27024,
+    "slug": "will-16-18-spacex-starship-launches-successfully-reach-space-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will both OP_CTV and OP_CAT be activated in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 26028.97792,
+    "liquidity": 4743.4193,
+    "slug": "will-both-op-ctv-and-op-cat-be-activated-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will Elon and DOGE cut 50-100k employees in 2025?",
+    "end_date": "2026-01-06",
+    "yes_price": 0.0995,
+    "volume": 25124.361994,
+    "liquidity": 2493.24499,
+    "slug": "will-elon-and-doge-cut-50-100k-employees-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0995,
+      0.9005
+    ]
+  },
+  {
+    "question": "Will 19-21 SpaceX Starship launches successfully reach Space in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0005,
+    "volume": 24956.381415,
+    "liquidity": 14350.32897,
+    "slug": "will-19-21-spacex-starship-launches-successfully-reach-space-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0005,
+      0.9995
+    ]
+  },
+  {
+    "question": "Will Trump meet with MrBeast in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.051,
+    "volume": 24391.035263,
+    "liquidity": 3389.91136,
+    "slug": "will-trump-meet-with-mrbeast-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.051,
+      0.949
+    ]
+  },
+  {
+    "question": "Will the 10-year Treasury yield dip below 2.0% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0095,
+    "volume": 22944.620289,
+    "liquidity": 11336.09226,
+    "slug": "will-the-10-year-treasury-yield-dip-below-2pt0-in-2025-427-348-123-299",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0095,
+      0.9905
+    ]
+  },
+  {
+    "question": "Will RFK end Influenza vaccine recommendation in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.028,
+    "volume": 22091.99025,
+    "liquidity": 2641.68768,
+    "slug": "will-rfk-end-influenza-vaccine-recommendation-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.028,
+      0.972
+    ]
+  },
+  {
+    "question": "Will Trump pardon Roger Stone in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0655,
+    "volume": 20264.378456,
+    "liquidity": 2872.28259,
+    "slug": "will-trump-pardon-roger-stone-in-2025-588-992-159",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0655,
+      0.9345
+    ]
+  },
+  {
+    "question": "Will Schumer remain Minority Leader through 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.967,
+    "volume": 19941.680021,
+    "liquidity": 4916.76195,
+    "slug": "will-schumer-remain-minority-leader-through-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.967,
+      0.033
+    ]
+  },
+  {
+    "question": "Kanye West arrested in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0255,
+    "volume": 19691.320979,
+    "liquidity": 3267.6911,
+    "slug": "kanye-west-arrested-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0255,
+      0.9745
+    ]
+  },
+  {
+    "question": "Will Trump lower tariffs on Mexico by December 31?",
+    "end_date": "TBD",
+    "yes_price": 0.24,
+    "volume": 19620.363566,
+    "liquidity": 1690.03705,
+    "slug": "will-trump-lower-tariffs-on-mexico-by-december-31",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.24,
+      0.76
+    ]
+  },
+  {
+    "question": "US announces withdrawal from WTO in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0205,
+    "volume": 19061.831065,
+    "liquidity": 4682.8706,
+    "slug": "us-announces-withdrawal-from-wto-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0205,
+      0.9795
+    ]
+  },
+  {
+    "question": "Underground Pyramid structures confirmed by peer review?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.035,
+    "volume": 19034.450755,
+    "liquidity": 3050.36706,
+    "slug": "underground-pyramid-structures-confirmed-by-peer-review",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.035,
+      0.965
+    ]
+  },
+  {
+    "question": "Will Trump jail Fauci?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0075,
+    "volume": 17263.085398,
+    "liquidity": 6804.42197,
+    "slug": "will-trump-jail-fauci",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0075,
+      0.9925
+    ]
+  },
+  {
+    "question": "Luigi Mangione plea deal in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.1,
+    "volume": 17167.535557,
+    "liquidity": 1662.6985,
+    "slug": "luigi-mangione-plea-deal-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.1,
+      0.9
+    ]
+  },
+  {
+    "question": "Luigi Mangione mistrial?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.077,
+    "volume": 16467.403622,
+    "liquidity": 1147.53949,
+    "slug": "luigi-mangione-mistrial",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.077,
+      0.923
+    ]
+  },
+  {
+    "question": "One Direction reunion in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0085,
+    "volume": 16387.351616,
+    "liquidity": 1752.64243,
+    "slug": "one-direction-reunion-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0085,
+      0.9915
+    ]
+  },
+  {
+    "question": "Isar Aerospace successful orbital launch in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.146,
+    "volume": 15429.079841,
+    "liquidity": 242.6865,
+    "slug": "isar-aerospace-successful-orbital-launch-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.146,
+      0.854
+    ]
+  },
+  {
+    "question": "Lana Del Rey divorce in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.027,
+    "volume": 14944.756232,
+    "liquidity": 6128.30164,
+    "slug": "lana-del-rey-divorce-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.027,
+      0.973
+    ]
+  },
+  {
+    "question": "Will 01A1 have a #1 AI model this year?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0145,
+    "volume": 14521.399443,
+    "liquidity": 8206.06442,
+    "slug": "will-01a1-have-a-1-ai-model-this-year",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0145,
+      0.9855
+    ]
+  },
+  {
+    "question": "Will Trump jail Biden family member?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0125,
+    "volume": 14294.313249,
+    "liquidity": 3331.19677,
+    "slug": "will-trump-jail-biden-family-member",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0125,
+      0.9875
+    ]
+  },
+  {
+    "question": "Will Meta announce WhatsApp sale in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0015,
+    "volume": 14257.986127,
+    "liquidity": 2135.1299,
+    "slug": "will-meta-announce-whatsapp-sale-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0015,
+      0.9985
+    ]
+  },
+  {
+    "question": "Will Trump's approval rating hit 20% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.007,
+    "volume": 14143.346629,
+    "liquidity": 10498.72058,
+    "slug": "will-trumps-approval-rating-hit-20-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.007,
+      0.993
+    ]
+  },
+  {
+    "question": "Will Apple release a foldable iPhone in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0095,
+    "volume": 13994.114403,
+    "liquidity": 7657.28787,
+    "slug": "will-apple-release-a-foldable-iphone-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0095,
+      0.9905
+    ]
+  },
+  {
+    "question": "Will Eric Adams be removed as NYC mayor?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.011,
+    "volume": 13516.620785,
+    "liquidity": 3214.99069,
+    "slug": "will-eric-adams-be-removed-as-nyc-mayor",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.011,
+      0.989
+    ]
+  },
+  {
+    "question": "Was 9/11 an inside job?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.009,
+    "volume": 13505.490809,
+    "liquidity": 10636.22309,
+    "slug": "was-911-an-inside-job",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.009,
+      0.991
+    ]
+  },
+  {
+    "question": "Wisconsin judge convicted for obstructing immigration operation?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.372,
+    "volume": 13197.279564,
+    "liquidity": 2197.86573,
+    "slug": "wisconsin-judge-convicted-for-obstructing-immigration-operation",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.372,
+      0.628
+    ]
+  },
+  {
+    "question": "Will RFK end Polio vaccine recommendation in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.012,
+    "volume": 12258.090674,
+    "liquidity": 11305.09733,
+    "slug": "will-rfk-end-polio-vaccine-recommendation-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.012,
+      0.988
+    ]
+  },
+  {
+    "question": "Will Kanye West release an album in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.202,
+    "volume": 12246.234606,
+    "liquidity": 361.91625,
+    "slug": "will-kanye-west-release-an-album-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.202,
+      0.798
+    ]
+  },
+  {
+    "question": "Will Kendrick Lamar release an album in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.07,
+    "volume": 11869.651431,
+    "liquidity": 1590.4138,
+    "slug": "will-kendrick-lamar-release-an-album-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.07,
+      0.93
+    ]
+  },
+  {
+    "question": "BitBoy convicted?",
+    "end_date": "2026-03-31",
+    "yes_price": 0.46,
+    "volume": 11674.974115,
+    "liquidity": 176.7223,
+    "slug": "bitboy-convicted",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.46,
+      0.54
+    ]
+  },
+  {
+    "question": "Will Lee Zeldin leave the Trump administration in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.019,
+    "volume": 11530.386058,
+    "liquidity": 2797.0868,
+    "slug": "will-lee-zeldin-leave-the-trump-administration-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.019,
+      0.981
+    ]
+  },
+  {
+    "question": "Andy Jassy out as Amazon CEO in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.014,
+    "volume": 11481.534684,
+    "liquidity": 4748.41728,
+    "slug": "andy-jassy-out-as-amazon-ceo-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.014,
+      0.986
+    ]
+  },
+  {
+    "question": "Will Stacey Abrams be arrested in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.015,
+    "volume": 11262.73112,
+    "liquidity": 7998.56881,
+    "slug": "will-stacey-abrams-be-arrested-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.015,
+      0.985
+    ]
+  },
+  {
+    "question": "Will Trump's approval rating hit 25% in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0055,
+    "volume": 11078.019567,
+    "liquidity": 7521.97149,
+    "slug": "will-trumps-approval-rating-hit-25-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0055,
+      0.9945
+    ]
+  },
+  {
+    "question": "Dave Portnoy in jail in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0255,
+    "volume": 10945.275855,
+    "liquidity": 5688.4309,
+    "slug": "dave-portnoy-in-jail-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0255,
+      0.9745
+    ]
+  },
+  {
+    "question": "Trump charges Member of January 6 committee? ",
+    "end_date": "2025-12-31",
+    "yes_price": 0.055,
+    "volume": 10471.344723,
+    "liquidity": 2312.3812,
+    "slug": "trump-charges-member-of-january-6-committee",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.055,
+      0.945
+    ]
+  },
+  {
+    "question": "Will Waymo surpass Uber SF market share in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0555,
+    "volume": 10118.178971,
+    "liquidity": 347.47765,
+    "slug": "will-waymo-surpass-uber-sf-market-share-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0555,
+      0.9445
+    ]
+  },
+  {
+    "question": "Will A$AP Rocky release an album in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.06,
+    "volume": 9939.756871,
+    "liquidity": 851.8839,
+    "slug": "will-aap-rocky-release-an-album-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.06,
+      0.94
+    ]
+  },
+  {
+    "question": "Will Bezos announce Washington Post sale in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.055,
+    "volume": 9761.724052,
+    "liquidity": 673.1701,
+    "slug": "will-bezos-announce-washington-post-sale-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.055,
+      0.945
+    ]
+  },
+  {
+    "question": "Will Lana Del Rey release an album in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0365,
+    "volume": 8956.478494,
+    "liquidity": 494.35696,
+    "slug": "will-lana-del-rey-release-an-album-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0365,
+      0.9635
+    ]
+  },
+  {
+    "question": "Will NBA competitor raise >$3b in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.2035,
+    "volume": 8949.293179,
+    "liquidity": 23.96722,
+    "slug": "will-nba-competitor-raise-3b-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.2035,
+      0.7965
+    ]
+  },
+  {
+    "question": "Giza Pyramid underground structures confirmed?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0155,
+    "volume": 8643.178206,
+    "liquidity": 2640.96545,
+    "slug": "giza-pyramid-underground-structures-confirmed-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0155,
+      0.9845
+    ]
+  },
+  {
+    "question": "Will Frank Ocean release an album in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.065,
+    "volume": 7980.097399,
+    "liquidity": 515.96989,
+    "slug": "will-frank-ocean-release-an-album-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.065,
+      0.935
+    ]
+  },
+  {
+    "question": "Will an Erewhon open in NYC in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.236,
+    "volume": 7657.319586,
+    "liquidity": 596.78092,
+    "slug": "will-an-erewhon-open-in-nyc-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.236,
+      0.764
+    ]
+  },
+  {
+    "question": "Will Trump pardon Matt Gaetz in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.038,
+    "volume": 7107.703161,
+    "liquidity": 5715.50598,
+    "slug": "will-trump-pardon-matt-gaetz-in-2025-215-251-426",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.038,
+      0.962
+    ]
+  },
+  {
+    "question": "Leonardo DiCaprio engaged in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0325,
+    "volume": 6653.357413,
+    "liquidity": 5014.45678,
+    "slug": "leonardo-dicaprio-engaged-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0325,
+      0.9675
+    ]
+  },
+  {
+    "question": "Congressional term limits in 2025? ",
+    "end_date": "2025-12-31",
+    "yes_price": 0.007,
+    "volume": 6194.632063,
+    "liquidity": 6537.77675,
+    "slug": "congressional-term-limits-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.007,
+      0.993
+    ]
+  },
+  {
+    "question": "Vaccine for new COVID disease in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.077,
+    "volume": 6119.979862,
+    "liquidity": 1549.95434,
+    "slug": "vaccine-for-new-covid-disease-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.077,
+      0.923
+    ]
+  },
+  {
+    "question": "Senator Eichorn guilty of soliciting a child?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.5,
+    "volume": 5595.65258,
+    "liquidity": 38.58024,
+    "slug": "senator-eichorn-guilty-of-soliciting-a-child",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.5,
+      0.5
+    ]
+  },
+  {
+    "question": "AOC announces senate run in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0295,
+    "volume": 5501.451642,
+    "liquidity": 2117.25429,
+    "slug": "aoc-announces-senate-run-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0295,
+      0.9705
+    ]
+  },
+  {
+    "question": "Will Meta settle with the FTC?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0135,
+    "volume": 5276.629926,
+    "liquidity": 3633.13602,
+    "slug": "will-meta-settle-with-the-ftc",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0135,
+      0.9865
+    ]
+  },
+  {
+    "question": "Britney Spears tour in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0445,
+    "volume": 4876.628618,
+    "liquidity": 1854.80507,
+    "slug": "britney-spears-tour-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0445,
+      0.9555
+    ]
+  },
+  {
+    "question": "Rojas guilty in Texas illegal abortion case?",
+    "end_date": "2026-02-28",
+    "yes_price": 0.355,
+    "volume": 4603.803102,
+    "liquidity": 71.5634,
+    "slug": "rojas-guilty-in-texas-illegal-abortion-case",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.355,
+      0.645
+    ]
+  },
+  {
+    "question": "Florida bans mRNA vaccine mandates in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0295,
+    "volume": 4215.695369,
+    "liquidity": 315.61947,
+    "slug": "florida-bans-mrna-vaccine-mandates-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0295,
+      0.9705
+    ]
+  },
+  {
+    "question": "Hailey Bieber pregnant in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.1045,
+    "volume": 3981.21902,
+    "liquidity": 197.27935,
+    "slug": "hailey-bieber-pregnant-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.1045,
+      0.8955
+    ]
+  },
+  {
+    "question": "Will Stephen A. Smith announce Presidential run in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.021,
+    "volume": 3981.070953,
+    "liquidity": 1289.59608,
+    "slug": "will-stephen-a-smith-announce-presidential-run-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.021,
+      0.979
+    ]
+  },
+  {
+    "question": "Tiger Woods x Vanessa Trump engaged in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.1475,
+    "volume": 3716.612034,
+    "liquidity": 73.08342,
+    "slug": "tiger-woods-x-vanessa-trump-engaged-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.1475,
+      0.8525
+    ]
+  },
+  {
+    "question": "Bill Belichick engaged in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.404,
+    "volume": 3592.270802,
+    "liquidity": 603.12123,
+    "slug": "bill-belichick-engaged-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.404,
+      0.596
+    ]
+  },
+  {
+    "question": "Will Trump jail Liz Cheney?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0065,
+    "volume": 3527.464758,
+    "liquidity": 2185.9189,
+    "slug": "will-trump-jail-liz-cheney",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0065,
+      0.9935
+    ]
+  },
+  {
+    "question": "Will Casey DeSantis run for Florida Governor?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.089,
+    "volume": 3134.163474,
+    "liquidity": 627.25329,
+    "slug": "casey-desantis-runs-for-florida-governor",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.089,
+      0.911
+    ]
+  },
+  {
+    "question": "Deel CEO jailed in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.1115,
+    "volume": 2714.75925,
+    "liquidity": 988.20804,
+    "slug": "deel-ceo-jailed-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.1115,
+      0.8885
+    ]
+  },
+  {
+    "question": "Jackson Hinkle indicted in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.135,
+    "volume": 2492.804136,
+    "liquidity": 70.30216,
+    "slug": "jackson-hinkle-indicted-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.135,
+      0.865
+    ]
+  },
+  {
+    "question": "Nara & Lucky divorce in 2025?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0415,
+    "volume": 2172.122072,
+    "liquidity": 1063.59504,
+    "slug": "nara-lucky-divorce-in-2025",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0415,
+      0.9585
+    ]
+  },
+  {
+    "question": "Will Trump jail Adam Kinzinger?",
+    "end_date": "2025-12-31",
+    "yes_price": 0.0995,
+    "volume": 936.021686,
+    "liquidity": 1233.42887,
+    "slug": "will-trump-jail-adam-kinzinger",
+    "outcomes": [
+      "Yes",
+      "No"
+    ],
+    "prices": [
+      0.0995,
+      0.9005
+    ]
+  }
+]

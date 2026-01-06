@@ -1,0 +1,153 @@
+# Parameter Test Configurations
+# Based on lessons from @the_smart_ape's bot testing
+# Conservative to aggressive parameter sets for parallel testing
+
+# ULTRA CONSERVATIVE - Maximum Safety
+# Use when: Starting out, high risk aversion
+# Expected: Low trades, high win rate, low ROI
+ultra_conservative:
+  trading:
+    mode: paper
+  
+  risk:
+    max_position_usd: 250          # Small positions
+    max_total_exposure_usd: 1000   # Very limited exposure
+    max_positions: 5
+    kelly_fraction: 0.15           # Very fractional Kelly
+  
+  signals:
+    mean_reversion:
+      enabled: true
+      min_strength: VERY_STRONG    # Only strongest signals
+      min_mispricing_pct: 10.0     # Large edge required
+      longshot_threshold: 0.25     # More conservative
+      favorite_threshold: 0.75
+    
+    volatility:
+      enabled: false               # Disabled for safety
+    
+    whale:
+      enabled: false
+  
+  execution:
+    check_interval_seconds: 600    # Check every 10 min
+    max_slippage_pct: 1.0          # Very tight slippage
+    max_spread_pct: 3.0            # Tight spread
+    dry_run: false
+
+---
+
+# CONSERVATIVE - Default Recommended
+# Use when: After initial testing, moderate risk tolerance
+# Expected: Moderate trades, good win rate, steady ROI
+conservative:
+  trading:
+    mode: paper
+  
+  risk:
+    max_position_usd: 500
+    max_total_exposure_usd: 2000
+    max_positions: 10
+    kelly_fraction: 0.25           # Quarter Kelly (your default)
+  
+  signals:
+    mean_reversion:
+      enabled: true
+      min_strength: STRONG         # Strong signals only
+      min_mispricing_pct: 7.5
+      longshot_threshold: 0.30
+      favorite_threshold: 0.70
+    
+    volatility:
+      enabled: true
+      threshold_pct: 12.0          # Conservative threshold
+    
+    whale:
+      enabled: false
+  
+  execution:
+    check_interval_seconds: 300
+    max_slippage_pct: 2.0
+    max_spread_pct: 5.0
+    dry_run: false
+
+---
+
+# MODERATE - Balanced Approach
+# Use when: Comfortable with system, balanced risk/reward
+# Expected: More trades, moderate win rate, moderate ROI
+moderate:
+  trading:
+    mode: paper
+  
+  risk:
+    max_position_usd: 500
+    max_total_exposure_usd: 2000
+    max_positions: 10
+    kelly_fraction: 0.30           # Slightly higher Kelly
+  
+  signals:
+    mean_reversion:
+      enabled: true
+      min_strength: MODERATE       # Moderate signals accepted
+      min_mispricing_pct: 5.0      # Standard edge
+      longshot_threshold: 0.30
+      favorite_threshold: 0.70
+    
+    volatility:
+      enabled: true
+      threshold_pct: 10.0          # Standard threshold
+    
+    whale:
+      enabled: false
+  
+  execution:
+    check_interval_seconds: 300
+    max_slippage_pct: 2.5
+    max_spread_pct: 5.0
+    dry_run: false
+
+---
+
+# AGGRESSIVE - Higher Risk/Reward
+# Use when: Proven track record, high risk tolerance
+# Expected: Many trades, lower win rate, higher ROI (or loss!)
+# ⚠️ WARNING: Like @the_smart_ape's -50% ROI test, this can lose money!
+aggressive:
+  trading:
+    mode: paper
+  
+  risk:
+    max_position_usd: 750          # Larger positions
+    max_total_exposure_usd: 3000   # More exposure
+    max_positions: 15
+    kelly_fraction: 0.35           # Higher Kelly
+  
+  signals:
+    mean_reversion:
+      enabled: true
+      min_strength: WEAK           # All signals accepted
+      min_mispricing_pct: 3.0      # Lower edge threshold
+      longshot_threshold: 0.35     # Wider range
+      favorite_threshold: 0.65
+    
+    volatility:
+      enabled: true
+      threshold_pct: 8.0           # Lower threshold = more signals
+    
+    whale:
+      enabled: true                # Risky whale following
+      min_trade_size: 500
+  
+  execution:
+    check_interval_seconds: 180    # Check every 3 min
+    max_slippage_pct: 3.0
+    max_spread_pct: 7.0
+    dry_run: false
+
+---
+
+# NOTE: Run parameter sweep to test all at once:
+# python toolkit/execution-engine/src/execution_engine/parameter_sweep.py --days 30
+
+

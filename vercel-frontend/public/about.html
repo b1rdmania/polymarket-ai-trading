@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Strategy | Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>trading strategy</h1>
+            <p class="subtitle">MEAN REVERSION IN PREDICTION MARKETS</p>
+        </header>
+
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="signals.html">Signals</a>
+            <a href="ai-insights.html">AI Insights</a>
+            <a href="quality.html">Quality</a>
+            <a href="resolution.html">Resolution</a>
+            <a href="system.html">Trading Models</a>
+            <a href="about.html" class="active">Strategy</a>
+            <a href="research.html">Research</a>
+            <a href="theory.html">Theory</a>
+        </nav>
+
+        <div class="content">
+            <div class="highlight-box">
+                <strong>Core thesis:</strong> Prediction markets show systematic emotional volatility. This creates exploitable arbitrage through mean reversion.
+            </div>
+
+            <h2>Approach</h2>
+            <p>
+                Prediction markets are dominated by retail traders who make decisions based on emotion and recent events rather than statistics. This creates predictable patterns of overreaction and subsequent correction.
+            </p>
+
+            <h3>Mechanism</h3>
+            <p>When news breaks or sentiment shifts rapidly:</p>
+            <ul>
+                <li>Positive news drives buying, prices spike above fair value</li>
+                <li>Negative news drives selling, prices crash below fair value</li>
+                <li>Time passes, emotions fade, prices revert to fundamentals</li>
+            </ul>
+
+            <p>
+                Example: A candidate makes a controversial statement in a debate. Their election probability drops from 65% to 48% in minutes. Historical data shows debate performance has minimal correlation with election outcomes. Within 48 hours, the price reverts to 62%. That 14-point swing is pure emotion.
+            </p>
+
+            <h2>Three Models</h2>
+            <p>We run three parallel models with different risk profiles. All use the same principle: fade emotional extremes.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Min Signal</th>
+                        <th>Max Position</th>
+                        <th>Kelly Fraction</th>
+                        <th>Philosophy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Conservative</strong></td>
+                        <td>Strong</td>
+                        <td>$200</td>
+                        <td>0.15</td>
+                        <td>Trade only extreme overreactions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Moderate</strong></td>
+                        <td>Moderate</td>
+                        <td>$500</td>
+                        <td>0.25</td>
+                        <td>Balanced risk and frequency</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aggressive</strong></td>
+                        <td>Weak</td>
+                        <td>$800</td>
+                        <td>0.35</td>
+                        <td>Higher frequency, more opportunities</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Why This Works</h2>
+
+            <h3>1. Behavioral Finance</h3>
+            <p>Decades of research show retail traders consistently:</p>
+            <ul>
+                <li>Overreact to recent information</li>
+                <li>Overvalue extreme probabilities</li>
+                <li>Let partisan beliefs distort probability assessments</li>
+                <li>Chase momentum and create self-reinforcing spirals</li>
+            </ul>
+
+            <h3>2. Market Structure</h3>
+            <ul>
+                <li>No professional market makers to arbitrage away inefficiencies</li>
+                <li>Retail-dominated participant base (86.4% lose money on Polymarket)</li>
+                <li>Low capital requirements prevent large institutions from entering</li>
+                <li>Political markets especially irrational due to partisan emotions</li>
+            </ul>
+
+            <h3>3. Mean Reversion at Specific Horizons</h3>
+            <p>
+                Berg and Rietz (2018) found that prediction market mispricing mean-reverts most strongly at 7-21 day horizons. This is our target range.
+            </p>
+
+            <h2>What We Avoid</h2>
+            <p>This is not:</p>
+            <ul>
+                <li>Trying to predict election outcomes better than polls</li>
+                <li>Fundamental analysis or political forecasting</li>
+                <li>Long-term position taking</li>
+                <li>Following "smart money" or whale traders</li>
+            </ul>
+
+            <p>This is:</p>
+            <ul>
+                <li>Statistical arbitrage of emotional volatility</li>
+                <li>Systematic mean reversion trading</li>
+                <li>Fading crowd psychology at extremes</li>
+                <li>Risk-managed position sizing using Kelly Criterion</li>
+            </ul>
+
+            <h2>Validation</h2>
+            <p>
+                We are running all three models in paper trading mode for 30 days to:
+            </p>
+            <ul>
+                <li>Validate the strategy works in live markets</li>
+                <li>Determine which risk profile performs best</li>
+                <li>Measure real-world slippage and execution costs</li>
+                <li>Record live market data for future strategy improvements</li>
+            </ul>
+
+            <p>
+                After 30 days, we select the winning model and potentially deploy with real capital. The data decides which parameters work best.
+            </p>
+
+            <div class="highlight-box">
+                <a href="index.html">View live performance</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Polymarket API Test Trading Protocol</p>
+            <p><a href="https://github.com/b1rdmania/aztec-auction-analysis">GitHub Repository</a></p>
+        </footer>
+    </div>
+</body>
+</html>

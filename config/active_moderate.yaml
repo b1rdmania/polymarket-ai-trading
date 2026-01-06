@@ -1,0 +1,36 @@
+alerts:
+  daily_loss_threshold: 200
+  large_loss_threshold: 100
+data:
+  db_path: data/trades_moderate.db
+  logs_dir: logs/moderate
+  recordings_dir: data/recordings_moderate
+execution:
+  check_interval_seconds: 300
+  max_slippage_pct: 2.0
+  max_spread_pct: 5.0
+logging:
+  level: INFO
+  log_positions: true
+  log_signals: true
+  log_trades: true
+recording:
+  enabled: true
+  record_executions: true
+  record_signals: true
+risk:
+  kelly_fraction: 0.25
+  max_drawdown_pct: 20.0
+  max_position_usd: 500
+  max_positions: 8
+  max_total_exposure_usd: 2000
+signals:
+  mean_reversion:
+    enabled: true
+    favorite_threshold: 0.7
+    longshot_threshold: 0.3
+    min_mispricing_pct: 5.0
+    min_strength: MODERATE
+trading:
+  mode: paper
+  model_name: moderate

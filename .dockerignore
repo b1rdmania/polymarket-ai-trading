@@ -1,0 +1,11 @@
+# Add to .gitignore for Docker
+.env
+*.log
+data/*.db
+data/model_pids.txt
+data/dashboard_pid.txt
+data/recordings_*/
+logs/
+config/active_*.yaml
+
+
