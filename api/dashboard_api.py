@@ -656,8 +656,8 @@ async def root():
     return {"message": "Dashboard not found. Run from project root."}
 
 
-# Mount static files
-app.mount("/static", StaticFiles(directory=str(BASE_DIR / "dashboard" / "trading")), name="static")
+# Mount static files (commented out - using Vercel frontend now)
+# app.mount("/static", StaticFiles(directory=str(BASE_DIR / "dashboard" / "trading")), name="static")
 
 
 if __name__ == "__main__":
