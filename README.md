@@ -175,17 +175,23 @@ Your system will be live at: `https://polymarket-trading-system.onrender.com`
 
 ## 📚 Documentation
 
+**[📖 View Full Documentation →](docs/)**
+
+### Quick Links
+
 | Guide | Purpose |
 |-------|---------|
-| [RENDER_QUICKSTART.md](RENDER_QUICKSTART.md) | **Deploy to Render in 5 steps** (recommended) |
-| [RENDER_DEPLOY.md](RENDER_DEPLOY.md) | Complete Render deployment guide with troubleshooting |
-| [START_GUIDE.md](START_GUIDE.md) | Local setup walkthrough for beginners |
-| [DOCKER_GUIDE.md](DOCKER_GUIDE.md) | Docker installation and troubleshooting |
-| [PAPER_TRADING_START.md](PAPER_TRADING_START.md) | How paper trading mode works |
-| [BACKTESTING_GUIDE.md](BACKTESTING_GUIDE.md) | Running backtests on historical data |
-| [VERCEL_DEPLOY.md](VERCEL_DEPLOY.md) | Deploying frontend to Vercel |
-| [SCIEMO_DESIGN_ANALYSIS.md](SCIEMO_DESIGN_ANALYSIS.md) | Dashboard UX/design decisions |
-| [GO_LIVE.md](GO_LIVE.md) | ⚠️ Moving from paper → real capital (not recommended yet) |
+| [Getting Started](docs/guides/getting-started.md) | Complete setup walkthrough for beginners |
+| [Deploy to Render](docs/deployment/render-quickstart.md) | **5-step production deployment** ($7/month) |
+| [Paper Trading Guide](docs/guides/paper-trading.md) | How paper trading mode works |
+| [Backtesting Guide](docs/guides/backtesting.md) | Run historical backtests |
+| [Docker Setup](docs/deployment/docker.md) | Local development with Docker |
+
+### All Guides
+
+- **Deployment**: [Render](docs/deployment/render-quickstart.md) • [Docker](docs/deployment/docker.md) • [Vercel](docs/deployment/vercel.md)
+- **Usage**: [Getting Started](docs/guides/getting-started.md) • [Paper Trading](docs/guides/paper-trading.md) • [Backtesting](docs/guides/backtesting.md)
+- **Advanced**: [Raspberry Pi](docs/guides/raspberry-pi.md) • [Wallet Setup](docs/guides/wallet-setup.md) • [Go Live](docs/guides/go-live.md) ⚠️
 
 ## 🔬 Research Foundation
 

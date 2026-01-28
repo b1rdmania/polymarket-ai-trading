@@ -32,6 +32,7 @@ env/
 # Docker
 data/
 logs/
+dashboard/
 *.log
 *.db
 
