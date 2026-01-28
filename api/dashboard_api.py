@@ -638,13 +638,15 @@ async def get_live_markets():
     """
     Proxy endpoint for Polymarket Gamma API.
     Frontend can't call Gamma API directly due to CORS restrictions.
+    Returns top markets sorted by 24hr volume (recent activity).
     """
     try:
-        async with httpx.AsyncClient(timeout=10.0) as client:
+        async with httpx.AsyncClient(timeout=15.0) as client:
+            # Fetch more markets to get better selection
             response = await client.get(
                 f"{GAMMA_API}/markets",
                 params={
-                    "limit": 50,
+                    "limit": 200,
                     "active": "true",
                     "closed": "false"
                 }
@@ -652,16 +654,26 @@ async def get_live_markets():
             response.raise_for_status()
             markets = response.json()
             
-            # Filter and sort by volume
             if isinstance(markets, list):
+                # Filter for markets with meaningful volume
                 filtered = [
                     m for m in markets
-                    if float(m.get('volume', 0) or 0) > 1000
+                    if float(m.get('volume', 0) or 0) > 10000  # Min $10k total volume
                 ]
-                filtered.sort(key=lambda x: float(x.get('volume', 0) or 0), reverse=True)
+                
+                # Sort by 24hr volume (recent activity) - more relevant than all-time
+                filtered.sort(
+                    key=lambda x: float(x.get('volume24hr', 0) or 0), 
+                    reverse=True
+                )
+                
+                # Return top 25 most active markets
+                top_markets = filtered[:25]
+                
                 return {
-                    "markets": filtered[:20],
-                    "count": len(filtered[:20]),
+                    "markets": top_markets,
+                    "count": len(top_markets),
+                    "total_scanned": len(markets),
                     "timestamp": datetime.now().isoformat()
                 }
             
