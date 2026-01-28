@@ -41,11 +41,16 @@
         
         async function loadMarkets() {
             try {
-                const response = await fetch(`${CLOB_API}/markets`);
-                const json = await response.json();
-                
                 const container = document.getElementById('markets-list');
-                container.innerHTML = '';
+                container.innerHTML = '<div class="loader">Fetching markets from Polymarket...</div>';
+                
+                const response = await fetch(`${CLOB_API}/markets`);
+                
+                if (!response.ok) {
+                    throw new Error(`API returned ${response.status}`);
+                }
+                
+                const json = await response.json();
                 
                 // API returns {data: [...]} not just array
                 const markets = json.data || json;
@@ -53,14 +58,30 @@
                 // Check if we got valid data
                 if (!Array.isArray(markets)) {
                     container.innerHTML = '<p style="color: var(--color-error);">Invalid data format from API</p>';
+                    console.error('Invalid data:', json);
                     return;
                 }
                 
+                console.log(`Loaded ${markets.length} markets`);
+                
                 // Sort by volume, take top 20
                 const topMarkets = markets
-                    .filter(m => m.volume && !m.closed) // Only open markets with volume
+                    .filter(m => {
+                        const hasVolume = m.volume && parseFloat(m.volume) > 0;
+                        const isOpen = !m.closed && m.active;
+                        return hasVolume && isOpen;
+                    })
                     .sort((a, b) => parseFloat(b.volume || 0) - parseFloat(a.volume || 0))
                     .slice(0, 20);
+                
+                console.log(`Filtered to ${topMarkets.length} open markets with volume`);
+                
+                container.innerHTML = '';
+                
+                if (topMarkets.length === 0) {
+                    container.innerHTML = '<p style="color: var(--color-gray-mid);">No active markets found. This might be an API issue.</p>';
+                    return;
+                }
                 
                 topMarkets.forEach((market, index) => {
                     const card = document.createElement('div');
@@ -92,7 +113,13 @@
                 });
                 
             } catch (error) {
-                document.getElementById('markets-list').innerHTML = `<p style="color: var(--color-error);">Failed to load markets: ${error.message}</p>`;
+                console.error('Error loading markets:', error);
+                document.getElementById('markets-list').innerHTML = `
+                    <p style="color: var(--color-error);">Failed to load markets: ${error.message}</p>
+                    <p style="color: var(--color-gray-mid); margin-top: 8px; font-size: 0.9rem;">
+                        Try opening browser console (F12) to see detailed error.
+                    </p>
+                `;
             }
         }
 
