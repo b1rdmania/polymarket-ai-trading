@@ -193,29 +193,27 @@
                     const vol = parseFloat(market.volume || 0);
                     const volStr = vol >= 1000000 ? `$${(vol/1000000).toFixed(1)}M` : `$${(vol/1000).toFixed(0)}k`;
                     
-                    // Get prices - try multiple sources
+                    // Get prices - outcomePrices comes as string, need to parse
                     let yesPrice = null;
                     
-                    // Try outcomePrices first
-                    const prices = market.outcomePrices;
-                    if (prices && Array.isArray(prices) && prices.length >= 1) {
-                        const parsed = parseFloat(prices[0]);
-                        if (!isNaN(parsed)) yesPrice = parsed * 100;
+                    try {
+                        let prices = market.outcomePrices;
+                        // Parse if it's a string
+                        if (typeof prices === 'string') {
+                            prices = JSON.parse(prices);
+                        }
+                        if (Array.isArray(prices) && prices.length >= 1) {
+                            const parsed = parseFloat(prices[0]);
+                            if (!isNaN(parsed)) yesPrice = parsed * 100;
+                        }
+                    } catch (e) {
+                        console.log('Parse error:', e);
                     }
                     
                     // Fallback to bestBid
                     if (yesPrice === null && market.bestBid) {
-                        const bid = parseFloat(market.bestBid);
-                        if (!isNaN(bid)) yesPrice = bid * 100;
+                        yesPrice = parseFloat(market.bestBid) * 100;
                     }
-                    
-                    // Fallback to lastTradePrice
-                    if (yesPrice === null && market.lastTradePrice) {
-                        const last = parseFloat(market.lastTradePrice);
-                        if (!isNaN(last)) yesPrice = last * 100;
-                    }
-                    
-                    console.log(`${market.question?.substring(0,30)}: outcomePrices=${JSON.stringify(prices)}, yesPrice=${yesPrice}`);
                     
                     const question = market.question?.substring(0, 50) + (market.question?.length > 50 ? '...' : '');
                     
