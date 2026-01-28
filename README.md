@@ -1,189 +1,397 @@
-# Polymarket AI Trading Protocol
+# Polymarket AI Trading System
 
-AI-assisted probability analysis with smart contract execution for Polymarket prediction markets.
+Quantitative trading system for Polymarket prediction markets, built on 40+ years of prediction market research.
 
 **by [b1rdmania](https://github.com/b1rdmania)**
 
-## 🎯 Overview
+## 🎯 What This Is
 
-This is a production-ready AI trading system for Polymarket that uses:
-- **Mean reversion models** trained on 40 years of prediction market research
-- **Three parallel trading strategies** (Conservative, Moderate, Aggressive)
-- **Paper trading mode** for risk-free testing
-- **Real-time AI analysis** using OpenAI GPT-4o-mini
-- **Live monitoring dashboard** hosted on Vercel
+An AI-powered trading system for Polymarket that:
+- Applies **mean reversion strategies** from academic research (Berg & Rietz 2018, Munger cognitive biases)
+- Runs **three parallel models** (Conservative, Moderate, Aggressive) to test different risk profiles
+- Operates in **paper trading mode** for safe testing without real capital
+- Uses **OpenAI GPT-4o-mini** for market analysis and quality scoring
+- Provides a **live dashboard** to monitor model performance and trading signals
 
-## 🚀 Features
+## 📊 Current Status
 
-- ✅ Live market data streaming from Polymarket
-- ✅ AI-powered probability analysis
-- ✅ Multi-model parallel trading (3 strategies)
-- ✅ Real-time signal detection
-- ✅ Market quality scoring
-- ✅ Resolution tracking and accuracy metrics
-- ✅ Semantic market search using embeddings
-- ✅ Docker-based deployment
-- ✅ 24/7 operation via Cloudflare Tunnel
+**Development Stage**: Paper Trading & Research  
+**Live Dashboard**: [View Dashboard](https://vercel-frontend-g4o1sdx6o-boom-test-c54cde04.vercel.app)  
+**Backend API**: Cloudflare Tunnel (temporary URL)
 
-## 📊 Live Dashboard
+### What's Working ✅
 
-**Frontend**: https://vercel-frontend-g4o1sdx6o-boom-test-c54cde04.vercel.app  
-**Backend**: https://postposted-spent-knife-given.trycloudflare.com  
-**Status**: ✅ Production
+- ✅ Live market data streaming from Polymarket CLOB API
+- ✅ AI-powered market analysis (GPT-4o-mini + embeddings)
+- ✅ Market quality scoring (liquidity, spread, activity, clarity)
+- ✅ Multi-model architecture (3 trading strategies running in parallel)
+- ✅ Real-time signal detection and tracking
+- ✅ Resolution tracking and win rate calculation
+- ✅ Semantic market search using vector embeddings
+- ✅ Docker containerization for 24/7 operation
+- ✅ Web dashboard with live backend connection
 
-The dashboard shows:
-- Real-time market data streaming
-- Backend connection status (green dot = connected)
-- AI insights and analysis
-- Market quality indicators
-- Trading signals
-- Resolution tracking
-- Model performance comparison
+### What's In Progress 🚧
 
-## 🏗️ Architecture
+- 🚧 Backtesting framework (partially implemented)
+- 🚧 Historical trade data collection
+- 🚧 Model performance optimization
+- 🚧 Trade execution logic refinement
+
+### What's Not Built Yet ❌
+
+- ❌ Real capital deployment (staying in paper mode)
+- ❌ Wallet integration (no private keys, no real trades)
+- ❌ Advanced risk management beyond basic Kelly Criterion
+- ❌ Multi-market portfolio optimization
+
+## 🏗️ System Architecture
 
 ```
-Frontend (Vercel)
-    ↓
-Cloudflare Tunnel
-    ↓
-Docker Backend (localhost:8000)
-    ↓
-3 Trading Models + Dashboard API
+┌─────────────────────────────────────────┐
+│         Frontend (Vercel)               │
+│  - Market data ticker                   │
+│  - Model performance comparison         │
+│  - Trading signal monitoring            │
+└─────────────────┬───────────────────────┘
+                  │ HTTP/REST
+                  ▼
+┌─────────────────────────────────────────┐
+│    FastAPI Backend (Port 8000)          │
+│  - /api/models - Model stats            │
+│  - /api/signals/live - Trading signals  │
+│  - /api/quality/* - Market scoring      │
+│  - /api/ai/* - GPT-4o analysis          │
+│  - /api/resolution/* - Accuracy tracker │
+└─────────────────┬───────────────────────┘
+                  │ SQLite
+                  ▼
+┌─────────────────────────────────────────┐
+│     Docker Containers (4 services)      │
+│  ┌───────────────────────────────────┐  │
+│  │ Conservative Model (Low Risk)     │  │
+│  │ Moderate Model (Balanced)         │  │
+│  │ Aggressive Model (High Risk)      │  │
+│  │ Dashboard API                     │  │
+│  └───────────────────────────────────┘  │
+└─────────────────┬───────────────────────┘
+                  │ WebSocket/API
+                  ▼
+┌─────────────────────────────────────────┐
+│      Polymarket CLOB API                │
+│  - Live market data                     │
+│  - Order book feeds                     │
+│  - Market resolution data               │
+└─────────────────────────────────────────┘
 ```
 
-### Trading Models
+## 🧠 Trading Models
 
-1. **Conservative**: Low-risk, high-confidence trades
-2. **Moderate**: Balanced risk/reward
-3. **Aggressive**: High-risk, high-reward opportunities
+Each model uses the same core strategy (mean reversion) but with different risk parameters:
 
-All models run in **paper trading mode** by default.
+### 1. Conservative Model
+- **Risk Level**: Low
+- **Position Size**: Small (Kelly Criterion × 0.25)
+- **Entry Threshold**: High confidence only (>70% signal strength)
+- **Max Drawdown**: 10%
+- **Target Win Rate**: 60%+
+
+### 2. Moderate Model  
+- **Risk Level**: Balanced
+- **Position Size**: Medium (Kelly Criterion × 0.50)
+- **Entry Threshold**: Moderate confidence (>55%)
+- **Max Drawdown**: 20%
+- **Target Win Rate**: 55%+
+
+### 3. Aggressive Model
+- **Risk Level**: High
+- **Position Size**: Large (Kelly Criterion × 1.0)
+- **Entry Threshold**: Lower confidence (>45%)
+- **Max Drawdown**: 35%
+- **Target Win Rate**: 50%+
+
+All models run in **paper mode** - no real capital deployed.
 
 ## 🛠️ Quick Start
 
 ### Prerequisites
 
-- Docker Desktop
-- OpenAI API key (for AI features)
-- Cloudflare Tunnel (for public access)
+- **Docker Desktop** (or Docker Engine + Docker Compose)
+- **OpenAI API key** (for AI features - [get one here](https://platform.openai.com/api-keys))
+- **Cloudflare Tunnel** (optional, for public dashboard access)
 
 ### Installation
 
 1. **Clone the repository**
+
 ```bash
 git clone https://github.com/b1rdmania/polymarket-ai-trading.git
 cd polymarket-ai-trading
 ```
 
 2. **Set up environment variables**
+
 ```bash
+# Create .env file
 cp .env.example .env
-# Edit .env and add your OPENAI_API_KEY
+
+# Edit .env and add your OpenAI API key:
+OPENAI_API_KEY=sk-...
 ```
+
+⚠️ **Security**: Never commit your `.env` file. It's in `.gitignore` by default.
 
 3. **Start Docker containers**
+
 ```bash
+# Build and start all services
 docker compose up -d
+
+# Check status
+docker compose ps
+
+# View logs
+docker compose logs -f
 ```
 
-4. **Start Cloudflare Tunnel** (optional, for public access)
+4. **Access the dashboard**
+
+Open `http://localhost:8000` in your browser. You should see:
+- ✅ Backend connected (green dot)
+- 📊 Model stats loading
+- 📈 Live market data streaming
+
+5. **Deploy frontend to Vercel** (optional)
+
 ```bash
+cd vercel-frontend
+npx vercel --prod
+```
+
+6. **Start Cloudflare Tunnel** (optional, for public access)
+
+```bash
+# Install cloudflared first
+brew install cloudflare/cloudflare/cloudflared
+
+# Start tunnel
 cloudflared tunnel --url http://localhost:8000
 ```
 
-5. **Deploy frontend to Vercel**
+### Stopping the System
+
 ```bash
-cd vercel-frontend
-vercel --prod
+# Stop all containers
+docker compose down
+
+# Stop and remove all data
+docker compose down -v
 ```
 
 ## 📚 Documentation
 
-- [Deployment Guide](DEPLOYMENT.md)
-- [Docker Guide](DOCKER_GUIDE.md)
-- [Paper Trading Start](PAPER_TRADING_START.md)
-- [Backtesting Guide](BACKTESTING_GUIDE.md)
-- [Vercel Deployment](VERCEL_DEPLOY.md)
-- [Go Live Instructions](GO_LIVE.md)
+| Guide | Purpose |
+|-------|---------|
+| [START_GUIDE.md](START_GUIDE.md) | Complete setup walkthrough for beginners |
+| [DOCKER_GUIDE.md](DOCKER_GUIDE.md) | Docker installation and troubleshooting |
+| [PAPER_TRADING_START.md](PAPER_TRADING_START.md) | How paper trading mode works |
+| [BACKTESTING_GUIDE.md](BACKTESTING_GUIDE.md) | Running backtests on historical data |
+| [VERCEL_DEPLOY.md](VERCEL_DEPLOY.md) | Deploying frontend to Vercel |
+| [SCIEMO_DESIGN_ANALYSIS.md](SCIEMO_DESIGN_ANALYSIS.md) | Dashboard UX/design decisions |
+| [GO_LIVE.md](GO_LIVE.md) | ⚠️ Moving from paper → real capital (not recommended yet) |
 
 ## 🔬 Research Foundation
 
-Based on extensive prediction market research:
-- Mean reversion strategies
-- Behavioral biases in prediction markets
-- Quantitative probability analysis
-- 40+ years of academic literature
+This system is built on academic research in prediction markets:
 
-See [research/](research/) for detailed papers and findings.
+### Key Papers & Concepts
 
-## 🧰 Toolkit
+1. **Berg & Rietz (2018)** - "Longshots and Overconfidence"
+   - Favorite-longshot bias: Market overprices unlikely outcomes
+   - Mean reversion opportunities in mispriced probabilities
+   
+2. **Munger's 25 Cognitive Biases**
+   - Recency bias: Overweighting recent events
+   - Availability bias: Overestimating memorable events
+   - Confirmation bias: Seeking supporting evidence
 
-The system includes several specialized modules:
+3. **Quantitative Mean Reversion**
+   - Statistical arbitrage in probability spreads
+   - Kelly Criterion for position sizing
+   - Market quality filtering (liquidity, spread, activity)
 
-- **execution-engine**: Order execution and trade management
-- **mean-reversion**: Statistical arbitrage detection
-- **polymarket-data**: Market data fetching and analysis
-- **volatility-alerts**: Price movement detection
-- **whale-tracker**: Large position monitoring
+4. **@the_smart_ape Trading Insights**
+   - Real-world Polymarket trading strategies
+   - Market timing and entry/exit optimization
 
-## 🎨 Frontend
+See [`research/`](research/) for detailed papers and analysis.
 
-Modern, responsive dashboard built with vanilla JavaScript:
-- Real-time market data ticker
-- AI insights and analysis
-- Market quality indicators
-- Trading signal detection
-- Resolution tracking
-- Model performance comparison
+## 🧰 Toolkit Components
+
+The system includes specialized modules for different trading functions:
+
+| Module | Purpose | Status |
+|--------|---------|--------|
+| **polymarket-data** | Market data fetching and normalization | ✅ Working |
+| **mean-reversion** | Statistical arbitrage detection | ✅ Working |
+| **execution-engine** | Order execution and trade management | 🚧 Paper mode only |
+| **volatility-alerts** | Price movement detection and alerts | ✅ Working |
+| **whale-tracker** | Large position monitoring | 🚧 Partial |
+
+Each toolkit module is designed to be modular and reusable.
+
+## 🎨 Dashboard Features
+
+The web dashboard provides real-time monitoring:
+
+**Core Views:**
+- **Model Comparison**: Side-by-side performance of Conservative/Moderate/Aggressive models
+- **Live Signals**: Real-time trading signals with strength indicators
+- **Market Quality**: AI-powered scoring of tradeable markets (liquidity, spread, clarity)
+- **AI Insights**: GPT-4o analysis of market questions with risk factors
+- **Resolution Tracker**: Accuracy tracking on resolved markets
+- **Vector Search**: Semantic similarity search across markets
+
+**Tech Stack:**
+- Frontend: Vanilla JavaScript, modern CSS (dark theme)
+- Backend: FastAPI (Python)
+- Database: SQLite for trade history
+- AI: OpenAI GPT-4o-mini + embeddings (text-embedding-3-small)
+- Deployment: Vercel (frontend) + Docker (backend)
+
+Dashboard is mobile-responsive and updates in real-time.
 
 ## 🐳 Docker Setup
 
-The system runs 4 containers:
-- `polymarket-dashboard`: API and web interface (port 8000)
-- `polymarket-conservative`: Conservative trading model
-- `polymarket-moderate`: Moderate trading model
-- `polymarket-aggressive`: Aggressive trading model
+The system runs as 4 containerized services:
 
-## 🔐 Security
+```yaml
+services:
+  conservative:     # Conservative trading model
+  moderate:         # Moderate trading model  
+  aggressive:       # Aggressive trading model
+  dashboard:        # FastAPI backend (port 8000)
+```
 
+**Shared Volumes:**
+- `./data` - SQLite databases for trade history
+- `./logs` - Application logs
+- `./config` - Model configuration files
+
+**Health Checks:**
+- Models: Process health check every 60s
+- Dashboard: HTTP health check at `/api/health` every 30s
+
+All containers restart automatically on failure.
+
+## 🔐 Security & Safety
+
+### Current Setup (Paper Trading)
+
+✅ **Safe:**
+- No real capital at risk
+- No wallet private keys required
+- No blockchain transactions
 - API keys stored in `.env` (gitignored)
-- Paper trading mode prevents real trades
 - Cloudflare Tunnel for secure public access
-- No private keys in code
 
-## 📈 Monitoring
+### If You Go Live (Not Recommended Yet)
 
-Access the dashboard at `http://localhost:8000` or your Cloudflare Tunnel URL to monitor:
-- Live market data
-- Model performance
-- Trading signals
-- P&L tracking
-- Resolution accuracy
+⚠️ **Required:**
+- Secure wallet with private key management
+- HSM or hardware wallet integration
+- Risk limits and kill switches
+- Position size caps
+- Drawdown monitoring
+- Multi-signature for large trades
+
+**Don't rush to production.** Paper trade first, validate strategy, then scale slowly.
+
+### Environment Variables
+
+Never commit these to Git:
+- `OPENAI_API_KEY` - OpenAI API key
+- `POLYGON_WALLET_PRIVATE_KEY` - Wallet private key (if going live)
+
+All sensitive vars are in `.env` which is gitignored.
+
+## 📈 Monitoring & Metrics
+
+### What to Watch
+
+**Model Performance:**
+- Total trades executed
+- Win rate (target: >50%)
+- Total P&L (paper)
+- Average P&L per trade
+- Open positions
+- Today's activity
+
+**Market Quality:**
+- Liquidity score (volume-based)
+- Spread score (bid-ask tightness)
+- Activity score (recent volume)
+- Clarity score (question readability)
+
+**System Health:**
+- Backend connection status
+- Docker container health
+- API response times
+- Database size
+
+### Dashboard Access
+
+**Local**: `http://localhost:8000`  
+**Live**: [View Dashboard](https://vercel-frontend-g4o1sdx6o-boom-test-c54cde04.vercel.app)
+
+The dashboard updates in real-time. Green dot = backend connected.
 
 ## 🤝 Contributing
 
-This is a personal research project, but suggestions and feedback are welcome!
+This is a personal research project, but I'm open to:
+- Bug reports and fixes
+- Documentation improvements
+- Research paper contributions
+- Strategy suggestions
 
-## 📄 License
+**Not accepting:**
+- PRs that enable live trading without proper safety checks
+- Features that compromise security
 
-MIT License - See LICENSE for details
+Feel free to fork and experiment! Just keep it in paper mode until you really know what you're doing.
 
 ## 🙏 Acknowledgments
 
-Built on research from:
-- Berg & Rietz (2018) - Longshots and overconfidence
-- Munger's 25 cognitive biases
-- Prediction market accuracy literature
-- @the_smart_ape's trading insights
+Built on research and insights from:
+
+- **Berg & Rietz (2018)** - "Longshots, Overconfidence, and Efficiency in the NCAA Tournament Betting Market"
+- **Charlie Munger** - 25 cognitive biases framework
+- **@the_smart_ape** - Real-world Polymarket trading strategies and insights
+- **Polymarket community** - Market data and ecosystem knowledge
 
 ## 🔗 Links
 
-- [GitHub Repository](https://github.com/b1rdmania/polymarket-ai-trading)
-- [Polymarket](https://polymarket.com)
-- [My GitHub](https://github.com/b1rdmania)
+- **GitHub**: [github.com/b1rdmania/polymarket-ai-trading](https://github.com/b1rdmania/polymarket-ai-trading)
+- **Polymarket**: [polymarket.com](https://polymarket.com)
+- **Live Dashboard**: [View Demo](https://vercel-frontend-g4o1sdx6o-boom-test-c54cde04.vercel.app)
+- **My GitHub**: [@b1rdmania](https://github.com/b1rdmania)
+
+## 📊 Related Projects
+
+- **[Canton Prediction Markets](https://github.com/b1rdmania/canton-prediction-markets)** - Decentralized prediction markets on Canton Network (in development)
+- **[Aztec Auction Analysis](https://github.com/b1rdmania/aztec-auction-analysis)** - Privacy-preserving auction research on Aztec
 
 ---
 
-**Note**: This system is for educational and research purposes. Always trade responsibly.
+## ⚠️ Disclaimer
+
+**This system is for educational and research purposes only.**
+
+- Not financial advice
+- No guarantees of profit
+- Paper trading is not the same as live trading
+- Prediction markets involve risk
+- Always trade responsibly with capital you can afford to lose
+
+Use at your own risk. No warranty provided.
 
