@@ -633,6 +633,46 @@ async def get_comparison():
     }
 
 
+@app.get("/api/markets/live")
+async def get_live_markets():
+    """
+    Proxy endpoint for Polymarket Gamma API.
+    Frontend can't call Gamma API directly due to CORS restrictions.
+    """
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            response = await client.get(
+                f"{GAMMA_API}/markets",
+                params={
+                    "limit": 50,
+                    "active": "true",
+                    "closed": "false"
+                }
+            )
+            response.raise_for_status()
+            markets = response.json()
+            
+            # Filter and sort by volume
+            if isinstance(markets, list):
+                filtered = [
+                    m for m in markets
+                    if float(m.get('volume', 0) or 0) > 1000
+                ]
+                filtered.sort(key=lambda x: float(x.get('volume', 0) or 0), reverse=True)
+                return {
+                    "markets": filtered[:20],
+                    "count": len(filtered[:20]),
+                    "timestamp": datetime.now().isoformat()
+                }
+            
+            return {"markets": [], "count": 0, "error": "Invalid response format"}
+            
+    except httpx.HTTPError as e:
+        raise HTTPException(status_code=502, detail=f"Polymarket API error: {str(e)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Server error: {str(e)}")
+
+
 @app.get("/api/health")
 async def health():
     """Health check endpoint."""

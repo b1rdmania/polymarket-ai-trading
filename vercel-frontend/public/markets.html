@@ -37,39 +37,25 @@
     </div>
 
     <script>
-        // Use Gamma API - has volume and outcomePrices fields
-        const API = 'https://gamma-api.polymarket.com';
+        // Use our backend proxy (Gamma API doesn't allow CORS)
+        const API_BASE = 'https://polymarket-trading-system.onrender.com';
         
         async function loadMarkets() {
             try {
                 const container = document.getElementById('markets-list');
                 container.innerHTML = '<div class="loader">Fetching markets from Polymarket...</div>';
                 
-                // Fetch active markets sorted by volume
-                const response = await fetch(`${API}/markets?limit=50&active=true&closed=false`);
+                // Fetch via our backend proxy
+                const response = await fetch(`${API_BASE}/api/markets/live`);
                 
                 if (!response.ok) {
                     throw new Error(`API returned ${response.status}`);
                 }
                 
-                const markets = await response.json();
+                const data = await response.json();
+                const topMarkets = data.markets || [];
                 
-                // Check if we got valid data (Gamma returns array directly)
-                if (!Array.isArray(markets)) {
-                    container.innerHTML = '<p style="color: var(--color-error);">Invalid data format from API</p>';
-                    console.error('Invalid data:', markets);
-                    return;
-                }
-                
-                console.log(`Loaded ${markets.length} markets`);
-                
-                // Sort by volume, take top 20
-                const topMarkets = markets
-                    .filter(m => parseFloat(m.volume || 0) > 1000) // At least $1k volume
-                    .sort((a, b) => parseFloat(b.volume || 0) - parseFloat(a.volume || 0))
-                    .slice(0, 20);
-                
-                console.log(`Showing top ${topMarkets.length} markets by volume`);
+                console.log(`Loaded ${topMarkets.length} markets via proxy`);
                 
                 container.innerHTML = '';
                 
