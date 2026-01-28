@@ -1,0 +1,19 @@
+services:
+  # Dashboard API - Main web service with public URL
+  # This service runs BOTH the API and all 3 trading models in one container
+  - type: web
+    name: polymarket-trading-system
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerCommand: /app/scripts/start_all.sh
+    plan: starter  # $7/month - no spin down, 512MB RAM
+    healthCheckPath: /api/health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false  # Set this manually in Render dashboard
+      - key: PORT
+        value: 8000
+    disk:
+      name: polymarket-data-shared
+      mountPath: /app/data
+      sizeGB: 2
