@@ -73,11 +73,13 @@
                     
                     // Parse outcomePrices - array like ["0.65", "0.35"]
                     let yesPrice = '--';
-                    if (market.outcomePrices && market.outcomePrices.length > 0) {
-                        const price = parseFloat(market.outcomePrices[0]);
-                        if (!isNaN(price)) {
-                            yesPrice = (price * 100).toFixed(1);
-                        }
+                    let noPrice = '--';
+                    const prices = market.outcomePrices;
+                    if (prices && Array.isArray(prices) && prices.length >= 2) {
+                        const yes = parseFloat(prices[0]);
+                        const no = parseFloat(prices[1]);
+                        if (!isNaN(yes)) yesPrice = (yes * 100).toFixed(0);
+                        if (!isNaN(no)) noPrice = (no * 100).toFixed(0);
                     }
                     
                     // Format volume
@@ -86,7 +88,7 @@
                     if (vol >= 1000000) {
                         volumeStr = `$${(vol / 1000000).toFixed(1)}M`;
                     } else if (vol >= 1000) {
-                        volumeStr = `$${(vol / 1000).toFixed(1)}k`;
+                        volumeStr = `$${(vol / 1000).toFixed(0)}k`;
                     } else {
                         volumeStr = `$${vol.toFixed(0)}`;
                     }
@@ -95,14 +97,21 @@
                         <div style="display: flex; justify-content: space-between; align-items: start; gap: 16px;">
                             <div style="flex: 1;">
                                 <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">
-                                    #${index + 1}
+                                    #${index + 1} · ${volumeStr} volume
                                 </div>
-                                <h4 style="margin-bottom: 8px; font-size: 0.95rem;">${market.question || 'Unknown'}</h4>
+                                <div style="margin-bottom: 0; font-size: 0.95rem; font-weight: 500; text-transform: none !important;">${market.question || 'Unknown'}</div>
                             </div>
-                            <div style="text-align: right;">
-                                <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">YES PRICE</div>
-                                <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 600;">${yesPrice}¢</div>
-                                <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-top: 8px;">Volume: ${volumeStr}</div>
+                            <div style="text-align: right; min-width: 100px;">
+                                <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                                    <div>
+                                        <div style="font-size: 0.7rem; color: var(--color-gray-mid);">YES</div>
+                                        <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: #16a34a;">${yesPrice}¢</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 0.7rem; color: var(--color-gray-mid);">NO</div>
+                                        <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: #dc2626;">${noPrice}¢</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     `;
