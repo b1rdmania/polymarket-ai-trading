@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Markets | Polymarket AI Trading</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1>polymarket ai trading</h1>
+                    <p class="subtitle">LIVE MARKET DATA</p>
+                </div>
+                <a href="https://github.com/b1rdmania/polymarket-ai-trading" target="_blank" class="btn">View Code</a>
+            </div>
+        </header>
+
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="markets.html" class="active">Live Markets</a>
+            <a href="research.html">Research</a>
+        </nav>
+
+        <div class="content">
+            <div class="card">
+                <h3>Top Markets by Volume</h3>
+                <p style="color: var(--color-gray-mid); font-size: 0.9rem; margin-top: 8px;">Live data from Polymarket. Updated every 30 seconds.</p>
+                
+                <div id="markets-list" style="margin-top: 24px;">
+                    <div class="loader">Loading markets...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CLOB_API = 'https://clob.polymarket.com';
+        
+        async function loadMarkets() {
+            try {
+                const response = await fetch(`${CLOB_API}/markets`);
+                const markets = await response.json();
+                
+                const container = document.getElementById('markets-list');
+                container.innerHTML = '';
+                
+                // Sort by volume, take top 20
+                const topMarkets = markets
+                    .sort((a, b) => parseFloat(b.volume || 0) - parseFloat(a.volume || 0))
+                    .slice(0, 20);
+                
+                topMarkets.forEach((market, index) => {
+                    const card = document.createElement('div');
+                    card.style.padding = '16px';
+                    card.style.border = '1px solid var(--color-border)';
+                    card.style.marginBottom = '12px';
+                    card.style.borderRadius = '4px';
+                    
+                    const price = market.outcomes && market.outcomes[0] ? (parseFloat(market.outcomes[0].price) * 100).toFixed(1) : '--';
+                    const volume = market.volume ? `$${(parseFloat(market.volume) / 1000).toFixed(1)}k` : '$0';
+                    
+                    card.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: start; gap: 16px;">
+                            <div style="flex: 1;">
+                                <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">
+                                    #${index + 1}
+                                </div>
+                                <h4 style="margin-bottom: 8px; font-size: 0.95rem;">${market.question || 'Unknown'}</h4>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">YES PRICE</div>
+                                <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 600;">${price}¢</div>
+                                <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-top: 8px;">Volume: ${volume}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    container.appendChild(card);
+                });
+                
+            } catch (error) {
+                document.getElementById('markets-list').innerHTML = `<p style="color: var(--color-error);">Failed to load markets: ${error.message}</p>`;
+            }
+        }
+
+        loadMarkets();
+        setInterval(loadMarkets, 30000); // Refresh every 30s
+    </script>
+</body>
+</html>
