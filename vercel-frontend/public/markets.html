@@ -3,8 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markets | Polymarket AI Trading</title>
+    <title>Market Scanner | Polymarket AI Trading</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .log-container {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 16px;
+            border-radius: 4px;
+            max-height: 500px;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+        .log-time { color: #666; }
+        .log-info { color: #60a5fa; }
+        .log-success { color: #4ade80; }
+        .log-warning { color: #fbbf24; }
+        .log-error { color: #f87171; }
+        .log-dim { color: #888; }
+        .log-highlight { color: #fff; font-weight: 600; }
+        .log-entry { margin-bottom: 2px; }
+        .log-indent { padding-left: 20px; }
+        .scan-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .stat-box {
+            background: var(--color-gray-light);
+            padding: 12px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--color-gray-mid);
+            margin-top: 4px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -12,7 +56,7 @@
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div>
                     <h1>polymarket ai trading</h1>
-                    <p class="subtitle">MARKETS WE ANALYZE</p>
+                    <p class="subtitle">MARKET SCANNER</p>
                 </div>
                 <a href="https://github.com/b1rdmania/polymarket-ai-trading" target="_blank" class="btn">View Code</a>
             </div>
@@ -20,164 +64,208 @@
 
         <nav>
             <a href="index.html">Dashboard</a>
-            <a href="markets.html" class="active">Markets</a>
+            <a href="markets.html" class="active">Scanner</a>
             <a href="research.html">Research</a>
         </nav>
 
         <div class="content">
             <div class="card">
-                <h3>How We Select Markets</h3>
-                <p style="margin-top: 12px; line-height: 1.6;">
-                    Our models scan Polymarket for <strong>mean reversion opportunities</strong>. 
-                    We filter for markets with sufficient liquidity (>$500k volume) where prices may have 
-                    overreacted to news. Below are real examples of high-volume markets we evaluate.
+                <h3>Live Market Analysis</h3>
+                <p style="margin-top: 8px; color: var(--color-gray-mid); font-size: 0.9rem;">
+                    Watch our models scan and evaluate Polymarket in real-time. 
+                    See <a href="research.html">Research</a> for methodology.
                 </p>
-                <p style="margin-top: 12px; color: var(--color-gray-mid); font-size: 0.85rem;">
-                    See <a href="research.html">Research</a> for how we score and select trades.
-                </p>
+                
+                <div class="scan-stats" style="margin-top: 20px;">
+                    <div class="stat-box">
+                        <div class="stat-value" id="stat-scanned">--</div>
+                        <div class="stat-label">MARKETS SCANNED</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="stat-qualified">--</div>
+                        <div class="stat-label">QUALIFIED</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="stat-signals">--</div>
+                        <div class="stat-label">SIGNALS</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="stat-extreme">--</div>
+                        <div class="stat-label">EXTREME</div>
+                    </div>
+                </div>
             </div>
 
             <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h3>Live High-Volume Markets</h3>
-                    <span style="font-size: 0.75rem; color: var(--color-gray-mid);">Updated every 60s</span>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <h3>Scan Log</h3>
+                    <button onclick="runScan()" class="btn" style="padding: 6px 12px; font-size: 0.75rem;">Run Scan</button>
                 </div>
-                
-                <div id="markets-list" style="margin-top: 20px;">
-                    <div class="loader">Loading markets...</div>
+                <div class="log-container" id="log-container">
+                    <div class="log-entry log-dim">Initializing scanner...</div>
                 </div>
             </div>
 
-            <div style="margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--color-border); color: var(--color-gray-mid); font-size: 0.85rem;">
-                <p><strong>Note:</strong> These are example markets from Polymarket. Our models evaluate dozens of markets continuously, looking for statistical mispricings based on historical mean reversion patterns.</p>
+            <div style="margin-top: 24px; color: var(--color-gray-mid); font-size: 0.8rem;">
+                <p><strong>How it works:</strong> We fetch live markets from Polymarket, filter by volume and liquidity, 
+                then score each for mean reversion potential. Extreme prices (>85% or <15%) often signal overreaction.</p>
             </div>
         </div>
     </div>
 
     <script>
         const API_BASE = 'https://polymarket-trading-system.onrender.com';
+        const logContainer = document.getElementById('log-container');
         
-        async function loadMarkets() {
+        // Scoring thresholds (from research)
+        const MIN_VOLUME = 100000;      // $100k minimum
+        const HIGH_VOLUME = 500000;     // $500k = high quality
+        const EXTREME_LOW = 15;         // Below 15% = extreme
+        const EXTREME_HIGH = 85;        // Above 85% = extreme
+        const WATCH_LOW = 30;           // Below 30% = watching
+        const WATCH_HIGH = 70;          // Above 70% = watching
+        
+        function getTime() {
+            return new Date().toLocaleTimeString('en-US', { hour12: false });
+        }
+        
+        function log(message, type = '') {
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.innerHTML = `<span class="log-time">[${getTime()}]</span> ${message}`;
+            logContainer.appendChild(entry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+        
+        function logIndent(message, type = '') {
+            const entry = document.createElement('div');
+            entry.className = `log-entry log-indent ${type}`;
+            entry.innerHTML = message;
+            logContainer.appendChild(entry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+        
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        
+        async function runScan() {
+            logContainer.innerHTML = '';
+            
+            log('Starting market scan...', 'log-info');
+            await sleep(300);
+            
+            log('Connecting to Polymarket API via proxy...', 'log-dim');
+            await sleep(200);
+            
             try {
-                const container = document.getElementById('markets-list');
-                
                 const response = await fetch(`${API_BASE}/api/markets/live`);
-                
-                if (!response.ok) {
-                    throw new Error(`API returned ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`API error: ${response.status}`);
                 
                 const data = await response.json();
-                let markets = data.markets || [];
+                const allMarkets = data.markets || [];
                 
-                // Filter for high volume only (>$500k)
-                markets = markets.filter(m => parseFloat(m.volume || 0) > 500000);
+                log(`Received <span class="log-highlight">${allMarkets.length}</span> markets from API`, 'log-success');
+                document.getElementById('stat-scanned').textContent = allMarkets.length;
+                await sleep(400);
                 
-                // Take top 10
-                markets = markets.slice(0, 10);
+                // Filter by volume
+                log('Filtering by volume (min $100k)...', 'log-dim');
+                await sleep(200);
                 
-                console.log(`Showing ${markets.length} high-volume markets`);
+                const qualified = allMarkets.filter(m => parseFloat(m.volume || 0) >= MIN_VOLUME);
+                log(`<span class="log-highlight">${qualified.length}</span> markets meet volume threshold`, 'log-info');
+                document.getElementById('stat-qualified').textContent = qualified.length;
+                await sleep(300);
                 
-                container.innerHTML = '';
+                // Analyze each market
+                log('Beginning mean reversion analysis...', 'log-info');
+                log('─'.repeat(50), 'log-dim');
+                await sleep(300);
                 
-                if (markets.length === 0) {
-                    container.innerHTML = '<p style="color: var(--color-gray-mid);">No high-volume markets available.</p>';
-                    return;
+                let signalCount = 0;
+                let extremeCount = 0;
+                
+                // Analyze top markets by volume
+                const topMarkets = qualified.slice(0, 15);
+                
+                for (const market of topMarkets) {
+                    const vol = parseFloat(market.volume || 0);
+                    const volStr = vol >= 1000000 ? `$${(vol/1000000).toFixed(1)}M` : `$${(vol/1000).toFixed(0)}k`;
+                    
+                    // Get prices
+                    let yesPrice = null;
+                    const prices = market.outcomePrices;
+                    if (prices && Array.isArray(prices) && prices.length >= 1) {
+                        yesPrice = parseFloat(prices[0]) * 100;
+                    }
+                    
+                    const question = market.question?.substring(0, 50) + (market.question?.length > 50 ? '...' : '');
+                    
+                    log(`Evaluating: "${question}"`, '');
+                    await sleep(150);
+                    
+                    if (yesPrice === null) {
+                        logIndent(`<span class="log-error">✗ No price data available</span>`, '');
+                        await sleep(100);
+                        continue;
+                    }
+                    
+                    const priceStr = `YES: ${yesPrice.toFixed(0)}¢`;
+                    logIndent(`<span class="log-dim">${priceStr} | Volume: ${volStr}</span>`, '');
+                    await sleep(100);
+                    
+                    // Determine signal
+                    let signal = '';
+                    let action = '';
+                    
+                    if (yesPrice <= EXTREME_LOW) {
+                        signal = '<span class="log-warning">EXTREME LOW</span>';
+                        action = '<span class="log-success">→ SIGNAL: Potential undervaluation</span>';
+                        signalCount++;
+                        extremeCount++;
+                    } else if (yesPrice >= EXTREME_HIGH) {
+                        signal = '<span class="log-warning">EXTREME HIGH</span>';
+                        action = '<span class="log-success">→ SIGNAL: Potential overvaluation</span>';
+                        signalCount++;
+                        extremeCount++;
+                    } else if (yesPrice <= WATCH_LOW || yesPrice >= WATCH_HIGH) {
+                        signal = '<span class="log-info">WATCHING</span>';
+                        action = '<span class="log-dim">→ Monitoring for movement</span>';
+                        signalCount++;
+                    } else {
+                        signal = '<span class="log-dim">NEUTRAL</span>';
+                        action = '<span class="log-dim">→ No signal (price in normal range)</span>';
+                    }
+                    
+                    logIndent(`Signal: ${signal}`, '');
+                    logIndent(action, '');
+                    await sleep(200);
                 }
                 
-                markets.forEach((market, index) => {
-                    const card = document.createElement('div');
-                    card.style.padding = '16px';
-                    card.style.border = '1px solid var(--color-border)';
-                    card.style.marginBottom = '12px';
-                    card.style.borderRadius = '4px';
-                    card.style.background = '#fafafa';
-                    
-                    // Parse prices
-                    let yesPrice = '--';
-                    let noPrice = '--';
-                    const prices = market.outcomePrices;
-                    if (prices && Array.isArray(prices) && prices.length >= 2) {
-                        const yes = parseFloat(prices[0]);
-                        const no = parseFloat(prices[1]);
-                        if (!isNaN(yes)) yesPrice = (yes * 100).toFixed(0);
-                        if (!isNaN(no)) noPrice = (no * 100).toFixed(0);
-                    }
-                    
-                    // Calculate signal (simplified mean reversion indicator)
-                    let signal = 'neutral';
-                    let signalColor = 'var(--color-gray-mid)';
-                    let signalText = 'Neutral';
-                    const yesNum = parseFloat(yesPrice);
-                    if (!isNaN(yesNum)) {
-                        if (yesNum >= 85 || yesNum <= 15) {
-                            signal = 'extreme';
-                            signalColor = '#f59e0b';
-                            signalText = 'Extreme odds';
-                        } else if (yesNum >= 70 || yesNum <= 30) {
-                            signal = 'watching';
-                            signalColor = '#3b82f6';
-                            signalText = 'Watching';
-                        }
-                    }
-                    
-                    // Format volume
-                    const vol = parseFloat(market.volume || 0);
-                    let volumeStr = '$0';
-                    if (vol >= 1000000) {
-                        volumeStr = `$${(vol / 1000000).toFixed(1)}M`;
-                    } else {
-                        volumeStr = `$${(vol / 1000).toFixed(0)}k`;
-                    }
-                    
-                    // Build Polymarket link
-                    const slug = market.slug || market.market_slug || '';
-                    const polymarketUrl = slug ? `https://polymarket.com/event/${slug}` : 'https://polymarket.com';
-                    
-                    card.innerHTML = `
-                        <div style="display: flex; justify-content: space-between; align-items: start; gap: 16px;">
-                            <div style="flex: 1;">
-                                <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 6px;">
-                                    ${volumeStr} volume
-                                </div>
-                                <div style="font-size: 0.95rem; font-weight: 500; text-transform: none; margin-bottom: 8px;">
-                                    ${market.question || 'Unknown'}
-                                </div>
-                                <a href="${polymarketUrl}" target="_blank" style="font-size: 0.8rem; color: var(--color-primary);">
-                                    View on Polymarket →
-                                </a>
-                            </div>
-                            <div style="text-align: right; min-width: 140px;">
-                                <div style="display: flex; gap: 16px; justify-content: flex-end; margin-bottom: 8px;">
-                                    <div>
-                                        <div style="font-size: 0.7rem; color: var(--color-gray-mid);">YES</div>
-                                        <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 600; color: #16a34a;">${yesPrice}¢</div>
-                                    </div>
-                                    <div>
-                                        <div style="font-size: 0.7rem; color: var(--color-gray-mid);">NO</div>
-                                        <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 600; color: #dc2626;">${noPrice}¢</div>
-                                    </div>
-                                </div>
-                                <div style="font-size: 0.75rem; color: ${signalColor}; font-weight: 500;">
-                                    ● ${signalText}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    
-                    container.appendChild(card);
-                });
+                document.getElementById('stat-signals').textContent = signalCount;
+                document.getElementById('stat-extreme').textContent = extremeCount;
+                
+                log('─'.repeat(50), 'log-dim');
+                await sleep(200);
+                log(`Scan complete. <span class="log-highlight">${signalCount}</span> signals detected, <span class="log-warning">${extremeCount}</span> extreme.`, 'log-success');
+                
+                if (extremeCount > 0) {
+                    log('⚡ Extreme prices detected - potential mean reversion opportunities', 'log-warning');
+                }
+                
+                log('<span class="log-dim">Next scan in 60 seconds...</span>', '');
                 
             } catch (error) {
-                console.error('Error loading markets:', error);
-                document.getElementById('markets-list').innerHTML = `
-                    <p style="color: var(--color-error);">Failed to load markets: ${error.message}</p>
-                `;
+                log(`<span class="log-error">Error: ${error.message}</span>`, '');
             }
         }
-
-        loadMarkets();
-        setInterval(loadMarkets, 60000);
+        
+        // Run initial scan
+        runScan();
+        
+        // Auto-refresh every 60s
+        setInterval(runScan, 60000);
     </script>
 </body>
 </html>
