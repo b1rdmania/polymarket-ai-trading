@@ -42,20 +42,23 @@
         async function loadMarkets() {
             try {
                 const response = await fetch(`${CLOB_API}/markets`);
-                const data = await response.json();
+                const json = await response.json();
                 
                 const container = document.getElementById('markets-list');
                 container.innerHTML = '';
                 
-                // Check if data is array
-                if (!Array.isArray(data)) {
+                // API returns {data: [...]} not just array
+                const markets = json.data || json;
+                
+                // Check if we got valid data
+                if (!Array.isArray(markets)) {
                     container.innerHTML = '<p style="color: var(--color-error);">Invalid data format from API</p>';
                     return;
                 }
                 
                 // Sort by volume, take top 20
-                const topMarkets = data
-                    .filter(m => m.volume) // Only markets with volume
+                const topMarkets = markets
+                    .filter(m => m.volume && !m.closed) // Only open markets with volume
                     .sort((a, b) => parseFloat(b.volume || 0) - parseFloat(a.volume || 0))
                     .slice(0, 20);
                 
