@@ -50,7 +50,7 @@ embeddings_cache = {}
 
 
 def get_model_stats(model_name: str) -> Dict:
-    """Get statistics for a model."""
+    """Get statistics for a model from SQLite database."""
     db_path = BASE_DIR / 'data' / f'trades_{model_name}.db'
     
     if not db_path.exists():
@@ -72,10 +72,18 @@ def get_model_stats(model_name: str) -> Dict:
         }
     
     try:
-        conn = sqlite3.connect(db_path)
+        conn = sqlite3.connect(str(db_path))
         cursor = conn.cursor()
         
-        # Overall stats
+        # Total trades (all statuses)
+        cursor.execute("SELECT COUNT(*) FROM trades")
+        total_trades = cursor.fetchone()[0] or 0
+        
+        # Open positions (lowercase 'open')
+        cursor.execute("SELECT COUNT(*) FROM trades WHERE status = 'open'")
+        open_positions = cursor.fetchone()[0] or 0
+        
+        # Closed trades with P&L (lowercase 'closed')
         cursor.execute("""
             SELECT 
                 COUNT(*) as total,
@@ -85,11 +93,11 @@ def get_model_stats(model_name: str) -> Dict:
                 AVG(pnl) as avg_pnl,
                 MAX(pnl) as best,
                 MIN(pnl) as worst
-            FROM trades WHERE status = 'CLOSED'
+            FROM trades WHERE status = 'closed' AND pnl IS NOT NULL
         """)
         
         row = cursor.fetchone()
-        total = row[0] or 0
+        closed_trades = row[0] or 0
         winners = row[1] or 0
         losers = row[2] or 0
         total_pnl = row[3] or 0
@@ -97,27 +105,18 @@ def get_model_stats(model_name: str) -> Dict:
         best = row[5] or 0
         worst = row[6] or 0
         
-        # Open positions
-        cursor.execute("SELECT COUNT(*) FROM trades WHERE status = 'OPEN'")
-        open_positions = cursor.fetchone()[0] or 0
-        
-        # Today's stats
-        today = datetime.now().date()
+        # Today's trades (use 'timestamp' column)
+        today = datetime.now().date().isoformat()
         cursor.execute("""
-            SELECT COUNT(*), SUM(pnl) 
-            FROM trades 
-            WHERE DATE(created_at) = ? AND status = 'CLOSED'
-        """, (today,))
+            SELECT COUNT(*) FROM trades WHERE timestamp LIKE ?
+        """, (f"{today}%",))
+        today_trades = cursor.fetchone()[0] or 0
         
-        row = cursor.fetchone()
-        today_trades = row[0] or 0
-        today_pnl = row[1] or 0
-        
-        # Last trade
+        # Last trade (use 'timestamp' column)
         cursor.execute("""
-            SELECT market_question, pnl, created_at, status
+            SELECT market_question, side, entry_price, size_usd, timestamp, status
             FROM trades 
-            ORDER BY created_at DESC 
+            ORDER BY timestamp DESC 
             LIMIT 1
         """)
         
@@ -126,27 +125,29 @@ def get_model_stats(model_name: str) -> Dict:
         if last_trade_row:
             last_trade = {
                 'market': last_trade_row[0],
-                'pnl': last_trade_row[1],
-                'time': last_trade_row[2],
-                'status': last_trade_row[3]
+                'side': last_trade_row[1],
+                'price': last_trade_row[2],
+                'size': last_trade_row[3],
+                'time': last_trade_row[4],
+                'status': last_trade_row[5]
             }
         
         conn.close()
         
         return {
             'model': model_name,
-            'status': 'Running',
-            'total_trades': total,
+            'status': 'Active' if total_trades > 0 else 'Scanning',
+            'total_trades': total_trades,
             'open_positions': open_positions,
             'winners': winners,
             'losers': losers,
-            'win_rate': (winners / total * 100) if total > 0 else 0,
+            'win_rate': (winners / closed_trades * 100) if closed_trades > 0 else 0,
             'total_pnl': total_pnl,
             'avg_pnl': avg_pnl,
             'best_trade': best,
             'worst_trade': worst,
             'today_trades': today_trades,
-            'today_pnl': today_pnl,
+            'today_pnl': 0,  # Would need closed trades today
             'last_trade': last_trade,
         }
     
@@ -163,28 +164,28 @@ def get_model_stats(model_name: str) -> Dict:
 
 
 def get_recent_trades(model_name: str, limit: int = 20) -> List[Dict]:
-    """Get recent trades for a model."""
+    """Get recent trades for a model from SQLite database."""
     db_path = BASE_DIR / 'data' / f'trades_{model_name}.db'
     
     if not db_path.exists():
         return []
     
     try:
-        conn = sqlite3.connect(db_path)
+        conn = sqlite3.connect(str(db_path))
         cursor = conn.cursor()
         
         cursor.execute("""
             SELECT 
                 market_question,
                 side,
-                size,
-                price,
+                size_usd,
+                entry_price,
                 pnl,
                 status,
-                created_at,
-                updated_at
+                timestamp,
+                notes
             FROM trades
-            ORDER BY created_at DESC
+            ORDER BY timestamp DESC
             LIMIT ?
         """, (limit,))
         
@@ -197,8 +198,8 @@ def get_recent_trades(model_name: str, limit: int = 20) -> List[Dict]:
                 'price': row[3],
                 'pnl': row[4],
                 'status': row[5],
-                'created_at': row[6],
-                'updated_at': row[7],
+                'timestamp': row[6],
+                'notes': row[7],
             })
         
         conn.close()
