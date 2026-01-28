@@ -1,207 +1,278 @@
 # Polymarket API Documentation
 
-## CLOB (Central Limit Order Book) Introduction
+## Two APIs Available
 
-### System Overview
+Polymarket has **two APIs** for market data:
 
-Polymarket's Order Book, or CLOB (Central Limit Order Book), is **hybrid-decentralized**:
+| API | URL | Use Case |
+|-----|-----|----------|
+| **Gamma API** | `https://gamma-api.polymarket.com` | Market data, prices, volume (recommended) |
+| **CLOB API** | `https://clob.polymarket.com` | Order book, trading, order placement |
 
-- **Off-chain**: Operator handles matching and ordering
-- **On-chain**: Settlement executed non-custodially via signed order messages
-
-#### Exchange Contract
-
-- Custom Exchange contract for atomic swaps
-- Between binary Outcome Tokens (CTF ERC1155 assets and ERC20 PToken assets)
-- And collateral assets (ERC20)
-- Designed for binary markets
-- Complementary tokens match across unified order book
-
-#### Order Structure
-
-- Orders are **EIP712-signed structured data**
-- Matched orders: one maker + one or more takers
-- Price improvements benefit the taker
-- Operator handles off-chain order management
-- Submits matched trades to blockchain for on-chain execution
+**We use the Gamma API** for market data because it has the fields we need (`volume`, `outcomePrices`).
 
 ---
 
-## API Capabilities
+## Gamma API (Market Data)
 
-The Polymarket Order Book API enables:
+### Base URL
 
-- **Market Makers**: Programmatically manage market orders
-- **Traders**: Create, list, fetch orders of any amount
-- **Data Access**: 
-  - All available markets
-  - Market prices
-  - Order history
-  - REST and WebSocket endpoints
-
-### Key Endpoints
-
-- **REST API**: `https://clob.polymarket.com`
-- **Markets endpoint**: `/markets`
-- Returns: `{"data": [...]}`  array of market objects
-
----
-
-## Security
-
-### Audit
-
-- Exchange contract audited by **Chainsecurity**
-- [View Audit Report](https://github.com/Polymarket/ctf-exchange/blob/main/audit/ChainSecurity_Polymarket_Exchange_audit.pdf)
-
-### Operator Privileges (Limited)
-
-Operators can only:
-- Match orders
-- Ensure non-censorship
-- Maintain correct ordering
-
-Operators **cannot**:
-- Set prices
-- Execute unauthorized trades
-
-### User Rights
-
-- Users can cancel orders **on-chain independently**
-- No trust required in operator for order cancellation
-
----
-
-## Fees
-
-### Current Fee Schedule
-
-> Subject to change
-
-| Volume Level | Maker Fee (bps) | Taker Fee (bps) |
-|--------------|-----------------|-----------------|
-| >0 USDC      | 0               | 0               |
-
-**Currently: 0% fees for all traders**
-
-### Fee Calculation (When Applied)
-
-Fees apply symmetrically in output assets (proceeds).
-
-**Selling outcome tokens (base) for collateral (quote):**
 ```
-feeQuote = baseRate × min(price, 1 - price) × size
+https://gamma-api.polymarket.com
 ```
 
-**Buying outcome tokens (base) with collateral (quote):**
+### Endpoints
+
+#### GET /markets
+
+Fetch active markets with prices and volume.
+
+**Request:**
 ```
-feeBase = baseRate × min(price, 1 - price) × (size / price)
+GET https://gamma-api.polymarket.com/markets?limit=50&active=true&closed=false
 ```
 
----
+**Query Parameters:**
 
-## Market Data Structure
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `limit` | integer | Max markets to return (default: 100) |
+| `active` | boolean | Only active markets |
+| `closed` | boolean | Filter by closed status |
 
-### Response Format
+**Response:** Array of market objects (not wrapped in `{data: [...]}`)
 
 ```json
-{
-  "data": [
-    {
-      "condition_id": "0x...",
-      "question_id": "0x...",
-      "question": "Will X happen?",
-      "description": "Market description...",
-      "outcomes": [
-        {
-          "price": "0.65",  // Price in USDC (65¢ = 65% probability)
-          "side": "YES"
-        },
-        {
-          "price": "0.35",
-          "side": "NO"
-        }
-      ],
-      "volume": "123456.78",  // 24h volume in USDC
-      "closed": false,
-      "active": true,
-      "accepting_orders": true,
-      "minimum_order_size": 15,
-      "minimum_tick_size": 0.01
-    }
-  ]
-}
+[
+  {
+    "id": "0x...",
+    "question": "Will X happen by Y date?",
+    "conditionId": "0x...",
+    "slug": "will-x-happen",
+    "description": "Full market description...",
+    "outcomes": ["Yes", "No"],
+    "outcomePrices": ["0.65", "0.35"],
+    "volume": "1234567.89",
+    "volumeNum": 1234567.89,
+    "volume24hr": "12345.67",
+    "liquidity": "50000.00",
+    "liquidityNum": 50000.00,
+    "active": true,
+    "closed": false,
+    "archived": false,
+    "endDate": "2026-12-31",
+    "endDateIso": "2026-12-31T23:59:59.000Z",
+    "category": "Politics",
+    "bestBid": 0.64,
+    "bestAsk": 0.66,
+    "spread": 0.02,
+    "lastTradePrice": 0.65,
+    "oneDayPriceChange": -0.02,
+    "oneWeekPriceChange": 0.05
+  }
+]
 ```
 
 ### Key Fields
 
-- **`condition_id`**: Unique market identifier
-- **`question`**: Human-readable market question
-- **`outcomes[].price`**: Price = probability (0.65 = 65% chance)
-- **`volume`**: 24-hour trading volume in USDC
-- **`closed`**: Boolean, market resolved or not
-- **`minimum_order_size`**: Min order size (usually 15 USDC)
-- **`minimum_tick_size`**: Price increment (usually 0.01 = 1¢)
+| Field | Type | Description |
+|-------|------|-------------|
+| `question` | string | Market question text |
+| `outcomePrices` | string[] | Prices as ["0.65", "0.35"] for [YES, NO] |
+| `volume` | string | Total volume in USDC |
+| `volumeNum` | number | Volume as number |
+| `volume24hr` | string | 24-hour volume |
+| `liquidity` | string | Current liquidity |
+| `active` | boolean | Market is active |
+| `closed` | boolean | Market has resolved |
+| `bestBid` | number | Best bid price |
+| `bestAsk` | number | Best ask price |
+| `spread` | number | Bid-ask spread |
+| `lastTradePrice` | number | Last trade price |
+
+---
+
+## CLOB API (Order Book)
+
+### Base URL
+
+```
+https://clob.polymarket.com
+```
+
+### Response Format
+
+CLOB API wraps data in `{data: [...]}`:
+
+```json
+{
+  "data": [...],
+  "next_cursor": "abc123",
+  "limit": 100,
+  "count": 1000
+}
+```
+
+### Market Object (CLOB)
+
+Different structure from Gamma API:
+
+```json
+{
+  "condition_id": "0x...",
+  "question_id": "0x...",
+  "question": "Market question",
+  "tokens": [
+    {
+      "token_id": "123...",
+      "outcome": "Yes",
+      "price": 0.65,
+      "winner": false
+    },
+    {
+      "token_id": "456...",
+      "outcome": "No",
+      "price": 0.35,
+      "winner": false
+    }
+  ],
+  "active": true,
+  "closed": false,
+  "minimum_order_size": 15,
+  "minimum_tick_size": 0.01
+}
+```
+
+**Note:** CLOB API does NOT have `volume` field. Use Gamma API for volume data.
+
+---
+
+## Our Integration Setup
+
+### Exact Configuration
+
+```javascript
+// API endpoint
+const API = 'https://gamma-api.polymarket.com';
+
+// Fetch active markets
+const response = await fetch(`${API}/markets?limit=50&active=true&closed=false`);
+const markets = await response.json(); // Returns array directly
+
+// Filter criteria
+const filtered = markets
+    .filter(m => parseFloat(m.volume || 0) > 1000)  // Min $1k volume
+    .sort((a, b) => parseFloat(b.volume) - parseFloat(a.volume))
+    .slice(0, 20);
+
+// Parse price (outcomePrices[0] = YES price)
+const yesPrice = parseFloat(market.outcomePrices[0]);  // 0.65 = 65%
+const noPrice = parseFloat(market.outcomePrices[1]);   // 0.35 = 35%
+```
+
+### Filter Criteria
+
+| Criterion | Value | Reason |
+|-----------|-------|--------|
+| `active` | `true` | Skip inactive markets |
+| `closed` | `false` | Skip resolved markets |
+| `volume` | `> $1,000` | Minimum liquidity for trading |
+| Sort by | `volume DESC` | Prioritize liquid markets |
+| Limit | `20` | Top markets only |
+
+### Polling Frequency
+
+- **Dashboard:** Every 30 seconds
+- **Trading models:** Every 60 seconds
+- No official rate limits, but be reasonable
 
 ---
 
 ## Price = Probability
 
-**Core Concept**: Prices on Polymarket represent probabilities
+**Core Concept:** Prices represent probabilities.
 
-- If YES shares trade at **65¢**, it means **65% probability** of outcome
-- If NO shares trade at **35¢**, it means **35% probability** of opposite
-- YES + NO always equals $1.00 (100%)
+| YES Price | Meaning |
+|-----------|---------|
+| 65¢ | 65% probability of YES outcome |
+| 35¢ | 35% probability (NO would be 65¢) |
+| 95¢ | 95% probability (high confidence) |
+| 5¢ | 5% probability (unlikely) |
 
 ### How Shares Work
 
-1. **Buying**: Buy YES at 65¢, if outcome happens → get $1.00 (35¢ profit)
-2. **Selling**: Can sell before resolution to lock in profits or cut losses
-3. **Resolution**: Winning shares pay $1.00, losing shares pay $0.00
+1. **Buy YES at 65¢** → If YES wins, get $1.00 (profit: 35¢)
+2. **Buy NO at 35¢** → If NO wins, get $1.00 (profit: 65¢)
+3. **Sell early** → Lock in profits or cut losses before resolution
+4. **Resolution** → Winning shares = $1.00, losing shares = $0.00
+
+### Mean Reversion Opportunities
+
+We look for:
+- **Overreaction:** Price jumps from 50¢ to 80¢ on news, may revert
+- **Extreme prices:** 95¢+ or 5¢- often overconfident
+- **Volume spikes:** High volume + price movement = potential reversion
+
+---
+
+## Authentication
+
+### Read-Only (No Auth Required)
+
+Market data is **public**:
+```bash
+curl https://gamma-api.polymarket.com/markets?limit=5
+```
+
+### Trading (Auth Required)
+
+Order placement requires:
+- Ethereum wallet
+- EIP712 signed orders
+- API credentials
+
+**We use paper trading only** - no auth needed.
+
+---
+
+## CORS
+
+Both APIs allow cross-origin requests:
+
+```
+Access-Control-Allow-Origin: *
+```
+
+Frontend JavaScript can call directly without proxy.
+
+---
+
+## Fees
+
+| Type | Fee |
+|------|-----|
+| Maker | 0 bps (0%) |
+| Taker | 0 bps (0%) |
+
+**Currently zero fees for all trades.**
+
+Fee formula (when applied):
+```
+fee = baseRate × min(price, 1 - price) × size
+```
 
 ---
 
 ## Additional Resources
 
-- [Exchange contract source code](https://github.com/Polymarket/ctf-exchange/tree/main/src)
-- [Exchange contract documentation](https://github.com/Polymarket/ctf-exchange/blob/main/docs/Overview.md)
-- [Full Polymarket Documentation](https://docs.polymarket.com/)
+- [Polymarket Docs](https://docs.polymarket.com/)
+- [CLOB Introduction](https://docs.polymarket.com/developers/CLOB/introduction)
+- [Exchange Contract](https://github.com/Polymarket/ctf-exchange)
+- [Audit Report](https://github.com/Polymarket/ctf-exchange/blob/main/audit/ChainSecurity_Polymarket_Exchange_audit.pdf)
 
 ---
 
-## Integration Notes for Our Models
-
-### What We Use
-
-1. **CLOB API** (`https://clob.polymarket.com/markets`)
-   - Fetch all active markets
-   - Get current prices (probabilities)
-   - Check volume and liquidity
-
-2. **Data We Need**
-   - `question`: Market description
-   - `outcomes[0].price`: Current YES price
-   - `volume`: Trading volume (liquidity proxy)
-   - `closed`: Skip resolved markets
-
-3. **Our Filters**
-   - Volume > $100 (minimum liquidity)
-   - Sort by volume descending
-   - Only show active markets
-
-### Rate Limits
-
-- No official rate limits documented
-- We poll every 60 seconds
-- Well within reasonable usage
-
-### No Authentication Required
-
-- Market data is **public**
-- No API key needed for read-only access
-- Only need keys for order placement (we're paper trading)
-
----
-
-**Last Updated**: January 28, 2026  
-**Source**: https://docs.polymarket.com/developers/CLOB/introduction
+**Last Updated:** January 28, 2026  
+**Tested Endpoints:**
+- `https://gamma-api.polymarket.com/markets` ✓
+- `https://clob.polymarket.com/markets` ✓ (different schema)
