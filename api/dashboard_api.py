@@ -215,7 +215,7 @@ def get_recent_trades(model_name: str, limit: int = 20) -> List[Dict]:
 
 @app.get("/api/signals/live")
 async def get_live_signals(limit: int = 50):
-    """Get recent signals from all models."""
+    """Get recent trades from all models."""
     all_signals = []
     
     for model in MODELS:
@@ -224,33 +224,35 @@ async def get_live_signals(limit: int = 50):
             continue
             
         try:
-            conn = sqlite3.connect(db_path)
+            conn = sqlite3.connect(str(db_path))
             cursor = conn.cursor()
             
             cursor.execute("""
                 SELECT 
                     market_question,
                     side,
-                    price,
-                    size,
-                    created_at,
+                    entry_price,
+                    size_usd,
+                    timestamp,
                     status,
-                    pnl
+                    pnl,
+                    notes
                 FROM trades
-                ORDER BY created_at DESC
+                ORDER BY timestamp DESC
                 LIMIT ?
             """, (limit,))
             
             for row in cursor.fetchall():
                 all_signals.append({
                     'model': model,
-                    'market': row[0],
+                    'market': row[0] or 'Unknown',
                     'direction': row[1],
                     'entry_price': row[2],
                     'size': row[3],
                     'timestamp': row[4],
                     'status': row[5],
                     'pnl': row[6],
+                    'notes': row[7],
                     'strength': 'STRONG' if model == 'conservative' else 'MODERATE' if model == 'moderate' else 'WEAK'
                 })
             
@@ -260,7 +262,7 @@ async def get_live_signals(limit: int = 50):
             continue
     
     # Sort by timestamp descending
-    all_signals.sort(key=lambda x: x['timestamp'], reverse=True)
+    all_signals.sort(key=lambda x: x['timestamp'] or '', reverse=True)
     return {
         'signals': all_signals[:limit],
         'timestamp': datetime.now().isoformat()
