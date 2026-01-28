@@ -2,6 +2,8 @@
 
 Quantitative trading system for Polymarket prediction markets, built on 40+ years of prediction market research.
 
+**🔗 Live Dashboard**: [polymarket-trading-dashboard.vercel.app](https://polymarket-trading-dashboard.vercel.app)
+
 **by [b1rdmania](https://github.com/b1rdmania)**
 
 ## 🎯 What This Is
@@ -16,8 +18,9 @@ An AI-powered trading system for Polymarket that:
 ## 📊 Current Status
 
 **Development Stage**: Paper Trading & Research  
-**Live Dashboard**: [View Dashboard](https://vercel-frontend-g4o1sdx6o-boom-test-c54cde04.vercel.app)  
-**Deployment**: Ready for Render (24/7 for $7/month)
+**Live Dashboard**: [polymarket-trading-dashboard.vercel.app](https://polymarket-trading-dashboard.vercel.app)  
+**Backend**: [polymarket-trading-system.onrender.com](https://polymarket-trading-system.onrender.com)  
+**Deployment**: ✅ Production (Vercel + Render, $7/month)
 
 ### What's Working ✅
 
@@ -365,8 +368,8 @@ Built on research and insights from:
 ## 🔗 Links
 
 - **GitHub**: [github.com/b1rdmania/polymarket-ai-trading](https://github.com/b1rdmania/polymarket-ai-trading)
+- **Live Dashboard**: [polymarket-trading-dashboard.vercel.app](https://polymarket-trading-dashboard.vercel.app)
 - **Polymarket**: [polymarket.com](https://polymarket.com)
-- **Live Dashboard**: [View Demo](https://vercel-frontend-g4o1sdx6o-boom-test-c54cde04.vercel.app)
 - **My GitHub**: [@b1rdmania](https://github.com/b1rdmania)
 
 ## 📊 Related Projects
