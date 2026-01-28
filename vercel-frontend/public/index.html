@@ -32,14 +32,22 @@
             <!-- Current Status -->
             <div class="card">
                 <h3>System Status</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-top: 16px;">
                     <div class="stat-box">
                         <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">MODE</div>
                         <strong>Paper Trading</strong>
                     </div>
                     <div class="stat-box">
-                        <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">MODELS RUNNING</div>
+                        <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">MODELS</div>
                         <strong id="models-count">3</strong>
+                    </div>
+                    <div class="stat-box">
+                        <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">TOTAL TRADES</div>
+                        <strong id="total-trades">--</strong>
+                    </div>
+                    <div class="stat-box">
+                        <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">OPEN POSITIONS</div>
+                        <strong id="open-positions">--</strong>
                     </div>
                     <div class="stat-box">
                         <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">LAST UPDATE</div>
@@ -56,9 +64,20 @@
                 </div>
             </div>
 
-            <!-- Recent Activity -->
+            <!-- Open Positions -->
             <div class="card">
-                <h3>Recent Trades</h3>
+                <h3>Open Positions</h3>
+                <p style="color: var(--color-gray-mid); font-size: 0.85rem; margin-top: 8px;">
+                    Current positions across all models with entry reasoning.
+                </p>
+                <div id="positions-container" style="margin-top: 16px;">
+                    <div class="loader">Loading positions...</div>
+                </div>
+            </div>
+
+            <!-- Recent Trades -->
+            <div class="card">
+                <h3>Trade Log</h3>
                 <div id="recent-trades" style="margin-top: 16px;">
                     <div class="loader">Loading trades...</div>
                 </div>
@@ -66,8 +85,7 @@
 
             <!-- Footer -->
             <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--color-border); color: var(--color-gray-mid); font-size: 0.85rem;">
-                <p><strong>Paper trading only.</strong> No real money at risk. Models scan Polymarket for mean reversion opportunities based on 40 years of prediction market research.</p>
-                <p style="margin-top: 12px;">Research: <a href="research.html">Berg & Rietz (2018)</a> • <a href="research.html">Munger's Biases</a> • <a href="research.html">Mean Reversion in Markets</a></p>
+                <p><strong>Paper trading only.</strong> No real money at risk. Models scan Polymarket for mean reversion opportunities based on <a href="research.html">40 years of prediction market research</a>.</p>
             </div>
         </div>
     </div>
@@ -104,37 +122,44 @@
                 grid.innerHTML = '';
                 
                 if (!data.models || data.models.length === 0) {
-                    grid.innerHTML = '<p style="color: var(--color-gray-mid);">No model data yet. Models are scanning markets...</p>';
+                    grid.innerHTML = '<p style="color: var(--color-gray-mid);">No model data yet.</p>';
                     return;
                 }
                 
+                let totalTrades = 0;
+                let totalOpen = 0;
+                
                 data.models.forEach(model => {
-                    const card = document.createElement('div');
-                    card.className = 'model-card';
-                    card.style.border = `2px solid var(--color-${model.model})`;
+                    totalTrades += model.total_trades;
+                    totalOpen += model.open_positions;
                     
-                    const winRate = model.total_trades > 0 ? model.win_rate.toFixed(1) : '0.0';
-                    const pnl = model.total_pnl.toFixed(2);
-                    const pnlColor = model.total_pnl > 0 ? 'var(--color-success)' : model.total_pnl < 0 ? 'var(--color-error)' : 'var(--color-gray-mid)';
+                    const card = document.createElement('div');
+                    card.style.padding = '16px';
+                    card.style.background = '#f8f8f8';
+                    card.style.borderRadius = '4px';
+                    card.style.borderLeft = '4px solid ' + (model.model === 'conservative' ? '#16a34a' : model.model === 'moderate' ? '#3b82f6' : '#dc2626');
+                    
+                    const pnl = (model.total_pnl || 0).toFixed(2);
+                    const pnlColor = model.total_pnl > 0 ? '#16a34a' : model.total_pnl < 0 ? '#dc2626' : '#666';
                     
                     card.innerHTML = `
-                        <h4 style="text-transform: uppercase; margin-bottom: 12px;">${model.model}</h4>
-                        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
-                            <div style="display: flex; justify-content: space-between;">
-                                <span style="color: var(--color-gray-mid);">Total Trades</span>
+                        <h4 style="text-transform: uppercase; margin-bottom: 12px; font-size: 0.85rem;">${model.model}</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.85rem;">
+                            <div>
+                                <div style="color: #888; font-size: 0.7rem;">TRADES</div>
                                 <strong>${model.total_trades}</strong>
                             </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <span style="color: var(--color-gray-mid);">Win Rate</span>
-                                <strong>${winRate}%</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <span style="color: var(--color-gray-mid);">Total P&L</span>
-                                <strong style="color: ${pnlColor};">$${pnl}</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <span style="color: var(--color-gray-mid);">Open Positions</span>
+                            <div>
+                                <div style="color: #888; font-size: 0.7rem;">OPEN</div>
                                 <strong>${model.open_positions}</strong>
+                            </div>
+                            <div>
+                                <div style="color: #888; font-size: 0.7rem;">WIN RATE</div>
+                                <strong>${model.total_trades > 0 ? model.win_rate.toFixed(0) : 0}%</strong>
+                            </div>
+                            <div>
+                                <div style="color: #888; font-size: 0.7rem;">P&L</div>
+                                <strong style="color: ${pnlColor};">$${pnl}</strong>
                             </div>
                         </div>
                     `;
@@ -143,75 +168,136 @@
                 });
                 
                 document.getElementById('models-count').textContent = data.models.length;
+                document.getElementById('total-trades').textContent = totalTrades;
+                document.getElementById('open-positions').textContent = totalOpen;
                 
             } catch (error) {
-                document.getElementById('models-grid').innerHTML = `<p style="color: var(--color-error);">Failed to load models: ${error.message}</p>`;
+                document.getElementById('models-grid').innerHTML = `<p style="color: var(--color-error);">Failed to load: ${error.message}</p>`;
             }
         }
 
-        // Load recent trades
+        // Load open positions with reasoning
+        async function loadPositions() {
+            try {
+                const response = await fetch(`${API_BASE}/api/signals/live?limit=50`);
+                const data = await response.json();
+                
+                const container = document.getElementById('positions-container');
+                
+                // Filter for open positions only
+                const openPositions = (data.signals || []).filter(s => s.status === 'open');
+                
+                if (openPositions.length === 0) {
+                    container.innerHTML = '<p style="color: var(--color-gray-mid);">No open positions yet. Models are scanning for opportunities...</p>';
+                    return;
+                }
+                
+                // Group by market to avoid duplicates
+                const marketMap = new Map();
+                openPositions.forEach(pos => {
+                    const key = pos.market;
+                    if (!marketMap.has(key)) {
+                        marketMap.set(key, []);
+                    }
+                    marketMap.get(key).push(pos);
+                });
+                
+                container.innerHTML = '';
+                
+                marketMap.forEach((positions, market) => {
+                    const card = document.createElement('div');
+                    card.style.padding = '16px';
+                    card.style.border = '1px solid var(--color-border)';
+                    card.style.marginBottom = '12px';
+                    card.style.borderRadius = '4px';
+                    card.style.background = '#fafafa';
+                    
+                    const pos = positions[0]; // Use first position for details
+                    const models = positions.map(p => p.model).join(', ');
+                    const totalSize = positions.reduce((sum, p) => sum + (p.size || 0), 0);
+                    const priceDisplay = pos.entry_price < 0.01 ? (pos.entry_price * 100).toFixed(2) : (pos.entry_price * 100).toFixed(1);
+                    
+                    card.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: start; gap: 16px;">
+                            <div style="flex: 1;">
+                                <div style="font-size: 0.95rem; font-weight: 500; margin-bottom: 8px;">
+                                    ${market}
+                                </div>
+                                <div style="font-size: 0.8rem; color: var(--color-gray-mid);">
+                                    <strong style="color: ${pos.direction === 'YES' ? '#16a34a' : '#dc2626'};">${pos.direction}</strong> @ ${priceDisplay}¢
+                                    · $${totalSize.toFixed(2)} across ${positions.length} model${positions.length > 1 ? 's' : ''}
+                                </div>
+                                <div style="margin-top: 8px; padding: 8px; background: #fff; border-radius: 4px; font-size: 0.8rem; color: #666;">
+                                    <strong>Why:</strong> ${pos.notes || 'Mean reversion signal detected'}
+                                </div>
+                            </div>
+                            <div style="text-align: right; min-width: 80px;">
+                                <div style="font-size: 0.7rem; color: var(--color-gray-mid);">STATUS</div>
+                                <div style="font-size: 0.8rem; color: #f59e0b; font-weight: 500;">● OPEN</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    container.appendChild(card);
+                });
+                
+            } catch (error) {
+                document.getElementById('positions-container').innerHTML = `<p style="color: var(--color-error);">Failed to load: ${error.message}</p>`;
+            }
+        }
+
+        // Load trade log
         async function loadTrades() {
             try {
-                const response = await fetch(`${API_BASE}/api/signals/live?limit=10`);
+                const response = await fetch(`${API_BASE}/api/signals/live?limit=20`);
                 const data = await response.json();
                 
                 const container = document.getElementById('recent-trades');
                 
                 if (!data.signals || data.signals.length === 0) {
-                    container.innerHTML = '<p style="color: var(--color-gray-mid);">No trades yet. Models are scanning for opportunities...</p>';
+                    container.innerHTML = '<p style="color: var(--color-gray-mid);">No trades yet.</p>';
                     return;
                 }
                 
-                const table = document.createElement('table');
-                table.style.width = '100%';
-                table.style.fontSize = '0.85rem';
-                table.innerHTML = `
-                    <thead>
-                        <tr style="text-align: left; border-bottom: 1px solid var(--color-border);">
-                            <th style="padding: 8px;">Model</th>
-                            <th style="padding: 8px;">Market</th>
-                            <th style="padding: 8px;">Side</th>
-                            <th style="padding: 8px;">Price</th>
-                            <th style="padding: 8px;">P&L</th>
-                            <th style="padding: 8px;">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="trades-body"></tbody>
-                `;
+                let html = '<div style="font-size: 0.8rem; font-family: var(--font-mono); max-height: 300px; overflow-y: auto;">';
                 
-                container.innerHTML = '';
-                container.appendChild(table);
-                
-                const tbody = document.getElementById('trades-body');
-                data.signals.slice(0, 10).forEach(signal => {
-                    const pnlColor = signal.pnl > 0 ? 'var(--color-success)' : signal.pnl < 0 ? 'var(--color-error)' : 'var(--color-gray-mid)';
-                    const row = document.createElement('tr');
-                    row.style.borderBottom = '1px solid var(--color-border)';
-                    row.innerHTML = `
-                        <td style="padding: 8px; text-transform: uppercase; font-family: var(--font-mono); font-size: 0.75rem;">${signal.model}</td>
-                        <td style="padding: 8px; max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${signal.market}</td>
-                        <td style="padding: 8px; text-transform: uppercase; font-size: 0.75rem;">${signal.direction}</td>
-                        <td style="padding: 8px; font-family: var(--font-mono);">${(signal.entry_price * 100).toFixed(1)}¢</td>
-                        <td style="padding: 8px; font-family: var(--font-mono); color: ${pnlColor};">$${signal.pnl.toFixed(2)}</td>
-                        <td style="padding: 8px; font-size: 0.75rem; text-transform: uppercase;">${signal.status}</td>
+                data.signals.slice(0, 15).forEach(signal => {
+                    const time = signal.timestamp ? new Date(signal.timestamp).toLocaleString('en-US', {
+                        month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                    }) : '--';
+                    const priceDisplay = signal.entry_price < 0.01 ? (signal.entry_price * 100).toFixed(2) : (signal.entry_price * 100).toFixed(1);
+                    const sideColor = signal.direction === 'YES' ? '#16a34a' : '#dc2626';
+                    
+                    html += `
+                        <div style="padding: 8px 0; border-bottom: 1px solid #eee;">
+                            <span style="color: #888;">${time}</span>
+                            <span style="text-transform: uppercase; font-size: 0.7rem; background: #f0f0f0; padding: 2px 6px; border-radius: 3px; margin-left: 8px;">${signal.model}</span>
+                            <span style="color: ${sideColor}; font-weight: 600; margin-left: 8px;">${signal.direction}</span>
+                            <span style="margin-left: 4px;">${(signal.market || '').substring(0, 40)}${(signal.market || '').length > 40 ? '...' : ''}</span>
+                            <span style="color: #888; margin-left: 8px;">@ ${priceDisplay}¢</span>
+                        </div>
                     `;
-                    tbody.appendChild(row);
                 });
                 
+                html += '</div>';
+                container.innerHTML = html;
+                
             } catch (error) {
-                document.getElementById('recent-trades').innerHTML = `<p style="color: var(--color-error);">Failed to load trades: ${error.message}</p>`;
+                document.getElementById('recent-trades').innerHTML = `<p style="color: var(--color-error);">Failed to load: ${error.message}</p>`;
             }
         }
 
         // Initial load
         updateStatus();
         loadModels();
+        loadPositions();
         loadTrades();
         
         // Refresh every 30 seconds
         setInterval(() => {
             updateStatus();
             loadModels();
+            loadPositions();
             loadTrades();
         }, 30000);
     </script>
