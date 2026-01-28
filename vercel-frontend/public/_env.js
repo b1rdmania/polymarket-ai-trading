@@ -1,3 +1,3 @@
-window.DASHBOARD_API_URL = 'https://query-thereof-dialog-fifth.trycloudflare.com';
+window.DASHBOARD_API_URL = 'https://polymarket-trading-system.onrender.com';
 
 
