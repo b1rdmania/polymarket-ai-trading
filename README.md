@@ -17,7 +17,7 @@ An AI-powered trading system for Polymarket that:
 
 **Development Stage**: Paper Trading & Research  
 **Live Dashboard**: [View Dashboard](https://vercel-frontend-g4o1sdx6o-boom-test-c54cde04.vercel.app)  
-**Backend API**: Cloudflare Tunnel (temporary URL)
+**Deployment**: Ready for Render (24/7 for $7/month)
 
 ### What's Working ✅
 
@@ -116,11 +116,11 @@ All models run in **paper mode** - no real capital deployed.
 
 ### Prerequisites
 
-- **Docker Desktop** (or Docker Engine + Docker Compose)
+- **Docker Desktop** (for local development) OR
+- **Render account** (for production deployment - [sign up free](https://render.com))
 - **OpenAI API key** (for AI features - [get one here](https://platform.openai.com/api-keys))
-- **Cloudflare Tunnel** (optional, for public dashboard access)
 
-### Installation
+### Option A: Local Development
 
 1. **Clone the repository**
 
@@ -156,43 +156,30 @@ docker compose logs -f
 
 4. **Access the dashboard**
 
-Open `http://localhost:8000` in your browser. You should see:
-- ✅ Backend connected (green dot)
-- 📊 Model stats loading
-- 📈 Live market data streaming
+Open `http://localhost:8000` in your browser.
 
-5. **Deploy frontend to Vercel** (optional)
+### Option B: Deploy to Render (Recommended for 24/7 operation)
 
-```bash
-cd vercel-frontend
-npx vercel --prod
-```
+**Cost**: $7/month for 24/7 uptime (or free with 15-min spin-down)
 
-6. **Start Cloudflare Tunnel** (optional, for public access)
+1. **Quick Deploy**:
+   - Go to [dashboard.render.com](https://dashboard.render.com)
+   - Click "New +" → "Blueprint"
+   - Connect GitHub: `b1rdmania/polymarket-ai-trading`
+   - Add environment variable: `OPENAI_API_KEY=sk-...`
+   - Click "Apply"
 
-```bash
-# Install cloudflared first
-brew install cloudflare/cloudflare/cloudflared
+2. **Full Guide**: See [RENDER_QUICKSTART.md](RENDER_QUICKSTART.md) or [RENDER_DEPLOY.md](RENDER_DEPLOY.md)
 
-# Start tunnel
-cloudflared tunnel --url http://localhost:8000
-```
-
-### Stopping the System
-
-```bash
-# Stop all containers
-docker compose down
-
-# Stop and remove all data
-docker compose down -v
-```
+Your system will be live at: `https://polymarket-trading-system.onrender.com`
 
 ## 📚 Documentation
 
 | Guide | Purpose |
 |-------|---------|
-| [START_GUIDE.md](START_GUIDE.md) | Complete setup walkthrough for beginners |
+| [RENDER_QUICKSTART.md](RENDER_QUICKSTART.md) | **Deploy to Render in 5 steps** (recommended) |
+| [RENDER_DEPLOY.md](RENDER_DEPLOY.md) | Complete Render deployment guide with troubleshooting |
+| [START_GUIDE.md](START_GUIDE.md) | Local setup walkthrough for beginners |
 | [DOCKER_GUIDE.md](DOCKER_GUIDE.md) | Docker installation and troubleshooting |
 | [PAPER_TRADING_START.md](PAPER_TRADING_START.md) | How paper trading mode works |
 | [BACKTESTING_GUIDE.md](BACKTESTING_GUIDE.md) | Running backtests on historical data |
