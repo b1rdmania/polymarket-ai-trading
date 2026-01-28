@@ -65,16 +65,16 @@
                 console.log(`Loaded ${markets.length} markets`);
                 
                 // Sort by volume, take top 20
+                // Less strict filter - just need volume
                 const topMarkets = markets
                     .filter(m => {
-                        const hasVolume = m.volume && parseFloat(m.volume) > 0;
-                        const isOpen = !m.closed && m.active;
-                        return hasVolume && isOpen;
+                        const volume = parseFloat(m.volume || 0);
+                        return volume > 100; // At least $100 volume
                     })
                     .sort((a, b) => parseFloat(b.volume || 0) - parseFloat(a.volume || 0))
                     .slice(0, 20);
                 
-                console.log(`Filtered to ${topMarkets.length} open markets with volume`);
+                console.log(`Filtered to ${topMarkets.length} markets with volume >$100`);
                 
                 container.innerHTML = '';
                 
