@@ -1,0 +1,26 @@
+# Single Trading Model Configuration
+# Balanced settings for mean reversion strategy
+
+data:
+  db_path: data/trades.db
+  logs_dir: logs
+
+execution:
+  check_interval_seconds: 300  # 5 minutes
+
+risk:
+  kelly_fraction: 0.25
+  max_position_usd: 500
+  max_positions: 10
+  max_total_exposure_usd: 2000
+
+signals:
+  mean_reversion:
+    enabled: true
+    favorite_threshold: 0.70    # Trade when YES > 70%
+    longshot_threshold: 0.30    # Trade when YES < 30%
+    min_mispricing_pct: 5.0     # Minimum 5% from fair value
+
+trading:
+  mode: paper
+  model_name: trader

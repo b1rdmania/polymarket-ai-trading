@@ -136,7 +136,6 @@
             let html = '<table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">';
             html += '<thead><tr style="text-align: left; border-bottom: 1px solid var(--color-gray-dark);">';
             html += '<th style="padding: 8px;">Market</th>';
-            html += '<th style="padding: 8px;">Model</th>';
             html += '<th style="padding: 8px;">Side</th>';
             html += '<th style="padding: 8px;">Entry</th>';
             html += '<th style="padding: 8px;">P&L</th>';
@@ -148,8 +147,7 @@
                 const emoji = pnl >= 0 ? '✅' : '❌';
                 
                 html += '<tr style="border-bottom: 1px solid var(--color-gray-dark);">';
-                html += `<td style="padding: 8px;">${trade.market.substring(0, 40)}</td>`;
-                html += `<td style="padding: 8px;">${trade.model}</td>`;
+                html += `<td style="padding: 8px;">${trade.market.substring(0, 45)}</td>`;
                 html += `<td style="padding: 8px;">${trade.direction}</td>`;
                 html += `<td style="padding: 8px;">${(trade.entry_price * 100).toFixed(1)}%</td>`;
                 html += `<td style="padding: 8px; color: ${pnlColor};">${emoji} $${pnl.toFixed(2)}</td>`;
@@ -194,21 +192,19 @@
             let html = '<table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">';
             html += '<thead><tr style="text-align: left; border-bottom: 1px solid var(--color-gray-dark);">';
             html += '<th style="padding: 8px;">Market</th>';
-            html += '<th style="padding: 8px;">Model</th>';
             html += '<th style="padding: 8px;">Side</th>';
             html += '<th style="padding: 8px;">Entry</th>';
             html += '<th style="padding: 8px;">Current</th>';
             html += '<th style="padding: 8px;">P&L %</th>';
             html += '</tr></thead><tbody>';
 
-            for (const pos of positions.slice(0, 15)) {
+            for (const pos of positions.slice(0, 20)) {
                 const pnl = pos.pnl_pct || 0;
                 const pnlColor = pnl >= 0 ? 'var(--color-success)' : 'var(--color-error)';
                 const emoji = pnl >= 0 ? '🟢' : '🔴';
                 
                 html += '<tr style="border-bottom: 1px solid var(--color-gray-dark);">';
-                html += `<td style="padding: 8px;">${(pos.question || '').substring(0, 35)}</td>`;
-                html += `<td style="padding: 8px;">${pos.model}</td>`;
+                html += `<td style="padding: 8px;">${(pos.question || '').substring(0, 40)}</td>`;
                 html += `<td style="padding: 8px;">${pos.side}</td>`;
                 html += `<td style="padding: 8px;">${(pos.entry * 100).toFixed(1)}%</td>`;
                 html += `<td style="padding: 8px;">${pos.current ? (pos.current * 100).toFixed(1) + '%' : '--'}</td>`;
