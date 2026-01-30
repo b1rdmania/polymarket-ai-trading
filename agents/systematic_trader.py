@@ -303,7 +303,7 @@ class PaperTrader:
     
     def _load_open_positions(self):
         """Load open positions from database."""
-        self.positions: Dict[str, Dict] = {}
+        self.positions: Dict[str, Dict] = {}  # Keyed by trade_id (not market_id!)
         
         try:
             conn = sqlite3.connect(str(self.db_path))
@@ -314,7 +314,8 @@ class PaperTrader:
             ''', (self.model_name,))
             
             for row in cursor.fetchall():
-                self.positions[row[1]] = {
+                trade_id = str(row[0])  # Use trade_id as key, not market_id
+                self.positions[trade_id] = {
                     'trade_id': row[0],
                     'market_id': row[1],
                     'market_question': row[2],
@@ -523,9 +524,10 @@ class PaperTrader:
             # Add back to bankroll
             self.bankroll += exit_value
             
-            # Remove from positions
-            if position['market_id'] in self.positions:
-                del self.positions[position['market_id']]
+            # Remove from positions (keyed by trade_id)
+            trade_id_key = str(position['trade_id'])
+            if trade_id_key in self.positions:
+                del self.positions[trade_id_key]
             
             logger.info(f"POSITION CLOSED: {position['side']} '{position['market_question'][:40]}'")
             logger.info(f"  Entry: {entry_price:.4f} → Exit: {exit_price:.4f}")
@@ -617,8 +619,9 @@ class PaperTrader:
         try:
             market_id = market.get('id', market.get('conditionId', 'unknown'))
             
-            # Check if already have position
-            if market_id in self.positions:
+            # Check if already have position in this market
+            existing_market_ids = {p['market_id'] for p in self.positions.values()}
+            if market_id in existing_market_ids:
                 return False
             
             # Check max positions
@@ -661,8 +664,8 @@ class PaperTrader:
             conn.commit()
             conn.close()
             
-            # Track position
-            self.positions[market_id] = {
+            # Track position by trade_id
+            self.positions[str(trade_id)] = {
                 'trade_id': trade_id,
                 'market_id': market_id,
                 'market_question': market.get('question', 'Unknown'),
