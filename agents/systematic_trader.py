@@ -4,6 +4,11 @@ Systematic Trading Agent - COMPLETE IMPLEMENTATION
 
 Connects to Polymarket, scans for mean reversion opportunities,
 executes paper trades, and SELLS when price reverts or market resolves.
+
+Smart filtering:
+- Caches ruled-out markets (don't rescan every cycle)
+- Filters stale/resolved markets by date
+- Checks recent volume activity
 """
 
 import asyncio
@@ -13,9 +18,10 @@ import sqlite3
 import httpx
 import yaml
 import json
+import re
 from pathlib import Path
-from datetime import datetime
-from typing import Optional, Dict, List, Any
+from datetime import datetime, timedelta
+from typing import Optional, Dict, List, Any, Set
 
 # Setup logging
 logging.basicConfig(
@@ -29,6 +35,59 @@ GAMMA_API = "https://gamma-api.polymarket.com"
 
 # Base directory
 BASE_DIR = Path(__file__).parent.parent
+
+# Current year for filtering stale markets
+CURRENT_YEAR = datetime.now().year
+
+
+class MarketCache:
+    """
+    Cache for markets we've analyzed and ruled out.
+    Prevents re-scanning the same market every cycle.
+    """
+    
+    def __init__(self, refresh_interval_minutes: int = 60):
+        self.ruled_out: Dict[str, Dict] = {}  # market_id -> {reason, timestamp, last_price}
+        self.refresh_interval = timedelta(minutes=refresh_interval_minutes)
+    
+    def is_ruled_out(self, market_id: str) -> bool:
+        """Check if market was recently ruled out."""
+        if market_id not in self.ruled_out:
+            return False
+        
+        entry = self.ruled_out[market_id]
+        age = datetime.now() - entry['timestamp']
+        
+        # Refresh cache after interval
+        if age > self.refresh_interval:
+            del self.ruled_out[market_id]
+            return False
+        
+        return True
+    
+    def rule_out(self, market_id: str, reason: str, price: float = None):
+        """Mark a market as ruled out."""
+        self.ruled_out[market_id] = {
+            'reason': reason,
+            'timestamp': datetime.now(),
+            'last_price': price
+        }
+    
+    def clear_if_price_changed(self, market_id: str, current_price: float, threshold: float = 0.05):
+        """Clear cache entry if price has moved significantly."""
+        if market_id in self.ruled_out:
+            last_price = self.ruled_out[market_id].get('last_price')
+            if last_price and abs(current_price - last_price) > threshold:
+                del self.ruled_out[market_id]
+                return True
+        return False
+    
+    def get_stats(self) -> Dict:
+        """Get cache statistics."""
+        return {
+            'ruled_out_count': len(self.ruled_out),
+            'reasons': {}
+        }
 
 
 class PaperTrader:
@@ -60,10 +119,17 @@ class PaperTrader:
         exec_config = self.config.get('execution', {})
         self.check_interval = exec_config.get('check_interval_seconds', 300)
         
-        # Sell thresholds - when to take profit or cut loss
-        self.take_profit_pct = 50.0  # Sell if up 50%+
-        self.stop_loss_pct = -50.0   # Sell if down 50%+
-        self.reversion_threshold = 0.40  # Sell if price reverts toward 40-60% (fair value)
+        # Sell thresholds
+        self.take_profit_pct = 50.0
+        self.stop_loss_pct = -50.0
+        self.reversion_threshold = 0.40
+        
+        # Market selection thresholds
+        self.min_volume_24hr = 1000    # Minimum $1k 24hr volume (active market)
+        self.min_volume_total = 50000  # Minimum $50k total volume (established market)
+        
+        # Smart caching - don't rescan ruled-out markets
+        self.market_cache = MarketCache(refresh_interval_minutes=60)
         
         # Initialize database
         self._init_db()
@@ -72,11 +138,9 @@ class PaperTrader:
         self._load_open_positions()
         
         logger.info(f"Initialized {model_name} trader")
-        logger.info(f"  Favorite threshold: {self.favorite_threshold}")
-        logger.info(f"  Longshot threshold: {self.longshot_threshold}")
+        logger.info(f"  Thresholds: favorite>{self.favorite_threshold}, longshot<{self.longshot_threshold}")
         logger.info(f"  Min mispricing: {self.min_mispricing_pct}%")
-        logger.info(f"  Take profit: {self.take_profit_pct}%")
-        logger.info(f"  Stop loss: {self.stop_loss_pct}%")
+        logger.info(f"  Volume filters: 24hr>${self.min_volume_24hr}, total>${self.min_volume_total}")
         logger.info(f"  Open positions: {len(self.positions)}")
     
     def _load_config(self, config_path: str) -> dict:
@@ -161,23 +225,86 @@ class PaperTrader:
         except Exception as e:
             logger.error(f"Failed to load positions: {e}")
     
+    def is_stale_market(self, market: Dict) -> Optional[str]:
+        """
+        Check if market is stale and should be skipped.
+        Returns rejection reason if stale, None if OK.
+        """
+        question = market.get('question', '').lower()
+        description = market.get('description', '').lower()
+        
+        # Check for past years in the question (2020-2025 when we're in 2026)
+        past_years = [str(y) for y in range(2020, CURRENT_YEAR)]
+        for year in past_years:
+            if year in question:
+                # But allow if it's a historical comparison like "beat 2024 record"
+                if f"beat {year}" not in question and f"than {year}" not in question:
+                    return f"Contains past year {year}"
+        
+        # Check end date if available
+        end_date_str = market.get('endDate') or market.get('end_date_iso')
+        if end_date_str:
+            try:
+                # Parse various date formats
+                for fmt in ['%Y-%m-%dT%H:%M:%S.%fZ', '%Y-%m-%dT%H:%M:%SZ', '%Y-%m-%d']:
+                    try:
+                        end_date = datetime.strptime(end_date_str[:19], fmt[:len(end_date_str[:19])])
+                        if end_date < datetime.now() - timedelta(days=7):
+                            return f"End date passed: {end_date_str[:10]}"
+                        break
+                    except:
+                        continue
+            except:
+                pass
+        
+        # Check if already resolved
+        if market.get('resolved', False):
+            return "Already resolved"
+        
+        # Check for obvious closed indicators
+        if market.get('closed', False) and not market.get('active', True):
+            return "Closed market"
+        
+        return None  # Market is OK
+    
+    def has_sufficient_activity(self, market: Dict) -> Optional[str]:
+        """
+        Check if market has sufficient trading activity.
+        Returns rejection reason if not, None if OK.
+        """
+        volume_total = float(market.get('volume', 0) or 0)
+        volume_24hr = float(market.get('volume24hr', 0) or 0)
+        
+        if volume_total < self.min_volume_total:
+            return f"Low total volume: ${volume_total:,.0f}"
+        
+        if volume_24hr < self.min_volume_24hr:
+            return f"Low 24hr volume: ${volume_24hr:,.0f}"
+        
+        # Check volume ratio - if 24hr is tiny fraction of total, market may be dead
+        if volume_total > 100000 and volume_24hr < volume_total * 0.001:
+            return f"Inactive: 24hr vol only {volume_24hr/volume_total*100:.2f}% of total"
+        
+        return None  # Market is active enough
+    
     async def fetch_markets(self) -> List[Dict]:
-        """Fetch active markets from Polymarket."""
+        """Fetch active markets from Polymarket with smart filtering."""
         try:
             async with httpx.AsyncClient(timeout=15.0) as client:
                 response = await client.get(
                     f"{GAMMA_API}/markets",
                     params={
                         "limit": 200,
-                        "active": "true"  # Include all active, even closed for resolution check
+                        "active": "true"
                     }
                 )
                 response.raise_for_status()
                 markets = response.json()
                 
-                if isinstance(markets, list):
-                    return markets
-                return []
+                if not isinstance(markets, list):
+                    return []
+                
+                return markets
         except Exception as e:
             logger.error(f"Failed to fetch markets: {e}")
             return []
@@ -308,7 +435,10 @@ class PaperTrader:
             return 0
     
     def analyze_market_for_entry(self, market: Dict) -> Optional[Dict]:
-        """Analyze a market for entry signal."""
+        """
+        Analyze a market for entry signal.
+        Note: Volume/stale checks already done in scan cycle.
+        """
         try:
             prices_str = market.get('outcomePrices', '[]')
             if isinstance(prices_str, str):
@@ -321,18 +451,14 @@ class PaperTrader:
             
             yes_price = float(prices[0])
             
-            # Skip closed markets
+            # Skip if closed
             if market.get('closed', False):
-                return None
-            
-            # Skip low volume
-            volume = float(market.get('volume', 0) or 0)
-            if volume < 10000:
                 return None
             
             signal = None
             
-            # Favorite overpriced (YES too high) - bet NO
+            # Favorite overpriced (YES too high, e.g. 85%) - bet NO
+            # The NO price will be cheap (15%), expecting reversion
             if yes_price >= self.favorite_threshold:
                 mispricing = (yes_price - 0.5) * 100
                 if mispricing >= self.min_mispricing_pct:
@@ -342,10 +468,11 @@ class PaperTrader:
                         'yes_price': yes_price,
                         'mispricing_pct': mispricing,
                         'strength': mispricing / 50,
-                        'reason': f"Favorite overpriced at {yes_price*100:.0f}%"
+                        'reason': f"Overpriced YES at {yes_price*100:.0f}%"
                     }
             
-            # Longshot underpriced (YES too low) - bet YES
+            # Longshot underpriced (YES too low, e.g. 5%) - bet YES
+            # The YES price is cheap, expecting reversion up
             elif yes_price <= self.longshot_threshold:
                 mispricing = (0.5 - yes_price) * 100
                 if mispricing >= self.min_mispricing_pct:
@@ -355,7 +482,7 @@ class PaperTrader:
                         'yes_price': yes_price,
                         'mispricing_pct': mispricing,
                         'strength': mispricing / 50,
-                        'reason': f"Longshot underpriced at {yes_price*100:.0f}%"
+                        'reason': f"Underpriced YES at {yes_price*100:.0f}%"
                     }
             
             return signal
@@ -475,34 +602,80 @@ class PaperTrader:
         return closed
     
     async def run_scan_cycle(self) -> Dict:
-        """Run one complete scan cycle - check exits, then entries."""
+        """Run one complete scan cycle - check exits, then entries with smart filtering."""
         logger.info(f"[{self.model_name}] === Starting scan cycle ===")
         
         # Fetch markets
-        markets = await self.fetch_markets()
-        logger.info(f"[{self.model_name}] Fetched {len(markets)} markets")
+        all_markets = await self.fetch_markets()
+        logger.info(f"[{self.model_name}] Fetched {len(all_markets)} markets from API")
         
-        # FIRST: Check existing positions for exits
+        # FIRST: Check existing positions for exits (use all markets for price data)
         logger.info(f"[{self.model_name}] Checking {len(self.positions)} open positions...")
-        positions_closed = await self.check_and_close_positions(markets)
+        positions_closed = await self.check_and_close_positions(all_markets)
         
-        # THEN: Look for new entry opportunities
+        # THEN: Smart filtering for new entry opportunities
+        skipped_cached = 0
+        skipped_stale = 0
+        skipped_inactive = 0
+        analyzed = 0
         signals_found = 0
         trades_opened = 0
         
-        for market in markets:
+        for market in all_markets:
+            market_id = market.get('id', market.get('conditionId', 'unknown'))
+            
+            # Skip if recently ruled out (use cache)
+            if self.market_cache.is_ruled_out(market_id):
+                skipped_cached += 1
+                continue
+            
+            # Get current price for cache invalidation
+            current_price = self.get_market_price(market, 'YES')
+            if current_price:
+                self.market_cache.clear_if_price_changed(market_id, current_price)
+            
+            # Check if market is stale
+            stale_reason = self.is_stale_market(market)
+            if stale_reason:
+                self.market_cache.rule_out(market_id, stale_reason, current_price)
+                skipped_stale += 1
+                continue
+            
+            # Check if market has activity
+            activity_reason = self.has_sufficient_activity(market)
+            if activity_reason:
+                self.market_cache.rule_out(market_id, activity_reason, current_price)
+                skipped_inactive += 1
+                continue
+            
+            # Analyze for entry signal
+            analyzed += 1
             signal = self.analyze_market_for_entry(market)
+            
             if signal:
                 signals_found += 1
+                question = market.get('question', 'Unknown')[:50]
+                logger.info(f"[{self.model_name}] SIGNAL: {signal['side']} on '{question}'")
+                
                 if self.open_position(market, signal):
                     trades_opened += 1
+            else:
+                # Cache as no signal (but will re-check if price moves)
+                self.market_cache.rule_out(market_id, "No signal at current price", current_price)
         
         # Log results
-        logger.info(f"[{self.model_name}] Cycle complete: {signals_found} signals, {trades_opened} opened, {positions_closed} closed")
-        logger.info(f"[{self.model_name}] Open positions: {len(self.positions)}, Bankroll: ${self.bankroll:.2f}")
+        cache_stats = self.market_cache.get_stats()
+        logger.info(f"[{self.model_name}] Filtering: {skipped_cached} cached, {skipped_stale} stale, {skipped_inactive} inactive")
+        logger.info(f"[{self.model_name}] Analyzed {analyzed} markets → {signals_found} signals, {trades_opened} trades")
+        logger.info(f"[{self.model_name}] Positions: {len(self.positions)} open, {positions_closed} closed this cycle")
+        logger.info(f"[{self.model_name}] Bankroll: ${self.bankroll:.2f}, Cache size: {cache_stats['ruled_out_count']}")
         
         return {
-            'markets_scanned': len(markets),
+            'markets_fetched': len(all_markets),
+            'markets_analyzed': analyzed,
+            'skipped_cached': skipped_cached,
+            'skipped_stale': skipped_stale,
+            'skipped_inactive': skipped_inactive,
             'signals_found': signals_found,
             'trades_opened': trades_opened,
             'positions_closed': positions_closed
