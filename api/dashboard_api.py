@@ -690,14 +690,47 @@ async def get_live_markets():
 
 @app.get("/api/health")
 async def health():
-    """Health check endpoint."""
-    # Check if models are running
+    """Health check endpoint with detailed status."""
+    # Check if models are running via PID file
     pids_file = BASE_DIR / 'data' / 'model_pids.txt'
-    running = pids_file.exists()
+    models_running = pids_file.exists()
+    pids_content = None
+    if pids_file.exists():
+        try:
+            pids_content = pids_file.read_text()
+        except:
+            pass
+    
+    # Count total trades and open positions across all models
+    total_trades = 0
+    open_positions = 0
+    last_trade = None
+    
+    for model in MODELS:
+        db_path = BASE_DIR / 'data' / f'trades_{model}.db'
+        if db_path.exists():
+            try:
+                conn = sqlite3.connect(str(db_path))
+                cursor = conn.cursor()
+                cursor.execute("SELECT COUNT(*) FROM trades")
+                total_trades += cursor.fetchone()[0] or 0
+                cursor.execute("SELECT COUNT(*) FROM trades WHERE status = 'open'")
+                open_positions += cursor.fetchone()[0] or 0
+                cursor.execute("SELECT timestamp FROM trades ORDER BY timestamp DESC LIMIT 1")
+                row = cursor.fetchone()
+                if row and (last_trade is None or row[0] > last_trade):
+                    last_trade = row[0]
+                conn.close()
+            except:
+                pass
     
     return {
         'status': 'ok',
-        'models_running': running,
+        'models_running': models_running,
+        'total_trades': total_trades,
+        'open_positions': open_positions,
+        'last_trade': last_trade,
+        'pids': pids_content,
         'timestamp': datetime.now().isoformat()
     }
 
