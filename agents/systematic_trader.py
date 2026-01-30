@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """
-Simple Mean Reversion Trader
+Mean Reversion Trader with AI Gate
 
-Scans Polymarket for extreme prices, bets on reversion to mean.
-KISS: No AI, no complex caching, just find mispriced markets and trade.
+Scans Polymarket for extreme prices, uses AI to filter bad trades.
 """
 
 import asyncio
@@ -13,6 +12,7 @@ import sqlite3
 import httpx
 import yaml
 import json
+import os
 from pathlib import Path
 from datetime import datetime
 from typing import Optional, Dict, List
@@ -25,6 +25,7 @@ logger = logging.getLogger(__name__)
 
 GAMMA_API = "https://gamma-api.polymarket.com"
 BASE_DIR = Path(__file__).parent.parent
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
 
 
 class SimpleTrader:
@@ -177,6 +178,69 @@ class SimpleTrader:
         
         return None
     
+    async def ai_evaluate(self, market: Dict, signal: Dict) -> Optional[Dict]:
+        """
+        Ask AI if this trade makes sense. Returns enhanced signal or None to reject.
+        """
+        if not OPENAI_API_KEY:
+            return signal  # No API key, skip AI gate
+        
+        question = market.get('question', 'Unknown')
+        description = market.get('description', '')[:500]
+        end_date = market.get('endDate', 'Unknown')
+        
+        prompt = f"""You're evaluating a prediction market trade. Be brief.
+
+Market: {question}
+Description: {description}
+End Date: {end_date}
+Current Price: {signal['side']} at {signal['price']*100:.0f}%
+Strategy: Mean reversion - betting price will move toward 50%
+
+Is this a reasonable trade? Consider:
+1. Is the market still active/relevant (not already resolved or stale)?
+2. Does the extreme price suggest genuine mispricing vs correct pricing of unlikely outcome?
+3. Any obvious red flags?
+
+Respond with JSON only:
+{{"approve": true/false, "confidence": 0.0-1.0, "reason": "brief reason"}}"""
+
+        try:
+            async with httpx.AsyncClient(timeout=15.0) as client:
+                resp = await client.post(
+                    "https://api.openai.com/v1/chat/completions",
+                    headers={"Authorization": f"Bearer {OPENAI_API_KEY}"},
+                    json={
+                        "model": "gpt-4o-mini",
+                        "messages": [{"role": "user", "content": prompt}],
+                        "temperature": 0.3,
+                        "max_tokens": 150
+                    }
+                )
+                resp.raise_for_status()
+                
+                content = resp.json()['choices'][0]['message']['content']
+                # Parse JSON from response
+                content = content.strip()
+                if content.startswith('```'):
+                    content = content.split('\n', 1)[1].rsplit('```', 1)[0]
+                
+                result = json.loads(content)
+                
+                if result.get('approve', False):
+                    signal['ai_confidence'] = result.get('confidence', 0.5)
+                    signal['ai_reason'] = result.get('reason', '')
+                    signal['reason'] += f" | AI: {signal['ai_reason']}"
+                    logger.info(f"AI approved: {question[:40]}... ({signal['ai_confidence']:.0%})")
+                    return signal
+                else:
+                    logger.info(f"AI rejected: {question[:40]}... - {result.get('reason', 'no reason')}")
+                    return None
+                    
+        except Exception as e:
+            logger.warning(f"AI evaluation failed: {e}, proceeding without")
+            return signal  # Fail open - if AI fails, still allow trade
+    
     def should_close(self, position: Dict, current_price: float) -> Optional[Dict]:
         """Check if position should be closed."""
         entry = position['entry_price']
@@ -291,11 +355,24 @@ class SimpleTrader:
                 self.close_trade(pos, close_signal['price'], close_signal['reason'])
                 closed += 1
         
-        # 2. Look for new entries
+        # 2. Look for new entries (with AI gate)
         opened = 0
+        candidates = []
         for market in markets:
             signal = self.find_signal(market)
-            if signal and self.open_trade(market, signal):
+            if signal:
+                candidates.append((market, signal))
+        
+        logger.info(f"Found {len(candidates)} candidates, running AI evaluation...")
+        
+        for market, signal in candidates:
+            # Check if we can still open positions
+            if len(self.positions) >= self.max_positions:
+                break
+            
+            # AI gate
+            approved_signal = await self.ai_evaluate(market, signal)
+            if approved_signal and self.open_trade(market, approved_signal):
                 opened += 1
         
         logger.info(f"Cycle done: {opened} opened, {closed} closed, {len(self.positions)} positions, ${self.bankroll:.0f} bankroll")
