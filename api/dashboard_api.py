@@ -839,6 +839,101 @@ async def debug_positions():
     return results
 
 
+@app.get("/api/debug/force-check")
+async def force_check():
+    """Force a position check and return what WOULD happen."""
+    import json as json_mod
+    
+    results = {'actions': [], 'errors': []}
+    
+    # Get current markets from API
+    markets = []
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            resp = await client.get(f"{GAMMA_API}/markets", params={"limit": 100, "active": "true"})
+            markets = resp.json()
+    except Exception as e:
+        results['errors'].append(f"Fetch markets error: {e}")
+        return results
+    
+    # Build lookups
+    market_by_id = {}
+    market_by_question = {}
+    for m in markets:
+        mid = m.get('id')
+        if mid:
+            market_by_id[str(mid)] = m
+        q = m.get('question', '')
+        if q:
+            market_by_question[q] = m
+    
+    results['markets_fetched'] = len(markets)
+    results['market_ids'] = list(market_by_id.keys())[:10]
+    
+    for model in MODELS:
+        db_path = BASE_DIR / 'data' / f'trades_{model}.db'
+        if not db_path.exists():
+            continue
+        
+        try:
+            conn = sqlite3.connect(str(db_path))
+            cursor = conn.cursor()
+            cursor.execute("""
+                SELECT id, market_id, market_question, side, entry_price
+                FROM trades WHERE status = 'open' AND model = ?
+            """, (model,))
+            
+            for row in cursor.fetchall():
+                trade_id, market_id, question, side, entry_price = row
+                
+                # Find market
+                market = market_by_id.get(str(market_id))
+                if not market:
+                    market = market_by_question.get(question)
+                
+                if not market:
+                    results['errors'].append(f"{model}: Market not found for {question[:30]}")
+                    continue
+                
+                # Get price
+                prices_str = market.get('outcomePrices', '[]')
+                if isinstance(prices_str, str):
+                    prices = json_mod.loads(prices_str)
+                else:
+                    prices = prices_str
+                
+                if len(prices) < 2:
+                    results['errors'].append(f"{model}: No prices for {question[:30]}")
+                    continue
+                
+                current_price = float(prices[0]) if side == 'YES' else float(prices[1])
+                pnl_pct = ((current_price - entry_price) / entry_price * 100) if entry_price > 0 else 0
+                
+                action = 'HOLD'
+                if pnl_pct >= 50:
+                    action = 'SELL (take profit)'
+                elif pnl_pct <= -50:
+                    action = 'SELL (stop loss)'
+                
+                if action != 'HOLD':
+                    results['actions'].append({
+                        'model': model,
+                        'trade_id': trade_id,
+                        'question': question[:40],
+                        'side': side,
+                        'entry': entry_price,
+                        'current': current_price,
+                        'pnl_pct': round(pnl_pct, 1),
+                        'action': action
+                    })
+            
+            conn.close()
+        except Exception as e:
+            results['errors'].append(f"{model}: {e}")
+    
+    return results
+
+
 @app.get("/")
 async def root():
     """Serve the dashboard."""
