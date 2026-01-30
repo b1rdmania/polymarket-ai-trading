@@ -737,49 +737,82 @@ async def health():
 
 @app.get("/api/debug/positions")
 async def debug_positions():
-    """Debug endpoint to check positions in database."""
+    """Debug endpoint - simulate checking positions for sells."""
+    import json as json_mod
+    
     results = {}
+    
+    # Get current market prices
+    current_prices = {}
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            resp = await client.get(f"{GAMMA_API}/markets", params={"limit": 50, "active": "true", "closed": "false"})
+            markets = resp.json()
+            for m in markets:
+                q = m.get('question', '')
+                prices_str = m.get('outcomePrices', '[]')
+                if isinstance(prices_str, str):
+                    prices = json_mod.loads(prices_str)
+                else:
+                    prices = prices_str
+                if prices:
+                    current_prices[q] = float(prices[0])
+    except Exception as e:
+        results['price_fetch_error'] = str(e)
     
     for model in MODELS:
         db_path = BASE_DIR / 'data' / f'trades_{model}.db'
         if not db_path.exists():
-            results[model] = {'error': 'DB not found'}
+            results[model] = {'error': 'DB not found', 'path': str(db_path)}
             continue
         
         try:
             conn = sqlite3.connect(str(db_path))
             cursor = conn.cursor()
             
-            # Get open positions with details
+            # Get open positions with details - match the trader query
             cursor.execute("""
-                SELECT id, market_id, market_question, side, entry_price, status
-                FROM trades WHERE status = 'open'
-                LIMIT 10
-            """)
+                SELECT id, market_id, market_question, side, entry_price, size_usd, shares, model
+                FROM trades WHERE status = 'open' AND model = ?
+            """, (model,))
             
             positions = []
+            should_sell = []
             for row in cursor.fetchall():
+                entry_price = row[4]
+                question = row[2] or 'Unknown'
+                current_price = current_prices.get(question, None)
+                
+                pnl_pct = None
+                sell_trigger = False
+                if current_price and entry_price > 0:
+                    pnl_pct = ((current_price - entry_price) / entry_price) * 100
+                    if pnl_pct >= 50 or pnl_pct <= -50:  # Take profit or stop loss
+                        sell_trigger = True
+                        should_sell.append({
+                            'question': question[:40],
+                            'entry': entry_price,
+                            'current': current_price,
+                            'pnl_pct': round(pnl_pct, 1)
+                        })
+                
                 positions.append({
                     'id': row[0],
                     'market_id': row[1],
-                    'question': row[2][:50] if row[2] else None,
+                    'question': question[:40],
                     'side': row[3],
-                    'entry': row[4],
-                    'status': row[5]
+                    'entry': entry_price,
+                    'current': current_price,
+                    'pnl_pct': round(pnl_pct, 1) if pnl_pct else None,
+                    'should_sell': sell_trigger
                 })
-            
-            cursor.execute("SELECT COUNT(*) FROM trades WHERE status = 'open'")
-            open_count = cursor.fetchone()[0]
-            
-            cursor.execute("SELECT COUNT(*) FROM trades WHERE status = 'closed'")
-            closed_count = cursor.fetchone()[0]
             
             conn.close()
             
             results[model] = {
-                'open': open_count,
-                'closed': closed_count,
-                'sample_positions': positions[:3]
+                'positions_loaded': len(positions),
+                'should_sell': should_sell,
+                'sample': positions[:3]
             }
         except Exception as e:
             results[model] = {'error': str(e)}
