@@ -28,13 +28,13 @@ BASE_DIR = Path(__file__).parent.parent
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
 
 
-class SimpleTrader:
+class MeanReversionTrader:
     """
-    Simple mean reversion trader.
-    - Fetches ALL markets from Polymarket
-    - Finds extreme prices (< 20% or > 80%)
-    - Bets on reversion toward 50%
-    - Takes profit at +50%, stops loss at -50%
+    Mean reversion trader with configurable thresholds and Kelly sizing.
+    - Fetches ALL markets from Polymarket (500+)
+    - Finds extreme prices based on config thresholds
+    - Uses Kelly criterion for position sizing
+    - AI gate filters out bad trades
     """
     
     def __init__(self, model_name: str, config_path: str):
@@ -45,15 +45,28 @@ class SimpleTrader:
         db_name = self.config.get('data', {}).get('db_path', f'data/trades_{model_name}.db')
         self.db_path = BASE_DIR / db_name
         
-        # Simple parameters
+        # Risk parameters from config
+        risk = self.config.get('risk', {})
         self.bankroll = 1000.0
+        self.kelly_fraction = risk.get('kelly_fraction', 0.25)
+        self.max_position_usd = risk.get('max_position_usd', 500)
+        self.max_positions = risk.get('max_positions', 10)
+        self.max_total_exposure = risk.get('max_total_exposure_usd', 2000)
+        
+        # Signal thresholds from config
+        signals = self.config.get('signals', {}).get('mean_reversion', {})
+        self.favorite_threshold = signals.get('favorite_threshold', 0.70)  # YES > 70% = favorite
+        self.longshot_threshold = signals.get('longshot_threshold', 0.30)  # YES < 30% = longshot
+        self.min_mispricing_pct = signals.get('min_mispricing_pct', 5.0)   # Min edge required
+        
+        # Execution parameters
+        execution = self.config.get('execution', {})
+        self.check_interval = execution.get('check_interval_seconds', 300)
+        
+        # Fixed parameters
         self.min_volume = 10000           # $10k minimum volume
-        self.extreme_threshold = 0.20     # Trade when YES < 20% or > 80%
         self.take_profit_pct = 50.0       # Sell at +50%
         self.stop_loss_pct = -50.0        # Sell at -50%
-        self.max_positions = 15
-        self.position_size = 50.0         # $50 per trade
-        self.check_interval = 300         # 5 minutes
         
         # Track positions in memory (keyed by trade_id)
         self.positions: Dict[str, Dict] = {}
@@ -61,7 +74,9 @@ class SimpleTrader:
         self._init_db()
         self._load_positions()
         
-        logger.info(f"Trader initialized: {len(self.positions)} open positions, ${self.bankroll:.0f} bankroll")
+        logger.info(f"Trader initialized: {len(self.positions)} positions, ${self.bankroll:.0f} bankroll")
+        logger.info(f"Thresholds: favorite>{self.favorite_threshold:.0%}, longshot<{self.longshot_threshold:.0%}, min_edge>{self.min_mispricing_pct}%")
+        logger.info(f"Risk: kelly={self.kelly_fraction}, max_pos=${self.max_position_usd}, max_total=${self.max_total_exposure}")
     
     def _load_config(self, path: str) -> dict:
         try:
@@ -148,6 +163,7 @@ class SimpleTrader:
     def find_signal(self, market: Dict) -> Optional[Dict]:
         """
         Check if market has an extreme price worth trading.
+        Uses configurable thresholds and calculates edge.
         Returns signal dict or None.
         """
         # Check volume
@@ -157,26 +173,73 @@ class SimpleTrader:
         
         # Get YES price
         yes_price = self.get_price(market, 'YES')
-        if yes_price is None:
+        if yes_price is None or yes_price <= 0 or yes_price >= 1:
             return None
         
-        # Check for extreme prices
-        if yes_price <= self.extreme_threshold:
-            # YES is very cheap - buy YES expecting reversion up
-            return {
-                'side': 'YES',
-                'price': yes_price,
-                'reason': f'YES underpriced at {yes_price*100:.0f}%'
-            }
-        elif yes_price >= (1 - self.extreme_threshold):
-            # YES is very expensive - buy NO expecting reversion down
-            return {
-                'side': 'NO',
-                'price': 1 - yes_price,
-                'reason': f'NO underpriced at {(1-yes_price)*100:.0f}%'
-            }
+        # Calculate fair value (assume 50% for mean reversion)
+        fair_value = 0.50
+        
+        # Check for longshot (YES < longshot_threshold)
+        # Strategy: buy YES, expecting reversion up toward fair value
+        if yes_price < self.longshot_threshold:
+            edge_pct = ((fair_value - yes_price) / yes_price) * 100
+            if edge_pct >= self.min_mispricing_pct:
+                return {
+                    'side': 'YES',
+                    'price': yes_price,
+                    'edge': edge_pct,
+                    'reason': f'Longshot YES at {yes_price*100:.0f}% (edge: {edge_pct:.0f}%)'
+                }
+        
+        # Check for heavy favorite (YES > favorite_threshold)
+        # Strategy: buy NO, expecting reversion down toward fair value
+        elif yes_price > self.favorite_threshold:
+            no_price = 1 - yes_price
+            edge_pct = ((fair_value - no_price) / no_price) * 100
+            if edge_pct >= self.min_mispricing_pct:
+                return {
+                    'side': 'NO',
+                    'price': no_price,
+                    'edge': edge_pct,
+                    'reason': f'Favorite at {yes_price*100:.0f}%, NO at {no_price*100:.0f}% (edge: {edge_pct:.0f}%)'
+                }
         
         return None
+    
+    def calculate_kelly_size(self, edge_pct: float, price: float, ai_confidence: float = 0.5) -> float:
+        """
+        Calculate position size using Kelly criterion.
+        
+        Kelly formula: f* = (bp - q) / b
+        Where: b = odds (payout ratio), p = win probability, q = 1-p
+        
+        We use fractional Kelly (kelly_fraction) to reduce variance.
+        """
+        if price <= 0 or price >= 1:
+            return 0
+        
+        # Implied odds from price
+        b = (1 - price) / price  # e.g., price=0.20 -> b=4 (4:1 odds)
+        
+        # Estimate win probability from edge and AI confidence
+        # Higher edge + higher AI confidence = higher estimated win prob
+        base_win_prob = 0.50 + (edge_pct / 200)  # Edge gives base probability
+        p = base_win_prob * (0.7 + 0.3 * ai_confidence)  # AI confidence adjusts
+        p = max(0.1, min(0.9, p))  # Clamp between 10-90%
+        q = 1 - p
+        
+        # Kelly formula
+        kelly = (b * p - q) / b
+        
+        if kelly <= 0:
+            return 0
+        
+        # Apply fractional Kelly and constraints
+        position_size = self.bankroll * kelly * self.kelly_fraction
+        position_size = min(position_size, self.max_position_usd)
+        position_size = max(position_size, 10)  # Minimum $10 bet
+        
+        return round(position_size, 2)
     
     async def ai_evaluate(self, market: Dict, signal: Dict) -> Optional[Dict]:
         """
@@ -257,7 +320,7 @@ Respond with JSON only:
         return None
     
     def open_trade(self, market: Dict, signal: Dict) -> bool:
-        """Open a new trade."""
+        """Open a new trade using Kelly-sized position."""
         market_id = market.get('id', 'unknown')
         
         # Check if we already have this market
@@ -269,12 +332,22 @@ Respond with JSON only:
         if len(self.positions) >= self.max_positions:
             return False
         
+        # Calculate position size using Kelly criterion
+        edge = signal.get('edge', 10)
+        ai_confidence = signal.get('ai_confidence', 0.5)
+        position_size = self.calculate_kelly_size(edge, signal['price'], ai_confidence)
+        
+        # Check total exposure
+        current_exposure = sum(p['size_usd'] for p in self.positions.values())
+        if current_exposure + position_size > self.max_total_exposure:
+            return False
+        
         # Check bankroll
-        if self.position_size > self.bankroll:
+        if position_size > self.bankroll:
             return False
         
         entry_price = signal['price']
-        shares = self.position_size / entry_price
+        shares = position_size / entry_price
         
         # Save to database
         conn = sqlite3.connect(str(self.db_path))
@@ -289,7 +362,7 @@ Respond with JSON only:
             market.get('question', 'Unknown'),
             signal['side'],
             entry_price,
-            self.position_size,
+            position_size,
             shares,
             signal['reason']
         ))
@@ -304,13 +377,13 @@ Respond with JSON only:
             'market_question': market.get('question', 'Unknown'),
             'side': signal['side'],
             'entry_price': entry_price,
-            'size_usd': self.position_size,
+            'size_usd': position_size,
             'shares': shares
         }
         
-        self.bankroll -= self.position_size
+        self.bankroll -= position_size
         
-        logger.info(f"OPEN: {signal['side']} ${self.position_size:.0f} @ {entry_price*100:.1f}% - {market.get('question', '')[:50]}")
+        logger.info(f"OPEN: {signal['side']} ${position_size:.0f} @ {entry_price*100:.1f}% (edge:{edge:.0f}%) - {market.get('question', '')[:50]}")
         return True
     
     def close_trade(self, position: Dict, exit_price: float, reason: str):
@@ -397,8 +470,8 @@ async def main():
     parser.add_argument('--model', required=True)
     args = parser.parse_args()
     
-    logger.info(f"=== POLYMARKET TRADER ({args.model}) ===")
-    trader = SimpleTrader(args.model, args.config)
+    logger.info(f"=== POLYMARKET MEAN REVERSION TRADER ({args.model}) ===")
+    trader = MeanReversionTrader(args.model, args.config)
     await trader.run()
 
 

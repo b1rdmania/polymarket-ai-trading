@@ -1,5 +1,5 @@
-# Single Trading Model Configuration
-# Balanced settings for mean reversion strategy
+# Mean Reversion Trader Configuration
+# Uses Kelly criterion for sizing, AI gate for filtering
 
 data:
   db_path: data/trades_trader.db
@@ -9,17 +9,17 @@ execution:
   check_interval_seconds: 300  # 5 minutes
 
 risk:
-  kelly_fraction: 0.25
-  max_position_usd: 500
-  max_positions: 10
-  max_total_exposure_usd: 2000
+  kelly_fraction: 0.25         # Use 25% of full Kelly (reduces variance)
+  max_position_usd: 200        # Max $200 per trade
+  max_positions: 15            # Max 15 concurrent positions
+  max_total_exposure_usd: 1500 # Max $1500 total at risk
 
 signals:
   mean_reversion:
     enabled: true
-    favorite_threshold: 0.70    # Trade when YES > 70%
-    longshot_threshold: 0.30    # Trade when YES < 30%
-    min_mispricing_pct: 5.0     # Minimum 5% from fair value
+    favorite_threshold: 0.75   # Trade when YES > 75% (buy NO)
+    longshot_threshold: 0.25   # Trade when YES < 25% (buy YES)
+    min_mispricing_pct: 10.0   # Minimum 10% edge to fair value
 
 trading:
   mode: paper
