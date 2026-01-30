@@ -400,7 +400,8 @@ class PaperTrader:
                     f"{GAMMA_API}/markets",
                     params={
                         "limit": 200,
-                        "active": "true"
+                        "active": "true",
+                        "closed": "false"  # CRITICAL: needed to get most markets!
                     }
                 )
                 response.raise_for_status()

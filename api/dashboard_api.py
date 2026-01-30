@@ -850,7 +850,7 @@ async def force_check():
     markets = []
     try:
         async with httpx.AsyncClient(timeout=10.0) as client:
-            resp = await client.get(f"{GAMMA_API}/markets", params={"limit": 100, "active": "true"})
+            resp = await client.get(f"{GAMMA_API}/markets", params={"limit": 200, "active": "true", "closed": "false"})
             markets = resp.json()
     except Exception as e:
         results['errors'].append(f"Fetch markets error: {e}")
