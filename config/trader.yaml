@@ -2,7 +2,7 @@
 # Balanced settings for mean reversion strategy
 
 data:
-  db_path: data/trades.db
+  db_path: data/trades_trader.db
   logs_dir: logs
 
 execution:
