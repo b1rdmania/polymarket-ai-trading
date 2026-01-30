@@ -687,31 +687,51 @@ class PaperTrader:
         """Check all open positions and close if conditions met."""
         closed = 0
         
-        # Create market lookup by ID
-        market_lookup = {}
+        # Create market lookups by ID and by question (fallback)
+        market_by_id = {}
+        market_by_question = {}
         for m in markets:
             mid = m.get('id', m.get('conditionId'))
             if mid:
-                market_lookup[mid] = m
+                market_by_id[str(mid)] = m  # Ensure string comparison
+            question = m.get('question', '')
+            if question:
+                market_by_question[question] = m
         
         # Check each open position
         positions_to_check = list(self.positions.values())
+        logger.info(f"Checking {len(positions_to_check)} positions for exit conditions...")
+        
         for position in positions_to_check:
-            market_id = position['market_id']
-            market = market_lookup.get(market_id)
+            market_id = str(position['market_id'])  # Ensure string
+            market_question = position.get('market_question', '')
+            
+            # Try to find market by ID first, then by question
+            market = market_by_id.get(market_id)
+            if not market and market_question:
+                market = market_by_question.get(market_question)
             
             if not market:
-                logger.debug(f"Market {market_id} not found in current data")
+                logger.warning(f"Market not found: ID={market_id}, Q={market_question[:40]}")
                 continue
             
             current_price = self.get_market_price(market, position['side'])
             if current_price is None:
+                logger.debug(f"No price for {market_question[:40]}")
                 continue
+            
+            # Calculate current P&L for logging
+            entry = position['entry_price']
+            pnl_pct = ((current_price - entry) / entry * 100) if entry > 0 else 0
             
             sell_signal = self.should_sell(position, current_price, market)
             if sell_signal:
+                logger.info(f"SELL TRIGGERED: {position['side']} {market_question[:40]}")
+                logger.info(f"  Entry: {entry:.4f} → Current: {current_price:.4f} ({pnl_pct:+.0f}%)")
                 self.close_position(position, sell_signal['exit_price'], sell_signal['reason'])
                 closed += 1
+            else:
+                logger.debug(f"Hold: {market_question[:30]} at {pnl_pct:+.0f}%")
         
         return closed
     
