@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-Systematic Trading Agent - COMPLETE IMPLEMENTATION
+Systematic Trading Agent - AI-ENHANCED IMPLEMENTATION
 
-Connects to Polymarket, scans for mean reversion opportunities,
-executes paper trades, and SELLS when price reverts or market resolves.
+Connects to Polymarket, uses AI to evaluate market quality,
+scans for mean reversion opportunities, and manages positions.
 
-Smart filtering:
-- Caches ruled-out markets (don't rescan every cycle)
-- Filters stale/resolved markets by date
-- Checks recent volume activity
+Features:
+- AI-powered market screening (is this worth trading?)
+- Smart caching (don't rescan ruled-out markets)
+- Mean reversion entry/exit logic
 """
 
 import asyncio
@@ -19,9 +19,10 @@ import httpx
 import yaml
 import json
 import re
+import os
 from pathlib import Path
 from datetime import datetime, timedelta
-from typing import Optional, Dict, List, Any, Set
+from typing import Optional, Dict, List, Any, Set, Tuple
 
 # Setup logging
 logging.basicConfig(
@@ -32,12 +33,112 @@ logger = logging.getLogger(__name__)
 
 # API endpoints
 GAMMA_API = "https://gamma-api.polymarket.com"
+OPENAI_API = "https://api.openai.com/v1/chat/completions"
 
 # Base directory
 BASE_DIR = Path(__file__).parent.parent
 
 # Current year for filtering stale markets
 CURRENT_YEAR = datetime.now().year
+
+# OpenAI API key
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY', '')
+
+
+class AIMarketEvaluator:
+    """
+    Uses AI to evaluate whether a market is worth trading.
+    Checks for: stale events, ambiguous outcomes, information asymmetry, etc.
+    """
+    
+    def __init__(self):
+        self.api_key = OPENAI_API_KEY
+        self.enabled = bool(self.api_key)
+        self.cache: Dict[str, Dict] = {}  # Cache AI decisions
+        self.cache_duration = timedelta(hours=6)  # AI decisions valid for 6 hours
+        
+        if not self.enabled:
+            logger.warning("OpenAI API key not set - AI market evaluation disabled")
+    
+    async def evaluate_market(self, market: Dict, signal: Dict) -> Dict:
+        """
+        Ask AI to evaluate if this market is worth trading.
+        Returns: {trade: bool, confidence: float, reason: str}
+        """
+        if not self.enabled:
+            return {'trade': True, 'confidence': 0.5, 'reason': 'AI disabled, using signal only'}
+        
+        market_id = market.get('id', 'unknown')
+        
+        # Check cache
+        if market_id in self.cache:
+            cached = self.cache[market_id]
+            if datetime.now() - cached['timestamp'] < self.cache_duration:
+                return cached['result']
+        
+        # Build prompt
+        question = market.get('question', 'Unknown')
+        description = market.get('description', '')[:500]
+        yes_price = signal.get('yes_price', 0)
+        volume = float(market.get('volume', 0) or 0)
+        volume_24hr = float(market.get('volume24hr', 0) or 0)
+        
+        prompt = f"""You are a trading analyst evaluating prediction markets. Today is {datetime.now().strftime('%B %d, %Y')}.
+
+MARKET: {question}
+DESCRIPTION: {description[:300]}
+
+CURRENT STATE:
+- YES price: {yes_price*100:.1f}%
+- Total volume: ${volume:,.0f}
+- 24hr volume: ${volume_24hr:,.0f}
+- Proposed trade: {signal.get('side')} (betting price will revert toward 50%)
+
+EVALUATE THIS TRADE. Consider:
+1. Is this event still pending or already resolved/outdated?
+2. Is the outcome well-defined (not ambiguous)?
+3. Could the extreme price reflect real information (insider knowledge, breaking news)?
+4. Is this a genuine mispricing opportunity or a trap?
+
+Respond in JSON format only:
+{{"trade": true/false, "confidence": 0.0-1.0, "reason": "one sentence explanation"}}"""
+
+        try:
+            async with httpx.AsyncClient(timeout=30.0) as client:
+                response = await client.post(
+                    OPENAI_API,
+                    headers={
+                        "Authorization": f"Bearer {self.api_key}",
+                        "Content-Type": "application/json"
+                    },
+                    json={
+                        "model": "gpt-4o-mini",  # Fast and cheap
+                        "messages": [{"role": "user", "content": prompt}],
+                        "temperature": 0.3,
+                        "max_tokens": 150
+                    }
+                )
+                response.raise_for_status()
+                data = response.json()
+                
+                content = data['choices'][0]['message']['content']
+                # Parse JSON from response
+                result = json.loads(content.strip().strip('`').replace('json\n', ''))
+                
+                # Cache result
+                self.cache[market_id] = {
+                    'result': result,
+                    'timestamp': datetime.now()
+                }
+                
+                return result
+                
+        except Exception as e:
+            logger.debug(f"AI evaluation failed: {e}")
+            return {'trade': True, 'confidence': 0.5, 'reason': f'AI error: {str(e)[:50]}'}
+    
+    def get_stats(self) -> Dict:
+        return {'cached_evaluations': len(self.cache), 'enabled': self.enabled}
 
 
 class MarketCache:
@@ -124,12 +225,15 @@ class PaperTrader:
         self.stop_loss_pct = -50.0
         self.reversion_threshold = 0.40
         
-        # Market selection thresholds
-        self.min_volume_24hr = 1000    # Minimum $1k 24hr volume (active market)
-        self.min_volume_total = 50000  # Minimum $50k total volume (established market)
+        # Market selection thresholds - LOOSENED since AI helps filter
+        self.min_volume_24hr = 100     # $100 24hr volume (some activity)
+        self.min_volume_total = 5000   # $5k total volume (basic liquidity)
         
         # Smart caching - don't rescan ruled-out markets
         self.market_cache = MarketCache(refresh_interval_minutes=60)
+        
+        # AI evaluator for market quality
+        self.ai_evaluator = AIMarketEvaluator()
         
         # Initialize database
         self._init_db()
@@ -492,9 +596,18 @@ class PaperTrader:
             return None
     
     def calculate_position_size(self, signal: Dict) -> float:
-        """Calculate position size using Kelly criterion."""
+        """
+        Calculate position size using Kelly criterion.
+        Scaled by AI confidence when available.
+        """
         edge = signal['mispricing_pct'] / 100
         kelly_size = self.kelly_fraction * edge * self.bankroll
+        
+        # Scale by AI confidence (0.5-1.0 range, default 0.7)
+        ai_confidence = signal.get('ai_confidence', 0.7)
+        confidence_multiplier = 0.5 + (ai_confidence * 0.5)  # Maps 0-1 to 0.5-1.0
+        kelly_size *= confidence_multiplier
+        
         size = min(kelly_size, self.max_position_usd)
         size = min(size, self.bankroll * 0.25)
         return max(size, 10.0)
@@ -542,7 +655,7 @@ class PaperTrader:
                 size_usd,
                 shares,
                 signal['strength'],
-                signal['reason']
+                f"{signal['reason']} | AI: {signal.get('ai_reason', 'N/A')}"
             ))
             trade_id = cursor.lastrowid
             conn.commit()
@@ -559,8 +672,9 @@ class PaperTrader:
                 'shares': shares
             }
             
+            ai_conf = signal.get('ai_confidence', 0)
             logger.info(f"POSITION OPENED: {signal['side']} ${size_usd:.2f} on '{market.get('question', 'Unknown')[:50]}'")
-            logger.info(f"  Entry price: {entry_price:.4f}, Reason: {signal['reason']}")
+            logger.info(f"  Entry: {entry_price:.4f} | AI confidence: {ai_conf:.0%}")
             logger.info(f"  Bankroll: ${self.bankroll:.2f}")
             
             return True
@@ -619,6 +733,7 @@ class PaperTrader:
         skipped_inactive = 0
         analyzed = 0
         signals_found = 0
+        ai_rejected = 0
         trades_opened = 0
         
         for market in all_markets:
@@ -657,18 +772,37 @@ class PaperTrader:
                 question = market.get('question', 'Unknown')[:50]
                 logger.info(f"[{self.model_name}] SIGNAL: {signal['side']} on '{question}'")
                 
-                if self.open_position(market, signal):
-                    trades_opened += 1
+                # Run AI evaluation before trading
+                ai_verdict = await self.ai_evaluator.evaluate_market(market, signal)
+                
+                if ai_verdict.get('trade', False):
+                    # Adjust position size based on AI confidence
+                    confidence = ai_verdict.get('confidence', 0.5)
+                    signal['ai_confidence'] = confidence
+                    signal['ai_reason'] = ai_verdict.get('reason', '')
+                    
+                    logger.info(f"[{self.model_name}] AI APPROVED ({confidence:.0%}): {ai_verdict.get('reason', '')[:60]}")
+                    
+                    if self.open_position(market, signal):
+                        trades_opened += 1
+                else:
+                    # AI rejected - cache this decision
+                    reason = f"AI rejected: {ai_verdict.get('reason', 'no reason')[:50]}"
+                    logger.info(f"[{self.model_name}] {reason}")
+                    self.market_cache.rule_out(market_id, reason, current_price)
+                    ai_rejected += 1
             else:
                 # Cache as no signal (but will re-check if price moves)
                 self.market_cache.rule_out(market_id, "No signal at current price", current_price)
         
         # Log results
         cache_stats = self.market_cache.get_stats()
+        ai_stats = self.ai_evaluator.get_stats()
+        
         logger.info(f"[{self.model_name}] Filtering: {skipped_cached} cached, {skipped_stale} stale, {skipped_inactive} inactive")
-        logger.info(f"[{self.model_name}] Analyzed {analyzed} markets → {signals_found} signals, {trades_opened} trades")
-        logger.info(f"[{self.model_name}] Positions: {len(self.positions)} open, {positions_closed} closed this cycle")
-        logger.info(f"[{self.model_name}] Bankroll: ${self.bankroll:.2f}, Cache size: {cache_stats['ruled_out_count']}")
+        logger.info(f"[{self.model_name}] Analyzed {analyzed} → {signals_found} signals → {ai_rejected} AI rejected → {trades_opened} trades")
+        logger.info(f"[{self.model_name}] Positions: {len(self.positions)} open, {positions_closed} closed")
+        logger.info(f"[{self.model_name}] Bankroll: ${self.bankroll:.2f} | AI cache: {ai_stats['cached_evaluations']}")
         
         return {
             'markets_fetched': len(all_markets),
@@ -677,6 +811,7 @@ class PaperTrader:
             'skipped_stale': skipped_stale,
             'skipped_inactive': skipped_inactive,
             'signals_found': signals_found,
+            'ai_rejected': ai_rejected,
             'trades_opened': trades_opened,
             'positions_closed': positions_closed
         }
