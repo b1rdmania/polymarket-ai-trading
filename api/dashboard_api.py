@@ -32,7 +32,8 @@ app.add_middleware(
 )
 
 BASE_DIR = Path(__file__).parent.parent
-MODELS = ['trader']  # Single model for simplicity
+# Include old model databases for historical data + new single model
+MODELS = ['trader', 'conservative', 'moderate', 'aggressive']
 
 # Initialize OpenAI client
 openai_client = None
