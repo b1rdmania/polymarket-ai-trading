@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results | Polymarket AI Trading</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1>polymarket ai trading</h1>
+                    <p class="subtitle">TRADING RESULTS & P&L</p>
+                </div>
+                <div style="text-align: right;">
+                    <div id="api-status" style="font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 4px;">● connecting...</div>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="results.html" class="active">Results</a>
+            <a href="markets.html">Scanner</a>
+            <a href="research.html">Research</a>
+        </nav>
+
+        <div class="content">
+            <!-- Summary Stats -->
+            <div class="card">
+                <h3>Performance Summary</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 16px;">
+                    <div class="stat-box">
+                        <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">TOTAL TRADES</div>
+                        <strong id="total-trades">--</strong>
+                    </div>
+                    <div class="stat-box">
+                        <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">CLOSED</div>
+                        <strong id="closed-trades">--</strong>
+                    </div>
+                    <div class="stat-box">
+                        <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">WIN RATE</div>
+                        <strong id="win-rate">--</strong>
+                    </div>
+                    <div class="stat-box">
+                        <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">REALIZED P&L</div>
+                        <strong id="realized-pnl" style="color: var(--color-success);">--</strong>
+                    </div>
+                    <div class="stat-box">
+                        <div style="font-size: 0.75rem; color: var(--color-gray-mid); margin-bottom: 4px;">UNREALIZED P&L</div>
+                        <strong id="unrealized-pnl">--</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Closed Trades -->
+            <div class="card">
+                <h3>Closed Trades</h3>
+                <div id="closed-trades-list" style="margin-top: 16px;">
+                    <p style="color: var(--color-gray-mid);">Loading...</p>
+                </div>
+            </div>
+
+            <!-- Open Positions -->
+            <div class="card">
+                <h3>Open Positions</h3>
+                <div id="open-positions-list" style="margin-top: 16px;">
+                    <p style="color: var(--color-gray-mid);">Loading...</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Paper trading only. Not financial advice.</p>
+        </footer>
+    </div>
+
+    <script>
+        const API_BASE = 'https://polymarket-trading-system.onrender.com';
+
+        async function loadResults() {
+            try {
+                // Fetch health for summary
+                const healthResp = await fetch(`${API_BASE}/api/health`);
+                const health = await healthResp.json();
+                
+                document.getElementById('api-status').innerHTML = '● connected';
+                document.getElementById('api-status').style.color = 'var(--color-success)';
+                
+                document.getElementById('total-trades').textContent = health.total_trades || 0;
+                document.getElementById('closed-trades').textContent = 
+                    (health.total_trades || 0) - (health.open_positions || 0);
+
+                // Fetch all trades
+                const tradesResp = await fetch(`${API_BASE}/api/signals/live?limit=200`);
+                const tradesData = await tradesResp.json();
+                const trades = tradesData.signals || [];
+
+                const closed = trades.filter(t => t.status === 'closed');
+                const open = trades.filter(t => t.status === 'open');
+
+                // Calculate stats
+                const realizedPnl = closed.reduce((sum, t) => sum + (t.pnl || 0), 0);
+                const wins = closed.filter(t => (t.pnl || 0) > 0).length;
+                const winRate = closed.length > 0 ? (wins / closed.length * 100).toFixed(0) : '--';
+
+                document.getElementById('realized-pnl').textContent = `$${realizedPnl.toFixed(2)}`;
+                document.getElementById('realized-pnl').style.color = realizedPnl >= 0 ? 'var(--color-success)' : 'var(--color-error)';
+                document.getElementById('win-rate').textContent = winRate + '%';
+
+                // Render closed trades
+                renderClosedTrades(closed);
+
+                // Fetch open positions with current P&L
+                const posResp = await fetch(`${API_BASE}/api/debug/positions`);
+                const posData = await posResp.json();
+                renderOpenPositions(posData, open);
+
+            } catch (error) {
+                console.error('Error loading results:', error);
+                document.getElementById('api-status').innerHTML = '● error';
+                document.getElementById('api-status').style.color = 'var(--color-error)';
+            }
+        }
+
+        function renderClosedTrades(closed) {
+            const container = document.getElementById('closed-trades-list');
+            
+            if (closed.length === 0) {
+                container.innerHTML = '<p style="color: var(--color-gray-mid);">No closed trades yet.</p>';
+                return;
+            }
+
+            let html = '<table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">';
+            html += '<thead><tr style="text-align: left; border-bottom: 1px solid var(--color-gray-dark);">';
+            html += '<th style="padding: 8px;">Market</th>';
+            html += '<th style="padding: 8px;">Model</th>';
+            html += '<th style="padding: 8px;">Side</th>';
+            html += '<th style="padding: 8px;">Entry</th>';
+            html += '<th style="padding: 8px;">P&L</th>';
+            html += '</tr></thead><tbody>';
+
+            for (const trade of closed) {
+                const pnl = trade.pnl || 0;
+                const pnlColor = pnl >= 0 ? 'var(--color-success)' : 'var(--color-error)';
+                const emoji = pnl >= 0 ? '✅' : '❌';
+                
+                html += '<tr style="border-bottom: 1px solid var(--color-gray-dark);">';
+                html += `<td style="padding: 8px;">${trade.market.substring(0, 40)}</td>`;
+                html += `<td style="padding: 8px;">${trade.model}</td>`;
+                html += `<td style="padding: 8px;">${trade.direction}</td>`;
+                html += `<td style="padding: 8px;">${(trade.entry_price * 100).toFixed(1)}%</td>`;
+                html += `<td style="padding: 8px; color: ${pnlColor};">${emoji} $${pnl.toFixed(2)}</td>`;
+                html += '</tr>';
+            }
+
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        function renderOpenPositions(posData, openTrades) {
+            const container = document.getElementById('open-positions-list');
+            
+            // Collect all positions with P&L data
+            let positions = [];
+            let totalUnrealized = 0;
+
+            for (const [model, data] of Object.entries(posData)) {
+                if (data && data.sample) {
+                    for (const pos of data.sample) {
+                        positions.push({
+                            model: model,
+                            ...pos
+                        });
+                        if (pos.pnl_pct && pos.entry) {
+                            // Rough unrealized calc
+                            const size = 50; // approximate
+                            totalUnrealized += (pos.pnl_pct / 100) * size;
+                        }
+                    }
+                }
+            }
+
+            document.getElementById('unrealized-pnl').textContent = `~$${totalUnrealized.toFixed(0)}`;
+            document.getElementById('unrealized-pnl').style.color = totalUnrealized >= 0 ? 'var(--color-success)' : 'var(--color-error)';
+
+            if (positions.length === 0) {
+                container.innerHTML = '<p style="color: var(--color-gray-mid);">No open positions.</p>';
+                return;
+            }
+
+            let html = '<table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">';
+            html += '<thead><tr style="text-align: left; border-bottom: 1px solid var(--color-gray-dark);">';
+            html += '<th style="padding: 8px;">Market</th>';
+            html += '<th style="padding: 8px;">Model</th>';
+            html += '<th style="padding: 8px;">Side</th>';
+            html += '<th style="padding: 8px;">Entry</th>';
+            html += '<th style="padding: 8px;">Current</th>';
+            html += '<th style="padding: 8px;">P&L %</th>';
+            html += '</tr></thead><tbody>';
+
+            for (const pos of positions.slice(0, 15)) {
+                const pnl = pos.pnl_pct || 0;
+                const pnlColor = pnl >= 0 ? 'var(--color-success)' : 'var(--color-error)';
+                const emoji = pnl >= 0 ? '🟢' : '🔴';
+                
+                html += '<tr style="border-bottom: 1px solid var(--color-gray-dark);">';
+                html += `<td style="padding: 8px;">${(pos.question || '').substring(0, 35)}</td>`;
+                html += `<td style="padding: 8px;">${pos.model}</td>`;
+                html += `<td style="padding: 8px;">${pos.side}</td>`;
+                html += `<td style="padding: 8px;">${(pos.entry * 100).toFixed(1)}%</td>`;
+                html += `<td style="padding: 8px;">${pos.current ? (pos.current * 100).toFixed(1) + '%' : '--'}</td>`;
+                html += `<td style="padding: 8px; color: ${pnlColor};">${emoji} ${pnl.toFixed(1)}%</td>`;
+                html += '</tr>';
+            }
+
+            html += '</tbody></table>';
+            if (positions.length > 15) {
+                html += `<p style="color: var(--color-gray-mid); margin-top: 8px;">Showing 15 of ${positions.length} positions</p>`;
+            }
+            container.innerHTML = html;
+        }
+
+        // Load on page load
+        loadResults();
+        // Refresh every 60 seconds
+        setInterval(loadResults, 60000);
+    </script>
+</body>
+</html>
