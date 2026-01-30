@@ -735,6 +735,58 @@ async def health():
     }
 
 
+@app.get("/api/debug/positions")
+async def debug_positions():
+    """Debug endpoint to check positions in database."""
+    results = {}
+    
+    for model in MODELS:
+        db_path = BASE_DIR / 'data' / f'trades_{model}.db'
+        if not db_path.exists():
+            results[model] = {'error': 'DB not found'}
+            continue
+        
+        try:
+            conn = sqlite3.connect(str(db_path))
+            cursor = conn.cursor()
+            
+            # Get open positions with details
+            cursor.execute("""
+                SELECT id, market_id, market_question, side, entry_price, status
+                FROM trades WHERE status = 'open'
+                LIMIT 10
+            """)
+            
+            positions = []
+            for row in cursor.fetchall():
+                positions.append({
+                    'id': row[0],
+                    'market_id': row[1],
+                    'question': row[2][:50] if row[2] else None,
+                    'side': row[3],
+                    'entry': row[4],
+                    'status': row[5]
+                })
+            
+            cursor.execute("SELECT COUNT(*) FROM trades WHERE status = 'open'")
+            open_count = cursor.fetchone()[0]
+            
+            cursor.execute("SELECT COUNT(*) FROM trades WHERE status = 'closed'")
+            closed_count = cursor.fetchone()[0]
+            
+            conn.close()
+            
+            results[model] = {
+                'open': open_count,
+                'closed': closed_count,
+                'sample_positions': positions[:3]
+            }
+        except Exception as e:
+            results[model] = {'error': str(e)}
+    
+    return results
+
+
 @app.get("/")
 async def root():
     """Serve the dashboard."""
