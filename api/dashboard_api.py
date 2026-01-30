@@ -742,21 +742,24 @@ async def debug_positions():
     
     results = {}
     
-    # Get current market prices
-    current_prices = {}
+    # Get current market prices - both YES and NO
+    current_prices = {}  # question -> {yes: x, no: y}
+    market_ids = {}  # question -> id
     try:
         async with httpx.AsyncClient(timeout=10.0) as client:
             resp = await client.get(f"{GAMMA_API}/markets", params={"limit": 50, "active": "true", "closed": "false"})
             markets = resp.json()
             for m in markets:
                 q = m.get('question', '')
+                mid = m.get('id', '')
                 prices_str = m.get('outcomePrices', '[]')
                 if isinstance(prices_str, str):
                     prices = json_mod.loads(prices_str)
                 else:
                     prices = prices_str
-                if prices:
-                    current_prices[q] = float(prices[0])
+                if prices and len(prices) >= 2:
+                    current_prices[q] = {'yes': float(prices[0]), 'no': float(prices[1])}
+                    market_ids[q] = mid
     except Exception as e:
         results['price_fetch_error'] = str(e)
     
@@ -781,7 +784,19 @@ async def debug_positions():
             for row in cursor.fetchall():
                 entry_price = row[4]
                 question = row[2] or 'Unknown'
-                current_price = current_prices.get(question, None)
+                side = row[3]
+                
+                # Get correct price based on side (YES or NO)
+                prices = current_prices.get(question, None)
+                if prices:
+                    current_price = prices['yes'] if side == 'YES' else prices['no']
+                else:
+                    current_price = None
+                
+                # Check if market ID matches
+                api_market_id = market_ids.get(question)
+                stored_market_id = row[1]
+                id_match = str(api_market_id) == str(stored_market_id) if api_market_id else False
                 
                 pnl_pct = None
                 sell_trigger = False
@@ -791,16 +806,20 @@ async def debug_positions():
                         sell_trigger = True
                         should_sell.append({
                             'question': question[:40],
+                            'side': side,
                             'entry': entry_price,
                             'current': current_price,
-                            'pnl_pct': round(pnl_pct, 1)
+                            'pnl_pct': round(pnl_pct, 1),
+                            'id_match': id_match
                         })
                 
                 positions.append({
                     'id': row[0],
-                    'market_id': row[1],
+                    'market_id': stored_market_id,
+                    'api_market_id': api_market_id,
+                    'id_match': id_match,
                     'question': question[:40],
-                    'side': row[3],
+                    'side': side,
                     'entry': entry_price,
                     'current': current_price,
                     'pnl_pct': round(pnl_pct, 1) if pnl_pct else None,
