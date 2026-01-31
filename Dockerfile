@@ -24,7 +24,9 @@ RUN pip install --no-cache-dir \
     pydantic \
     python-dotenv \
     pyyaml \
-    openai
+    openai \
+    py-clob-client \
+    web3
 
 # Install local packages
 RUN cd /app/toolkit/execution-engine && pip install -e . || true

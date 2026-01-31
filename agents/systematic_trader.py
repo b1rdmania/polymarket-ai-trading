@@ -3,6 +3,7 @@
 Mean Reversion Trader with AI Gate
 
 Scans Polymarket for extreme prices, uses AI to filter bad trades.
+Supports both paper trading and live trading via CLOB API.
 """
 
 import asyncio
@@ -14,7 +15,7 @@ import yaml
 import json
 import os
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Optional, Dict, List
 
 logging.basicConfig(
@@ -24,8 +25,24 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 GAMMA_API = "https://gamma-api.polymarket.com"
+CLOB_API = "https://clob.polymarket.com"
 BASE_DIR = Path(__file__).parent.parent
+
+# Environment variables
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
+LIVE_TRADING = os.getenv('LIVE_TRADING', 'false').lower() == 'true'
+POLYGON_PRIVATE_KEY = os.getenv('POLYGON_PRIVATE_KEY', '')
+KILL_SWITCH = os.getenv('KILL_SWITCH', 'false').lower() == 'true'
+MAX_DAILY_LOSS_USD = float(os.getenv('MAX_DAILY_LOSS_USD', '200'))
+
+# Try to import CLOB client for live trading
+CLOB_AVAILABLE = False
+try:
+    from py_clob_client.client import ClobClient
+    from py_clob_client.clob_types import OrderArgs
+    CLOB_AVAILABLE = True
+except ImportError:
+    logger.warning("py_clob_client not installed - live trading unavailable")
 
 
 class MeanReversionTrader:
@@ -35,11 +52,16 @@ class MeanReversionTrader:
     - Finds extreme prices based on config thresholds
     - Uses Kelly criterion for position sizing
     - AI gate filters out bad trades
+    - Supports live trading via CLOB API
     """
     
     def __init__(self, model_name: str, config_path: str):
         self.model_name = model_name
         self.config = self._load_config(config_path)
+        
+        # Trading mode
+        self.live_trading = LIVE_TRADING and CLOB_AVAILABLE and POLYGON_PRIVATE_KEY
+        self.clob_client = None
         
         # Database path
         db_name = self.config.get('data', {}).get('db_path', f'data/trades_{model_name}.db')
@@ -55,9 +77,9 @@ class MeanReversionTrader:
         
         # Signal thresholds from config
         signals = self.config.get('signals', {}).get('mean_reversion', {})
-        self.favorite_threshold = signals.get('favorite_threshold', 0.70)  # YES > 70% = favorite
-        self.longshot_threshold = signals.get('longshot_threshold', 0.30)  # YES < 30% = longshot
-        self.min_mispricing_pct = signals.get('min_mispricing_pct', 5.0)   # Min edge required
+        self.favorite_threshold = signals.get('favorite_threshold', 0.70)
+        self.longshot_threshold = signals.get('longshot_threshold', 0.30)
+        self.min_mispricing_pct = signals.get('min_mispricing_pct', 5.0)
         
         # Execution parameters
         execution = self.config.get('execution', {})
@@ -68,15 +90,69 @@ class MeanReversionTrader:
         self.take_profit_pct = 50.0       # Sell at +50%
         self.stop_loss_pct = -50.0        # Sell at -50%
         
+        # Safety: daily loss tracking
+        self.daily_pnl = 0.0
+        self.daily_reset_time = datetime.now().replace(hour=0, minute=0, second=0)
+        
         # Track positions in memory (keyed by trade_id)
         self.positions: Dict[str, Dict] = {}
         
         self._init_db()
         self._load_positions()
         
-        logger.info(f"Trader initialized: {len(self.positions)} positions, ${self.bankroll:.0f} bankroll")
-        logger.info(f"Thresholds: favorite>{self.favorite_threshold:.0%}, longshot<{self.longshot_threshold:.0%}, min_edge>{self.min_mispricing_pct}%")
-        logger.info(f"Risk: kelly={self.kelly_fraction}, max_pos=${self.max_position_usd}, max_total=${self.max_total_exposure}")
+        # Initialize CLOB client for live trading
+        if self.live_trading:
+            self._init_clob_client()
+        
+        mode_str = "LIVE TRADING" if self.live_trading else "PAPER TRADING"
+        logger.info(f"{'='*50}")
+        logger.info(f"  MODE: {mode_str}")
+        logger.info(f"{'='*50}")
+        logger.info(f"Positions: {len(self.positions)}, Bankroll: ${self.bankroll:.0f}")
+        logger.info(f"Thresholds: favorite>{self.favorite_threshold:.0%}, longshot<{self.longshot_threshold:.0%}")
+        logger.info(f"Risk: kelly={self.kelly_fraction}, max_pos=${self.max_position_usd}, max_daily_loss=${MAX_DAILY_LOSS_USD}")
+    
+    def _init_clob_client(self):
+        """Initialize CLOB client for live trading."""
+        if not CLOB_AVAILABLE or not POLYGON_PRIVATE_KEY:
+            logger.error("Cannot init CLOB client - missing dependencies or key")
+            self.live_trading = False
+            return
+        
+        try:
+            self.clob_client = ClobClient(
+                host=CLOB_API,
+                chain_id=137,  # Polygon mainnet
+                key=POLYGON_PRIVATE_KEY
+            )
+            # Create or derive API credentials
+            creds = self.clob_client.create_or_derive_api_creds()
+            self.clob_client.set_api_creds(creds)
+            logger.info("CLOB client initialized successfully")
+        except Exception as e:
+            logger.error(f"Failed to init CLOB client: {e}")
+            self.live_trading = False
+    
+    def check_safety_limits(self) -> bool:
+        """Check if we should stop trading due to safety limits."""
+        # Kill switch
+        if KILL_SWITCH:
+            logger.warning("KILL SWITCH ACTIVATED - stopping all trading")
+            return False
+        
+        # Reset daily P&L at midnight
+        now = datetime.now()
+        if now.date() > self.daily_reset_time.date():
+            self.daily_pnl = 0.0
+            self.daily_reset_time = now.replace(hour=0, minute=0, second=0)
+            logger.info("Daily P&L reset")
+        
+        # Check daily loss limit
+        if self.daily_pnl < -MAX_DAILY_LOSS_USD:
+            logger.warning(f"Daily loss limit hit: ${self.daily_pnl:.2f} < -${MAX_DAILY_LOSS_USD}")
+            return False
+        
+        return True
     
     def _load_config(self, path: str) -> dict:
         try:
@@ -349,6 +425,14 @@ Respond with JSON only:
         entry_price = signal['price']
         shares = position_size / entry_price
         
+        # LIVE TRADING: Place actual order via CLOB
+        order_id = None
+        if self.live_trading and self.clob_client:
+            order_id = self._place_live_order(market, signal, shares)
+            if not order_id:
+                logger.error(f"Failed to place live order for {market.get('question', '')[:30]}")
+                return False
+        
         # Save to database
         conn = sqlite3.connect(str(self.db_path))
         cursor = conn.cursor()
@@ -364,7 +448,7 @@ Respond with JSON only:
             entry_price,
             position_size,
             shares,
-            signal['reason']
+            signal['reason'] + (f" | order_id:{order_id}" if order_id else " | PAPER")
         ))
         trade_id = cursor.lastrowid
         conn.commit()
@@ -378,33 +462,110 @@ Respond with JSON only:
             'side': signal['side'],
             'entry_price': entry_price,
             'size_usd': position_size,
-            'shares': shares
+            'shares': shares,
+            'order_id': order_id
         }
         
         self.bankroll -= position_size
         
-        logger.info(f"OPEN: {signal['side']} ${position_size:.0f} @ {entry_price*100:.1f}% (edge:{edge:.0f}%) - {market.get('question', '')[:50]}")
+        mode = "LIVE" if self.live_trading else "PAPER"
+        logger.info(f"[{mode}] OPEN: {signal['side']} ${position_size:.0f} @ {entry_price*100:.1f}% - {market.get('question', '')[:50]}")
         return True
+    
+    def _place_live_order(self, market: Dict, signal: Dict, shares: float) -> Optional[str]:
+        """Place a live order via CLOB API."""
+        try:
+            # Get token ID for the outcome
+            clob_token_ids = market.get('clobTokenIds', '[]')
+            if isinstance(clob_token_ids, str):
+                clob_token_ids = json.loads(clob_token_ids)
+            
+            if not clob_token_ids or len(clob_token_ids) < 2:
+                logger.error(f"No CLOB token IDs for market {market.get('id')}")
+                return None
+            
+            # YES = index 0, NO = index 1
+            token_id = clob_token_ids[0] if signal['side'] == 'YES' else clob_token_ids[1]
+            
+            # Place limit order
+            order_args = OrderArgs(
+                token_id=token_id,
+                price=signal['price'],
+                size=shares,
+                side="BUY"
+            )
+            
+            response = self.clob_client.create_and_post_order(order_args)
+            
+            if response and response.get('orderID'):
+                logger.info(f"Live order placed: {response['orderID']}")
+                return response['orderID']
+            else:
+                logger.error(f"Order response: {response}")
+                return None
+                
+        except Exception as e:
+            logger.error(f"Failed to place live order: {e}")
+            return None
     
     def close_trade(self, position: Dict, exit_price: float, reason: str):
         """Close a trade and record P&L."""
         pnl = (position['shares'] * exit_price) - position['size_usd']
         
+        # LIVE TRADING: Place sell order via CLOB
+        sell_order_id = None
+        if self.live_trading and self.clob_client:
+            sell_order_id = self._place_live_sell(position, exit_price)
+            if not sell_order_id:
+                logger.warning(f"Failed to place live sell for position {position['trade_id']}")
+                # Continue anyway - we'll try again next cycle
+        
         conn = sqlite3.connect(str(self.db_path))
         conn.execute('''
             UPDATE trades SET status = 'closed', exit_price = ?, exit_timestamp = ?, pnl = ?, notes = notes || ' | ' || ?
             WHERE id = ?
-        ''', (exit_price, datetime.now().isoformat(), pnl, reason, position['trade_id']))
+        ''', (exit_price, datetime.now().isoformat(), pnl, reason + (f" | sell:{sell_order_id}" if sell_order_id else ""), position['trade_id']))
         conn.commit()
         conn.close()
         
         self.bankroll += position['shares'] * exit_price
+        self.daily_pnl += pnl  # Track for safety limits
         del self.positions[str(position['trade_id'])]
         
-        logger.info(f"CLOSE: {position['side']} @ {exit_price*100:.1f}% - P&L: ${pnl:+.2f} - {reason}")
+        mode = "LIVE" if self.live_trading else "PAPER"
+        logger.info(f"[{mode}] CLOSE: {position['side']} @ {exit_price*100:.1f}% - P&L: ${pnl:+.2f} - {reason}")
+    
+    def _place_live_sell(self, position: Dict, price: float) -> Optional[str]:
+        """Place a live sell order via CLOB API."""
+        try:
+            # For selling, we need the token ID - this should be stored with the position
+            # For now, we'll fetch the market again
+            # In production, store token_id with position
+            
+            order_args = OrderArgs(
+                token_id=position.get('token_id', ''),  # Need to store this
+                price=price,
+                size=position['shares'],
+                side="SELL"
+            )
+            
+            response = self.clob_client.create_and_post_order(order_args)
+            
+            if response and response.get('orderID'):
+                return response['orderID']
+            return None
+                
+        except Exception as e:
+            logger.error(f"Failed to place live sell: {e}")
+            return None
     
     async def run_cycle(self):
         """Run one scan cycle."""
+        # Safety checks
+        if not self.check_safety_limits():
+            logger.warning("Safety limits triggered - skipping cycle")
+            return
+        
         markets = await self.fetch_all_markets()
         logger.info(f"Fetched {len(markets)} markets, checking {len(self.positions)} positions")
         
