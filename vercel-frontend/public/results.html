@@ -35,6 +35,10 @@
                         <strong id="total-trades">--</strong>
                     </div>
                     <div class="stat-box">
+                        <div style="font-size: 0.75rem; color: var(--color-gray-mid);">OPEN</div>
+                        <strong id="open-count">--</strong>
+                    </div>
+                    <div class="stat-box">
                         <div style="font-size: 0.75rem; color: var(--color-gray-mid);">CLOSED</div>
                         <strong id="closed-trades">--</strong>
                     </div>
@@ -42,9 +46,19 @@
                         <div style="font-size: 0.75rem; color: var(--color-gray-mid);">WIN RATE</div>
                         <strong id="win-rate">--</strong>
                     </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-border);">
                     <div class="stat-box">
                         <div style="font-size: 0.75rem; color: var(--color-gray-mid);">REALIZED P&L</div>
                         <strong id="realized-pnl">--</strong>
+                    </div>
+                    <div class="stat-box">
+                        <div style="font-size: 0.75rem; color: var(--color-gray-mid);">UNREALIZED P&L</div>
+                        <strong id="unrealized-pnl">--</strong>
+                    </div>
+                    <div class="stat-box">
+                        <div style="font-size: 0.75rem; color: var(--color-gray-mid);">TOTAL P&L</div>
+                        <strong id="total-pnl" style="font-size: 1.25rem;">--</strong>
                     </div>
                 </div>
             </div>
@@ -84,13 +98,41 @@
                 
                 const closed = trades.filter(t => t.status === 'closed');
                 const wins = closed.filter(t => (t.pnl || 0) > 0).length;
-                const totalPnl = closed.reduce((s, t) => s + (t.pnl || 0), 0);
+                const realizedPnl = closed.reduce((s, t) => s + (t.pnl || 0), 0);
+                
+                // Calculate unrealized P&L from open positions
+                let totalCost = 0;
+                let totalValue = 0;
+                for (const p of positions) {
+                    const entry = p.entry || 0;
+                    const current = p.current;
+                    const size = p.size || 0;
+                    if (entry > 0 && size > 0) {
+                        const shares = size / entry;
+                        totalCost += size;
+                        if (current && current > 0) {
+                            totalValue += shares * current;
+                        } else {
+                            totalValue += size; // If no current price, assume unchanged
+                        }
+                    }
+                }
+                const unrealizedPnl = totalValue - totalCost;
+                const totalPnl = realizedPnl + unrealizedPnl;
                 
                 document.getElementById('total-trades').textContent = trades.length;
+                document.getElementById('open-count').textContent = positions.length;
                 document.getElementById('closed-trades').textContent = closed.length;
                 document.getElementById('win-rate').textContent = closed.length > 0 ? Math.round(wins / closed.length * 100) + '%' : '--';
-                document.getElementById('realized-pnl').textContent = '$' + totalPnl.toFixed(2);
-                document.getElementById('realized-pnl').style.color = totalPnl >= 0 ? 'var(--color-success)' : 'var(--color-error)';
+                
+                document.getElementById('realized-pnl').textContent = (realizedPnl >= 0 ? '+' : '') + '$' + realizedPnl.toFixed(2);
+                document.getElementById('realized-pnl').style.color = realizedPnl >= 0 ? 'var(--color-success)' : 'var(--color-error)';
+                
+                document.getElementById('unrealized-pnl').textContent = (unrealizedPnl >= 0 ? '+' : '') + '$' + unrealizedPnl.toFixed(2);
+                document.getElementById('unrealized-pnl').style.color = unrealizedPnl >= 0 ? 'var(--color-success)' : 'var(--color-error)';
+                
+                document.getElementById('total-pnl').textContent = (totalPnl >= 0 ? '+' : '') + '$' + totalPnl.toFixed(2);
+                document.getElementById('total-pnl').style.color = totalPnl >= 0 ? 'var(--color-success)' : 'var(--color-error)';
                 
                 // Render closed
                 if (closed.length === 0) {
